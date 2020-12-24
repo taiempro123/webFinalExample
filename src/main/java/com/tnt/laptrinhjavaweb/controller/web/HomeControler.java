@@ -16,7 +16,7 @@ public class HomeControler extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/checkout    .jsp");
         rd.forward(request, response);
     }
 }

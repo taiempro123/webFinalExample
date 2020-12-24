@@ -37,10 +37,13 @@
     <link rel="stylesheet" href="<c:url value="/template/web/extend/pass2.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/extend/test.js"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/extend/myaccount.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/extend/payment-method.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/extend/payment-method.js"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/css/raleway-font.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"/> ">
+
 
 
 

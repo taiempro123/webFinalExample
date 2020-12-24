@@ -2,8 +2,8 @@
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
 
-<%--<div class="blog-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">--%>
-<%--</div>--%>
+<div class="blog-section section mt-80 mt-lg-60 mt-md-60 mt-sm-60 mt-xs-40 mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
+</div>
 <!-- Blog Section End -->
 <!-- Brand Section Start -->
 <div class="brand-section section mb-80 mb-lg-60 mb-md-60 mb-sm-60 mb-xs-40">
