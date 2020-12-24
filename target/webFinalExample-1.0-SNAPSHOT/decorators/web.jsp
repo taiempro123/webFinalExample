@@ -32,6 +32,18 @@
     <script src="<c:url value="/template/web/assets/js/vendor/modernizr-2.8.3.min.js"/>"></script>
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/chatbot.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/loader.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/assets/css/myacc.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/extend/pass2.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/extend/test.js"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/extend/myaccount.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/css/raleway-font.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/> ">
+    <link rel="stylesheet" href="<c:url value="/template/web/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"/> ">
+
+
+
 </head>
 <body>
 <!-- header -->
@@ -59,6 +71,13 @@
 <script src="<c:url value="/template/web/assets/js/ajax-mail.js"/>"></script>
 <!-- Main JS -->
 <script src="<c:url value="/template/web/assets/js/main.js"/>"></script>
+<script src="<c:url value="/template/web/extend/test.js"/>"></script>
+<script src="<c:url value="/template/web/assets/jquery-validation-1.19.2/dist/jquery.validate.min.js"/>"></script>
+<script src="<c:url value="/template/web/assets/jquery-validation-1.19.2/dist/additional-methods.min.js"/>"></script>
+<script src="<c:url value="/template/web/js/jquery.steps.js"/>"></script>
+<script src="<c:url value="/template/web/js/main.js"/>"></script>
+<script src="<c:url value="/template/web/assets/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $(".chat_on").click(function () {
