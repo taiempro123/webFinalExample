@@ -15,7 +15,7 @@
     <!-- CSS
     ============================================ -->
     <!-- FontAnsome -->
-    <link rel="stylesheet" href="<c:url value="/template/web/assets/font-awesome/css/font-awesome.min.css"/> ">
+        <link rel="stylesheet" href="<c:url value="/template/web/assets/font-awesome/css/font-awesome.min.css"/> ">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/bootstrap.min.css"/> ">
     <!-- Icon Font CSS -->
