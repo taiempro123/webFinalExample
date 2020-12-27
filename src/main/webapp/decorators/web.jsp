@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Trang chủ</title>
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -80,6 +80,8 @@
 <script src="<c:url value="/template/web/js/jquery.steps.js"/>"></script>
 <script src="<c:url value="/template/web/js/main.js"/>"></script>
 <script src="<c:url value="/template/web/assets/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+<%--facebook--%>
+<script src="<c:url value="/template/web/extend/fb.js"/>"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -6,14 +6,14 @@
     <title>Login</title>
 </head>
 <body>
-<div class="page-banner-section section" style="background-image: url(assets/images/hero/hero-1.jpg)">
+<div class="page-banner-section section" style="background-image: url(<c:url value="/template/web/assets/images/hero/hero-1.jpg"/>)">
     <div class="container">
         <div class="row">
             <div class="page-banner-content col">
                 <h1>Đăng nhập </h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="login-register.html">Đăng nhập</a></li>
+                    <li><a href="<c:url value="/trang-chu"/> ">Trang chủ</a></li>
+                    <li><a href="<c:url value="/dang-nhap?action=login"/> ">Đăng nhập</a></li>
                 </ul>
             </div>
         </div>
@@ -26,10 +26,18 @@
             <div class="col-lg-4 col-12 mb-40">
                 <div class="login-register-form-wrap">
                     <h3>Đăng nhập</h3>
-                    <form action="#" class="mb-30">
+                    <c:if test="${not empty message}">
+                        <div class="alert alert-${alert}">${message}</div>
+                    </c:if>
+                    <form action="<c:url value="/dang-nhap" />" class="mb-30" method="post" id="formLogin">
                         <div class="row">
-                            <div class="col-12 mb-15"><input type="text" placeholder="Tên tài khoản hoặc Email"></div>
-                            <div class="col-12 mb-15"><input type="password" placeholder="Mật khẩu"></div>
+                            <div class="col-12 mb-15">
+                                <input type="text" id="userName" name="userName" placeholder="Tên tài khoản hoặc Email">
+                            </div>
+                            <div class="col-12 mb-15">
+                                <input type="password"  id="password" name="password"placeholder="Mật khẩu">
+                            </div>
+                            <input type="hidden" value="login" name="action" />
                             <div class="">
                                 <input style="width: 15px;  height: 15px; margin-left: 20px" type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label style="margin-left: 20px;" class="form-check-label" for="exampleCheck1">Nhớ tài khoản</label>
@@ -39,35 +47,19 @@
                         </div>
                     </form>
                     <h4>Bạn cũng có thể đăng nhập với...</h4>
+                    <div  id="status">
+                    </div>
                     <div class="social-login">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                        </fb:login-button>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>
                         <a href="#"><i class="fa fa-pinterest"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                     </div>
+
                 </div>
             </div>
-            <!--
-        <div class="col-lg-2 col-12 mb-40 text-center">
-            <span class="login-register-separator"></span>
-        </div>
--->
-            <!-- <div class="col-lg-6 col-12 mb-40 ml-auto">
-            <div class="login-register-form-wrap">
-                <h3>Register</h3>
-                <form action="#">
-                    <div class="row">
-                        <div class="col-md-6 col-12 mb-15"><input type="text" placeholder="Your Name"></div>
-                        <div class="col-md-6 col-12 mb-15"><input type="text" placeholder="User Name"></div>
-                        <div class="col-md-6 col-12 mb-15"><input type="email" placeholder="Email"></div>
-                        <div class="col-md-6 col-12 mb-15"><input type="password" placeholder="Password"></div>
-                        <div class="col-md-6 col-12 mb-15"><input type="password" placeholder="Confirm Password"></div>
-                        <div class="col-md-6 col-12"><input type="submit" value="Register"></div>
-                    </div>
-                </form>
-            </div>
-        </div> -->
         </div>
     </div>
 </div><!-- Page Section End -->
