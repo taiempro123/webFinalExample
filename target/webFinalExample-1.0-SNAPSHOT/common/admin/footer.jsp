@@ -24,3 +24,6 @@
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
 </div>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='<c:url value="/template/admin/assets/js/jquery.mobile.custom.min.js"/>'>" + "<" + "/script>");
+</script>
