@@ -12,9 +12,7 @@
     
     <decorator name="web" page="web.jsp">
         <pattern>/*</pattern>
-    </decorator>h
-    
-    <decorator name="login" page="login.jsp">
-        <pattern>/dang-nhap</pattern>
     </decorator>
+    
+
 </decorators>

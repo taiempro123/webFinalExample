@@ -4,7 +4,6 @@
 <head>
     <title>Quản lí người dùng</title>
 </head>
-<body>
 <div class="main-content">
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -5250,6 +5249,4 @@
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->
-
-</body>
 </html>

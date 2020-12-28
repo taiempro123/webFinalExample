@@ -60,7 +60,7 @@ public class HomeControler extends HttpServlet {
             String message = request.getParameter("message");
             String alert = request.getParameter("alert");
             if (message != null && alert != null) {
-                request.setAttribute("message", resourceBundle.getString("username_password_invalid"));
+                request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
