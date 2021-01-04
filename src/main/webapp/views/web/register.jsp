@@ -22,10 +22,10 @@
 </div><!-- Page Banner Section End -->
 <!-- Page Section Start -->
 <!-- Page Section End -->
-<div class="page-content" style="background-image: url('images/wizard-v1.jpg')">
+<div class="page-content" style="background-image: url(<c:url value="/template/web/images/wizard-v1.jpg"/> )">
     <div class="wizard-v1-content">
         <div class="wizard-form">
-            <form class="form-register" id="form-register" action="#" method="post">
+            <form class="form-register" id="form-register" action="<c:url value="/dang-ky"/> " method="post">
                 <div id="form-total">
                     <!-- SECTION 1 -->
                     <h2>
