@@ -59,7 +59,7 @@
                             <div class="product-inner">
 
                                 <div class="image">
-                                    <img src="assets/images/product/product-1.jpg" alt="">
+                                    <img src="<c:url value="/data/images/mafacturer/chanel.jpg"/> " alt="">
 
                                     <div class="image-overlay">
                                         <div class="action-buttons">
@@ -84,8 +84,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -131,8 +135,12 @@
                                             <i class="fa fa-star"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -178,8 +186,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -225,8 +237,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -272,8 +288,12 @@
                                             <i class="fa fa-star-half-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -319,8 +339,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <<h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <<h5 class="size">Kích thước:
+                                        <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -366,8 +390,12 @@
                                             <i class="fa fa-star"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -413,8 +441,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -461,8 +493,12 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kích thước: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
+                                        <h5 class="size">Kích thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
 
                                     </div>
 
@@ -499,7 +535,7 @@
                         <li><a href="#">Áo choàng <span class="num">18</span></a></li>
                         <li><a href="#">Quần dài <span class="num">09</span></a></li>
                         <li><a href="#">Áo thun <span class="num">05</span></a></li>
-                        <li><a href="#">Váy  <span class="num">03</span></a></li>
+                        <li><a href="#">Váy <span class="num">03</span></a></li>
                         <li><a href="#">Quần áo trẻ em <span class="num">15</span></a></li>
                         <li><a href="#">Giày <span class="num">07</span></a></li>
                         <li><a href="#">Phụ kiện <span class="num">02</span></a></li>
@@ -511,8 +547,10 @@
                     <ul class="sidebar-list">
                         <li><a href="#"><span class="color" style="background-color: #000000"></span> Đen</a></li>
                         <li><a href="#"><span class="color" style="background-color: #FF0000"></span> Đỏ</a></li>
-                        <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da trời</a></li>
-                        <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá cây</a></li>
+                        <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da trời</a>
+                        </li>
+                        <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá cây</a>
+                        </li>
                         <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Cam</a></li>
                     </ul>
                 </div>
@@ -521,7 +559,8 @@
                     <h4 class="sidebar-title">Sản Phẩm Phổ Biến</h4>
                     <div class="sidebar-product-wrap">
                         <div class="sidebar-product">
-                            <a href="single-product.html" class="image"><img src="assets/images/product/product-1.jpg" alt=""></a>
+                            <a href="single-product.html" class="image"><img src="assets/images/product/product-1.jpg"
+                                                                             alt=""></a>
                             <div class="content">
                                 <a href="single-product.html" class="title">Váy trẻ em Tmart</a>
                                 <span class="price">125.000đ <span class="old">150.000đ</span></span>
@@ -535,7 +574,8 @@
                             </div>
                         </div>
                         <div class="sidebar-product">
-                            <a href="single-product.html" class="image"><img src="assets/images/product/product-2.jpg" alt=""></a>
+                            <a href="single-product.html" class="image"><img src="assets/images/product/product-2.jpg"
+                                                                             alt=""></a>
                             <div class="content">
                                 <a href="single-product.html" class="title">Áo liền quần</a>
                                 <span class="price">100.000đ <span class="old">120.000đ</span></span>
@@ -549,7 +589,8 @@
                             </div>
                         </div>
                         <div class="sidebar-product">
-                            <a href="single-product.html" class="image"><img src="assets/images/product/product-3.jpg" alt=""></a>
+                            <a href="single-product.html" class="image"><img src="assets/images/product/product-3.jpg"
+                                                                             alt=""></a>
                             <div class="content">
                                 <a href="single-product.html" class="title">Áo sơ mi</a>
                                 <span class="price">150.000đ <span class="old">180.000đ</span></span>
