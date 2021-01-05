@@ -1,6 +1,8 @@
 package com.tnt.laptrinhjavaweb.controller.web;
 
+import com.tnt.laptrinhjavaweb.model.ProductModel;
 import com.tnt.laptrinhjavaweb.model.UserModel;
+import com.tnt.laptrinhjavaweb.service.IProductService;
 import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 import com.tnt.laptrinhjavaweb.utils.SendMail;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/dang-ky", "/thoat"})
@@ -21,6 +24,9 @@ public class HomeControler extends HttpServlet {
 
     @Inject
     private IUserService userService;
+
+    @Inject
+    private IProductService productService;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -84,6 +90,9 @@ public class HomeControler extends HttpServlet {
             view = "/views/web/home.jsp";
 
         }
+        List<ProductModel> listPro = productService.findAll();
+        request.setAttribute("listPro" , listPro);
+
         RequestDispatcher rd = request.getRequestDispatcher(view);
         rd.forward(request, response);
     }

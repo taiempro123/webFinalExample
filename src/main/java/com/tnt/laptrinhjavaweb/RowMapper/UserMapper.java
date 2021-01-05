@@ -6,7 +6,7 @@ import com.tnt.laptrinhjavaweb.model.UserModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserMapper implements IRowMapper<UserModel>{
+public class    UserMapper implements IRowMapper<UserModel>{
     @Override
     public UserModel mapRow(ResultSet resultSet) {
         try {
