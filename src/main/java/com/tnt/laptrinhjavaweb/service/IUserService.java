@@ -11,4 +11,5 @@ public interface IUserService {
     List<UserModel> findAll(Pageble pageble);
     int getTotalItem();
     UserModel findOne(Long id);
+    UserModel findOneByUserName(String username);
 }

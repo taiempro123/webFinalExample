@@ -26,7 +26,6 @@
     <p class="lead"><strong>
         Vui lòng kiểm tra email của bạn </strong> để được hướng dẫn thêm về cách hoàn tất thiết lập tài khoản của bạn. </p><hr>
     <p>
-
         Gặp rắc rối? <a href="">Liên hệ với chúng tôi!!!</a>
     </p>
     <p class="lead">

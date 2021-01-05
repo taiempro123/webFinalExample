@@ -51,4 +51,16 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 		return count(sql);
 	}
 
+	@Override
+	public UserModel findOneByUserName(String username) {
+		String sql = "select id from user where username = ?";
+		return (UserModel) query(sql, new UserMapper(), username);
+	}
+
+	@Override
+	public UserModel findOneByEmail(String email) {
+		String sql = "select id from user where email = ?";
+		return (UserModel) query(sql, new UserMapper(), email);
+	}
+
 }

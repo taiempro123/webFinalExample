@@ -25,11 +25,15 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel save(UserModel userModel) {
+        Long newId = 0L;
+        userModel.setFullName(userModel.getUserName());
         userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         RoleModel roleModel = roleDAO.findOneByCode("USER");
         userModel.setStatus(1);
         userModel.setRoleId(roleModel.getId());
-        Long newId = userDAO.save(userModel);
+        if(userDAO.findOneByUserName(userModel.getUserName()) == null && userDAO.findOneByEmail(userModel.getEmail()) == null){
+            newId = userDAO.save(userModel);
+        }
         return userDAO.findOne(newId);
     }
 
@@ -46,6 +50,11 @@ public class UserService implements IUserService {
     @Override
     public UserModel findOne(Long id) {
         return userDAO.findOne(id);
+    }
+
+    @Override
+    public UserModel findOneByUserName(String username) {
+        return userDAO.findOneByUserName(username);
     }
 
 }

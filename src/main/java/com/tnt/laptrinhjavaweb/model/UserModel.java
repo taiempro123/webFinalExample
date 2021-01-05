@@ -8,6 +8,7 @@ public class UserModel extends AbstractModel<UserModel> {
     private String userName;
     private String password;
     private Long facebookId;
+    private String code;
     private String gender;
     private Timestamp birthday;
     private String email;
@@ -20,6 +21,14 @@ public class UserModel extends AbstractModel<UserModel> {
     private Long orderId;
     private int status;
     private RoleModel roleModel = new RoleModel();
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Long getFacebookId() {
         return facebookId;

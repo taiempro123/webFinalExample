@@ -13,5 +13,7 @@ public interface IUserDAO extends GenericDAO<UserModel>{
 	Long save(UserModel userModel);
 	List<UserModel> findAll(Pageble pageble);
 	int getTotalItem();
+	UserModel findOneByUserName(String username);
+	UserModel findOneByEmail(String email);
 
 }

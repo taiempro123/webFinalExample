@@ -3,6 +3,7 @@ package com.tnt.laptrinhjavaweb.controller.web;
 import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
+import com.tnt.laptrinhjavaweb.utils.SendMail;
 import com.tnt.laptrinhjavaweb.utils.SessionUtil;
 
 import javax.inject.Inject;
@@ -41,12 +42,15 @@ public class HomeControler extends HttpServlet {
             }
         } else if (action != null && action.equals("register")) {
             UserModel model = FormUtil.toModel(UserModel.class, request);
-            model = userService.save(model);
-            SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-            if (model.getId() != null) {
-                response.sendRedirect(request.getContextPath() + ("/trang-chu"));
-            } else {
-                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&&message=error"));
+            SendMail sm = new SendMail();
+            String code = sm.getRandom();
+            model.setCode(code);
+            boolean check = sm.sendMail(model);
+            if(check){
+                SessionUtil.getInstance().putValue(request, "authcode", model);
+                response.sendRedirect(request.getContextPath() + ("/verify"));
+            }else{
+                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error&alert=danger"));
             }
         }
     }
@@ -55,6 +59,7 @@ public class HomeControler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        String view = "";
 
         if (action != null && action.equals("login")) {
             String message = request.getParameter("message");
@@ -63,18 +68,24 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
-            RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
-            rd.forward(request, response);
+           view = "/views/web/login.jsp";
         } else if (action != null && action.equals("logout")) {
             SessionUtil.getInstance().removeValue(request, "USERMODEL");
             response.sendRedirect(request.getContextPath() + "/trang-chu");
         } else if (action != null && action.equals("register")) {
-            RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
-            rd.forward(request, response);
+            String message = request.getParameter("message");
+            String alert = request.getParameter("alert");
+            if (message != null && alert != null) {
+                request.setAttribute("message", resourceBundle.getString(message));
+                request.setAttribute("alert", alert);
+            }
+            view = "/views/web/register.jsp";
         }else {
-            RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
-            rd.forward(request, response);
+            view = "/views/web/home.jsp";
+
         }
+        RequestDispatcher rd = request.getRequestDispatcher(view);
+        rd.forward(request, response);
     }
 }
  

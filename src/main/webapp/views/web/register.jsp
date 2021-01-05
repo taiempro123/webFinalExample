@@ -38,7 +38,7 @@
                             <div class="form-row">
                                 <div class="form-holder form-holder-2">
                                     <label for="username">Tên tài khoản*</label>
-                                    <input type="text" placeholder=" Tên tài khoản" class="form-control" id="username" name="username" required>
+                                    <input type="text" placeholder=" Tên tài khoản" class="form-control" id="username" name="userName" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -163,6 +163,8 @@
                             </div>
                         </div>
                     </section>
+                    <input type="hidden" value="register" name="action" />
+                    <div class="col-12"><input type="submit" value="Đăng ký"></div>
                 </div>
             </form>
         </div>
