@@ -25,6 +25,9 @@
 <div class="page-content" style="background-image: url(<c:url value="/template/web/images/wizard-v1.jpg"/> )">
     <div class="wizard-v1-content">
         <div class="wizard-form">
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert}">${message}</div>
+            </c:if>
             <form class="form-register" id="form-register" action="<c:url value="/dang-ky"/> " method="post">
                 <div id="form-total">
                     <!-- SECTION 1 -->

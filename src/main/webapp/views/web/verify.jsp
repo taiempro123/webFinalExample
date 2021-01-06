@@ -26,6 +26,9 @@
         <div class="col-lg-8 col-md-10">
             <form class="card mt-4" method="post" action="<c:url value="/verify" />">
                 <div class="card-body">
+                    <c:if test="${not empty message}">
+                        <div class="alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="form-group"><label for="email-for-pass">Nhập mã code của bạn</label>
                         <input class="form-control" type="number" id="email-for-pass" name="authcode" required=""><small
                             class="form-text text-muted">Nhập mã code của  bạn mà chúng tôi vừa gửi vào email đăng ký</small></div>

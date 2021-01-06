@@ -1,8 +1,6 @@
 package com.tnt.laptrinhjavaweb.controller.web;
 
-import com.tnt.laptrinhjavaweb.model.ProductModel;
 import com.tnt.laptrinhjavaweb.model.UserModel;
-import com.tnt.laptrinhjavaweb.service.IProductService;
 import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 import com.tnt.laptrinhjavaweb.utils.SendMail;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/dang-ky", "/thoat"})
@@ -24,9 +21,6 @@ public class HomeControler extends HttpServlet {
 
     @Inject
     private IUserService userService;
-
-    @Inject
-    private IProductService productService;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -56,7 +50,7 @@ public class HomeControler extends HttpServlet {
                 SessionUtil.getInstance().putValue(request, "authcode", model);
                 response.sendRedirect(request.getContextPath() + ("/verify"));
             }else{
-                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error&alert=danger"));
+                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error_send&alert=danger"));
             }
         }
     }
@@ -65,7 +59,6 @@ public class HomeControler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        String view = "";
 
         if (action != null && action.equals("login")) {
             String message = request.getParameter("message");
@@ -74,7 +67,8 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
-           view = "/views/web/login.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
+            rd.forward(request, response);
         } else if (action != null && action.equals("logout")) {
             SessionUtil.getInstance().removeValue(request, "USERMODEL");
             response.sendRedirect(request.getContextPath() + "/trang-chu");
@@ -85,16 +79,14 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
-            view = "/views/web/register.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
+            rd.forward(request, response);
         }else {
-            view = "/views/web/home.jsp";
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+            rd.forward(request, response);
 
         }
-        List<ProductModel> listPro = productService.findAll();
-        request.setAttribute("listPro" , listPro);
 
-        RequestDispatcher rd = request.getRequestDispatcher(view);
-        rd.forward(request, response);
     }
 }
  

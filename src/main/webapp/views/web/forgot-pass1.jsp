@@ -23,12 +23,15 @@
 <!-- Page Section Start -->
 <div class="container">
     <div class="row">
+        <c:if test="${not empty message}">
+            <div class="alert alert-${alert}">${message}</div>
+        </c:if>
         <div class="col-sm-6 col-sm-offset-3" style="margin-bottom: 50px;">
-            <p >
+            <p>
                 Chúng tôi đã gửi cho bạn một mã để thay đổi mật khẩu mới.Hãy kiểm tra hộp thư của bạn !<a style="color: lightgreen" href="#" title="">Gửi lại (0:59s)</a></p>
-            <form method="post" id="passwordForm">
+            <form method="post" id="passwordForm" action="<c:url value="/change-pass" />">
                 <input type="text" class="input-lg form-control" name="code" id="code" placeholder="Nhập mã" autocomplete="off" style="margin-bottom: 30px">
-                <input type="password" class="input-lg form-control" name="password1" id="password1" placeholder="Nhập mât khẩu mới" autocomplete="off">
+                <input type="password" class="input-lg form-control" name="password" id="password1" placeholder="Nhập mât khẩu mới" autocomplete="off">
                 <div class="row">
                     <div class="col-sm-6">
                         <span id="8char" class="fa fa-times" style="color:#FF0004;"></span> Ít nhất 8 ký tự.<br>

@@ -15,5 +15,8 @@ public interface IUserDAO extends GenericDAO<UserModel>{
 	int getTotalItem();
 	UserModel findOneByUserName(String username);
 	UserModel findOneByEmail(String email);
+	UserModel findByFacebookbId(Long fb);
+	UserModel changePass(UserModel userModel);
+
 
 }

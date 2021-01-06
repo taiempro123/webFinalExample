@@ -15,6 +15,13 @@ public class    UserMapper implements IRowMapper<UserModel>{
             userModel.setUserName(resultSet.getString("username"));
             userModel.setPassword(resultSet.getString("password"));
             userModel.setFullName(resultSet.getString("fullname"));
+            userModel.setGender(resultSet.getString("gender"));
+            userModel.setEmail(resultSet.getString("email"));
+            userModel.setPhone(resultSet.getString("phone"));
+            userModel.setAddress(resultSet.getString("address"));
+            if(resultSet.getString("facebookid") != null ){
+                userModel.setFacebookId(Long.parseLong(resultSet.getString("facebookid")));
+            }
             userModel.setStatus(resultSet.getInt("status"));
 
             try {

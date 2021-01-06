@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ProductMapper implements IRowMapper<ProductModel> {
     @Override
-    public ProductModel mapRow(ResultSet resultSet) throws SQLException {
+    public ProductModel mapRow(ResultSet resultSet) {
         try {
 
                 ProductModel productModel = new ProductModel();

@@ -59,7 +59,7 @@
                             <div class="product-inner">
 
                                 <div class="image">
-                                    <img src="<c:url value="/data/images/mafacturer/chanel.jpg"/> " alt="">
+                                    <img src="<c:url value="/data/images/products/Nu/1bj20w005-sj592-110-.jpg"/> " alt="">
 
                                     <div class="image-overlay">
                                         <div class="action-buttons">
