@@ -95,21 +95,7 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div id="loader">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="lading"></div>
-        </div>
-    </div>
-</div>
+
 <!-- Footer Top Section Start -->
 <div class="footer-top-section section bg-theme-two-light pt-80 pt-lg-60 pt-md-60 pt-sm-60 pt-xs-40 pb-40 pb-lg-20 pb-md-20 pb-sm-20 pb-xs-0">
     <div class="container">

@@ -32,7 +32,7 @@
                     <form action="<c:url value="/dang-nhap" />" class="mb-30" method="post" id="formLogin">
                         <div class="row">
                             <div class="col-12 mb-15">
-                                <input type="text" id="userName" name="userName" placeholder="Tên tài khoản hoặc Email">
+                                <input type="text" id="userName" name="userName" placeholder="Tên tài khoản ">
                             </div>
                             <div class="col-12 mb-15">
                                 <input type="password"  id="password" name="password"placeholder="Mật khẩu">
