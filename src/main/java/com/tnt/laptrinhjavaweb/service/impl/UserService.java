@@ -25,16 +25,19 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel save(UserModel userModel) {
+        UserModel model = null;
         Long userId = 0L;
-        userModel.setFullName(userModel.getUserName());
         userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         RoleModel roleModel = roleDAO.findOneByCode("USER");
         userModel.setStatus(1);
         userModel.setRoleId(roleModel.getId());
         if(userDAO.findOneByUserName(userModel.getUserName()) == null && userDAO.findOneByEmail(userModel.getEmail()) == null){
             userId = userDAO.save(userModel);
+            model = userDAO.findOne(userId);
+        }else{
+            model = null;
         }
-        return userDAO.findOne(userId);
+        return model;
     }
 
     @Override
@@ -46,7 +49,7 @@ public class UserService implements IUserService {
         userModel.setPassword("1111111");
         userModel.setRoleId(roleModel.getId());
 //        if(userDAO.findOneByUserName(userModel.getUserName()) == null && userDAO.findOneByEmail(userModel.getEmail()) == null){
-            Long userId = userDAO.save(userModel);
+            Long userId = userDAO.saveFB(userModel);
 
         return userDAO.findOne(userId);
     }

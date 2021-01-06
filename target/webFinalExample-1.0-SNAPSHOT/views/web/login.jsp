@@ -42,6 +42,8 @@
                                 <input style="width: 15px;  height: 15px; margin-left: 20px" type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label style="margin-left: 20px;" class="form-check-label" for="exampleCheck1">Nhớ tài khoản</label>
                             </div>
+                            <div class="g-recaptcha"
+                                 data-sitekey="6LdvNyMaAAAAAM8ZX1JFyfze3VZoqwT112ycN1po"></div>
                             <div class="col-12"><input type="submit" value="Login"><a style="margin-left: 30px;" href="<c:url value="/dang-ky?action=register"/> ">-> Hoặc Đăng kí</a></div>
                             <div style="margin-top: 10px;" class="col-12"><a href="<c:url value="/forget-pass"/> " title="">Quên mật khẩu?</a></div>
                         </div>

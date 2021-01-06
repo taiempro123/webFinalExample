@@ -19,11 +19,19 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     }
 
     @Override
-    public Long save(UserModel userModel) {
+    public Long saveFB(UserModel userModel) {
         StringBuilder sql = new StringBuilder("insert into user(username,password,fullname,status, roleid, facebookid)");
         sql.append(" values(?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getUserName(), userModel.getPassword(), userModel.getFullName(),
                 userModel.getStatus(), userModel.getRoleId(), userModel.getFacebookId());
+    }
+
+    @Override
+    public Long save(UserModel userModel) {
+        StringBuilder sql = new StringBuilder("insert into user(username,password,fullname,status, roleid, email, address, phone)");
+        sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?)");
+        return insert(sql.toString(), userModel.getUserName(), userModel.getPassword(), userModel.getFullName(),
+                userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(),userModel.getAddress(), userModel.getPhone());
     }
 
     @Override

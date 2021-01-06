@@ -10,6 +10,7 @@ public interface IUserDAO extends GenericDAO<UserModel>{
 	
 	UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status);
 	UserModel findOne(Long id);
+	Long saveFB(UserModel userModel);
 	Long save(UserModel userModel);
 	List<UserModel> findAll(Pageble pageble);
 	int getTotalItem();

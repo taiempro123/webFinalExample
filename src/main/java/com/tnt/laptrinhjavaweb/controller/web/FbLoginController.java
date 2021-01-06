@@ -30,14 +30,18 @@ public class FbLoginController extends HttpServlet {
         UserModel check = userService.findByFacebookbId(userModel.getFacebookId());
         if(check == null){
             userModel = userService.saveFB(userModel);
-            SessionUtil.getInstance().putValue(request, "USERMODEL", userModel);
+            if(userModel != null){
+                SessionUtil.getInstance().putValue(request, "USERMODEL", userModel);
+                response.sendRedirect(request.getContextPath()+"/trang-chu");
+            }else {
+                response.sendRedirect(request.getContextPath()
+                        + ("/dang-nhap?action=login&message=error&alert=danger"));
+            }
 
         }else {
             SessionUtil.getInstance().putValue(request, "USERMODEL", check);
         }
         response.sendRedirect(request.getContextPath()+"/trang-chu");
-
-
 
 
     }

@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="<c:url value="/template/web/css/raleway-font.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/> ">
     <link rel="stylesheet" href="<c:url value="/template/web/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"/> ">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
 
 

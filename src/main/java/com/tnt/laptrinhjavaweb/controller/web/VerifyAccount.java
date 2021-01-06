@@ -28,12 +28,14 @@ public class VerifyAccount extends HttpServlet {
 
         if (code.equals(model.getCode())) {
             model = userService.save(model);
-            SessionUtil.getInstance().removeValue(request, "authcode");
-            SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-            if (model.getId() != null) {
+//            SessionUtil.getInstance().removeValue(request, "authcode");
+//            SessionUtil.getInstance().putValue(request, "USERMODEL", model);
+            if (model == null|| model.getId() == null ) {
+                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error_exit&alert=danger"));
+            } else if(model.getId() != null ){
+                SessionUtil.getInstance().removeValue(request, "authcode");
+                SessionUtil.getInstance().putValue(request, "USERMODEL", model);
                 response.sendRedirect(request.getContextPath() + ("/trang-chu"));
-            } else {
-                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error&alert=danger"));
             }
         } else {
             response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error&alert=danger"));

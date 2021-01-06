@@ -9,6 +9,9 @@ public class SystemConstant {
 	public static final String DETAIL = "new-detail";
 	public static final String FACEBOOK_APP_ID = "879876382771755";
 	public static final String FACEBOOK_APP_SECRET = "d8e8a74edb85cb0caa9fef1a67cc5b07";
+	public static final String SITE_KEY = "6LdvNyMaAAAAAM8ZX1JFyfze3VZoqwT112ycN1po";
+	public static final String SECRET_KEY = "6LdvNyMaAAAAAMW3cNE609Sfej7DyoE7a65mq3T2";
+
 //	public static final String FACEBOOK_REDIRECT_URL = "https://localhost:8080/webFinalExample/login-facebook";
 //	public static final String FACEBOOK_LINK_GET_TOKEN = "https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s";
 }

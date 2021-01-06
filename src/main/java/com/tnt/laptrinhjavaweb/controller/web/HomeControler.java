@@ -5,6 +5,7 @@ import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 import com.tnt.laptrinhjavaweb.utils.SendMail;
 import com.tnt.laptrinhjavaweb.utils.SessionUtil;
+import com.tnt.laptrinhjavaweb.utils.VerifyRecaptcha;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -25,11 +26,15 @@ public class HomeControler extends HttpServlet {
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action != null && action.equals("login")) {
             UserModel model = FormUtil.toModel(UserModel.class, request);
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
             model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), model.getPassword(), 1);
-            if (model != null) {
+            if (model != null && verify) {
                 SessionUtil.getInstance().putValue(request, "USERMODEL", model);
                 if (model.getRoleModel().getCode().equals("USER")) {
                     response.sendRedirect(request.getContextPath() + ("/trang-chu"));
@@ -37,21 +42,33 @@ public class HomeControler extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + ("/admin-home"));
                 }
             } else {
-                response.sendRedirect(request.getContextPath()
-                        + ("/dang-nhap?action=login&message=username_password_invalid&alert=danger"));
+                if(verify){
+                    response.sendRedirect(request.getContextPath() + ("/dang-nhap?action=login&message=username_password_invalid&alert=danger"));
+                }else{
+                    response.sendRedirect(request.getContextPath() + ("/dang-nhap?action=login&message=error_recapcha&alert=danger"));
+                }
             }
         } else if (action != null && action.equals("register")) {
             UserModel model = FormUtil.toModel(UserModel.class, request);
-            SendMail sm = new SendMail();
-            String code = sm.getRandom();
-            model.setCode(code);
-            boolean check = sm.sendMail(model);
-            if(check){
-                SessionUtil.getInstance().putValue(request, "authcode", model);
-                response.sendRedirect(request.getContextPath() + ("/verify"));
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
+            if(verify){
+                SendMail sm = new SendMail();
+                String code = sm.getRandom();
+                model.setCode(code);
+                boolean check = sm.sendMail(model);
+                if(check){
+                    SessionUtil.getInstance().putValue(request, "authcode", model);
+                    response.sendRedirect(request.getContextPath() + ("/verify"));
+                }else{
+                    response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error_send&alert=danger"));
+                }
             }else{
-                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error_send&alert=danger"));
+                response.sendRedirect(request.getContextPath() + ("/dang-ky?action=register&message=error_recapcha&alert=danger"));
+
             }
+
         }
     }
 
@@ -59,6 +76,8 @@ public class HomeControler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        request.setCharacterEncoding("UTF-8");
+
 
         if (action != null && action.equals("login")) {
             String message = request.getParameter("message");
