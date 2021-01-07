@@ -72,7 +72,7 @@
 </style>
 <body>
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section" style="background-image: url(assets/images/hero/hero-1.jpg)">
+<div class="page-banner-section section" style="background-image: url(<c:url value="/template/web/assets/images/hero/hero-1.jpg"/>)">
     <div class="container">
         <div class="row">
             <div class="page-banner-content col">
