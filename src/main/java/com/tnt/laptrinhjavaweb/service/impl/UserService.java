@@ -6,6 +6,7 @@ import com.tnt.laptrinhjavaweb.model.RoleModel;
 import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 import com.tnt.laptrinhjavaweb.service.IUserService;
+import com.tnt.laptrinhjavaweb.utils.MD5Hashing;
 
 import javax.inject.Inject;
 import java.sql.Timestamp;
@@ -20,13 +21,15 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {
-        return userDAO.findByUserNameAndPasswordAndStatus(userName, password, status);
+        String pass = MD5Hashing.hash(password);
+        return userDAO.findByUserNameAndPasswordAndStatus(userName, pass, status);
     }
 
     @Override
     public UserModel save(UserModel userModel) {
         UserModel model = null;
         Long userId = 0L;
+        userModel.setPassword(MD5Hashing.hash(userModel.getPassword()));
         userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         RoleModel roleModel = roleDAO.findOneByCode("USER");
         userModel.setStatus(1);
@@ -46,7 +49,7 @@ public class UserService implements IUserService {
         userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         RoleModel roleModel = roleDAO.findOneByCode("USER");
         userModel.setStatus(1);
-        userModel.setPassword("1111111");
+        userModel.setPassword(MD5Hashing.hash("1111"));
         userModel.setRoleId(roleModel.getId());
 //        if(userDAO.findOneByUserName(userModel.getUserName()) == null && userDAO.findOneByEmail(userModel.getEmail()) == null){
             Long userId = userDAO.saveFB(userModel);
@@ -88,6 +91,7 @@ public class UserService implements IUserService {
     public UserModel changePassword(UserModel userModel) {
         userModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
         userModel.setModifiedBy("USER");
+        userModel.setPassword(MD5Hashing.hash(userModel.getPassword()));
         return userDAO.changePass(userModel);
     }
 

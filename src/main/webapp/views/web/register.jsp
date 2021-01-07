@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<div class="page-banner-section section" style="background-image: url(assets/images/hero/hero-1.jpg)">
+<div class="page-banner-section section" style="background-image: url(<c:url value="/template/web/assets/images/hero/hero-1.jpg"/> )">
     <div class="container">
         <div class="row">
             <div class="page-banner-content col">
@@ -81,8 +81,11 @@
                             <input type="text" placeholder="Địa chỉ" id="address" class="form-control" name="address"
                                    required>
                         </div>
-                        <div class="g-recaptcha"
-                             data-sitekey="6LdvNyMaAAAAAM8ZX1JFyfze3VZoqwT112ycN1po"></div>
+                        <div class="md-5 col-md-12" style="text-align: center;margin-top: 10px;padding-bottom: 20px">
+                            <div class="g-recaptcha"
+                                 data-sitekey="6LdvNyMaAAAAAM8ZX1JFyfze3VZoqwT112ycN1po"></div>
+                        </div>
+
 
                         <div class="md-5 col-md-12" style="text-align: center;margin-top: 10px;padding-bottom: 20px">
                             <input type="hidden" value="register" name="action"/>
