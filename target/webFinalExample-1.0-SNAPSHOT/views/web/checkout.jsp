@@ -61,124 +61,31 @@
                                         <input type="text" placeholder="Số điện thoại">
                                     </div>
 
-                                    <div class="col-12 mb-5">
-                                        <label>Tên công ty</label>
-                                        <input type="text" placeholder="Tên công ty">
-                                    </div>
 
                                     <div class="col-12 mb-5">
                                         <label>Địa chỉ cụ thể*</label>
-                                        <input type="text" placeholder="Địa chỉ 1">
-                                        <input type="text" placeholder="Địa chỉ 2">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Quốc gia*</label>
-                                        <select class="nice-select">
-                                            <option>Việt Nam</option>
-                                            <option>Trung Quốc</option>
-                                            <option>Hàn quốc</option>
-                                            <option>Ấn độ</option>
-                                            <option>Nhật bản</option>
-                                        </select>
+                                        <input type="text" placeholder="Địa chỉ" id="form-address">
                                     </div>
 
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>Tỉnh/Thành phố*</label>
-                                        <input type="text" placeholder="Tỉnh/Thành phố  ">
+                                        <input type="text" placeholder="Tỉnh/Thành phố"  id="form-address2">
                                     </div>
 
                                     <div class="col-md-6 col-12 mb-5">
-                                        <label>Quận/huyện*</label>
-                                        <input type="text" placeholder="Quận/Huyện">
+                                        <label>Đường*</label>
+                                        <input type="text" placeholder="Đường" id="form-city">
                                     </div>
 
                                     <div class="col-md-6 col-12 mb-5">
                                         <label>Mã bưu chính*</label>
-                                        <input type="text" placeholder="Mã bưu chính">
-                                    </div>
-
-                                    <div class="col-12 mb-5">
-                                        <div class="check-box mb-15">
-                                            <input type="checkbox" id="create_account">
-                                            <label for="create_account">Dùng làm địa chỉ mặc định</label>
-                                        </div>
-                                        <div class="check-box mb-15">
-                                            <input type="checkbox" id="shiping_address" data-shipping>
-                                            <label for="shiping_address">Thêm địa chỉ mới</label>
-                                        </div>
+                                        <input type="text" placeholder="Mã bưu chính" id="form-zip">
                                     </div>
 
                                 </div>
 
                             </div>
 
-                            <!-- Shipping Address -->
-                            <div id="shipping-form" class="mb-20">
-                                <h4 class="checkout-title">Địa chỉ giao hàng</h4>
-
-                                <div class="row">
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Họ Đệm*</label>
-                                        <input type="text" placeholder="First Name">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Tên*</label>
-                                        <input type="text" placeholder="Last Name">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Email *</label>
-                                        <input type="email" placeholder="Email Address">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Số điện thoại*</label>
-                                        <input type="text" placeholder="Phone number">
-                                    </div>
-
-                                    <div class="col-12 mb-5">
-                                        <label>Công ty</label>
-                                        <input type="text" placeholder="Company Name">
-                                    </div>
-
-                                    <div class="col-12 mb-5">
-                                        <label>Địa chỉ *</label>
-                                        <input type="text" placeholder="Địa chỉ 1">
-                                        <input type="text" placeholder="Địa chỉ 2">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Quốc gia*</label>
-                                        <select class="nice-select">
-                                            <option>Việt Nam</option>
-                                            <option>Trung Quốc</option>
-                                            <option>Ấn Độ</option>
-                                            <option>Nhật Bản</option>
-                                            <option>Hàn Quốc</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Tỉnh/Thành Phố*</label>
-                                        <input type="text" placeholder="Tỉnh/Thành phố">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Quận/Huyện*</label>
-                                        <input type="text" placeholder="Quận/Huyện">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-5">
-                                        <label>Mã bưu chính*</label>
-                                        <input type="text" placeholder="Mã bưu chính">
-                                    </div>
-
-                                </div>
-
-                            </div>
 
                         </div>
 

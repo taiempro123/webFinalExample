@@ -1,6 +1,8 @@
 package com.tnt.laptrinhjavaweb.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AbstractModel<T>{
 
@@ -9,7 +11,87 @@ public class AbstractModel<T>{
     private Timestamp modifiedDate;
     private String createdBy;
     private String modifiedBy;
+    private Long[] id_list;
+    private List<T> listResult = new ArrayList<T>();
+    private Integer page;
+    private Integer maxPageItems;
+    private Integer totalPages;
+    private Integer totalItems;
+    private String sortName;
+    private String sortBy;
+    private String type;
 
+    public Long[] getId_list() {
+        return id_list;
+    }
+
+    public void setId_list(Long[] id_list) {
+        this.id_list = id_list;
+    }
+
+    public List<T> getListResult() {
+        return listResult;
+    }
+
+    public void setListResult(List<T> listResult) {
+        this.listResult = listResult;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getMaxPageItems() {
+        return maxPageItems;
+    }
+
+    public void setMaxPageItems(Integer maxPageItems) {
+        this.maxPageItems = maxPageItems;
+    }
+
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Integer getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(Integer totalItems) {
+        this.totalItems = totalItems;
+    }
+
+    public String getSortName() {
+        return sortName;
+    }
+
+    public void setSortName(String sortName) {
+        this.sortName = sortName;
+    }
+
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Long getId() {
         return id;

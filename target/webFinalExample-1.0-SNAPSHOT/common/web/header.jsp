@@ -61,15 +61,23 @@
                     <div class="col order-2 order-lg-3">
                         <!-- Header Advance Search Start -->
                         <div class="header-shop-links">
+
                             <div class="header-search">
                                 <button class="search-toggle">
                                     <img src="<c:url value="/template/web/assets/images/icons/search.png"/> " alt="Search Toggle">
                                     <img class="toggle-close"  src="<c:url value="/template/web/assets/images/icons/close.png"/> " alt="Search Toggle">
                                 </button>
+
                                 <div class="header-search-wrap">
-                                    <form action="#">
-                                        <input type="text" placeholder="Nhập thông tin tìm kiếm">
-                                        <button>
+
+                                    <form action="<c:url value="/all" />" method="get">
+                                        <input type="text" id="search" name="search" placeholder="Nhập thông tin tìm kiếm"/>
+                                        <input type="hidden" value="1" id="page" name="page"/>
+                                        <input type="hidden" value="8" id="maxPageItems" name="maxPageItems"/>
+                                        <input type="hidden" value="name" id="sortName" name="sortName"/>
+                                        <input type="hidden" value="desc" id="sortBy" name="sortBy"/>
+                                        <input type="hidden" value="search" id="type" name="type"/>
+                                        <button type="submit" >
                                             <img src="<c:url value="/template/web/assets/images/icons/search.png"/> " alt="Search">
                                         </button>
                                     </form>
@@ -82,7 +90,7 @@
                             </div>
                             <div class="header-mini-cart">
                                 <a href="cart.html">
-                                    <img src="<c:url value="/template/web/assets/images/icons/cart.png"/> " alt="Cart"> <span>02(250.000 Đ)</span>
+                                    <img src="<c:url value="/template/web/assets/images/icons/cart.png"/> " alt="Cart">
                                 </a>
                             </div>
                         </div><!-- Header Advance Search End -->
@@ -95,7 +103,14 @@
                                     </li>
                                     <li><a href="shop-left-sidebar.html">cỬA HÀNG</a>
                                         <ul class="sub-menu">
-                                            <li><a href="shop.html">Tất cả sản phẩm</a></li>
+                                            <c:url  var="listURL" value="/all">
+                                                <c:param name="page" value="1"/>
+                                                <c:param name="maxPageItems" value="8"/>
+                                                <c:param name="sortName" value="name"/>
+                                                <c:param name="sortBy" value="desc"/>
+                                                <c:param name="type" value="list"/>
+                                            </c:url>
+                                            <li><a href="${listURL} ">Tất cả sản phẩm</a></li>
                                             <li><a href="shop-left-sidebar.html" class="fa fa-chevron-right"> Danh mục</a>
                                                 <ul class="sub-menu">
                                                     <li><a href="" class="fa fa-bars"> Bé trai</a>

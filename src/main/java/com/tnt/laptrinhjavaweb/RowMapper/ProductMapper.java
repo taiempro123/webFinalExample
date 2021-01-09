@@ -22,11 +22,12 @@ public class ProductMapper implements IRowMapper<ProductModel> {
                 productModel.setScore(resultSet.getInt("score"));
                 productModel.setQuantity(resultSet.getInt("quantity"));
                 productModel.setManfacturerid(resultSet.getLong("manfacturerid"));
-                productModel.setCategoryid(resultSet.getLong("category"));
+                productModel.setCategoryid(resultSet.getLong("categoryid"));
 
                 return productModel;
             }catch (SQLException e) {
-                return null;
+            System.out.print(e);
+            return null;
             }
 
     }

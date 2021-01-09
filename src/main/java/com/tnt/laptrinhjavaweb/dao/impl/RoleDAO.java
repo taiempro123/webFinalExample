@@ -22,4 +22,5 @@ public class RoleDAO extends AbstractDAO<RoleModel> implements IRoleDAO {
 		return query(sql, new RoleMapper());
 	}
 
+
 }
