@@ -2,8 +2,10 @@ package com.tnt.laptrinhjavaweb.dao.impl;
 
 
 import com.tnt.laptrinhjavaweb.RowMapper.ProductMapper;;
+import com.tnt.laptrinhjavaweb.RowMapper.UserMapper;
 import com.tnt.laptrinhjavaweb.dao.IProductDAO;
 import com.tnt.laptrinhjavaweb.model.ProductModel;
+import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 
 import java.util.List;
@@ -21,6 +23,13 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     public int getTotalItem() {
         String sql = "SELECT COUNT(*) FROM product";
         return count(sql) ;
+    }
+
+    @Override
+    public int getTotalItemByName(String keyword) {
+        StringBuilder sql = new StringBuilder("select * from product where name like");
+        sql.append(" '%" + keyword.toLowerCase() + "%'");
+        return count(sql.toString()) ;
     }
 
     @Override
@@ -48,8 +57,11 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
         return query(sql.toString(), new ProductMapper());
     }
 
-    public static void main(String[] args) {
-
+    @Override
+    public ProductModel findOne(Long id) {
+        String sql = "select * from product where id = ?";
+        List<ProductModel> products = query(sql, new ProductMapper(), id);
+        return products.isEmpty() ? null : products.get(0);
     }
 
 

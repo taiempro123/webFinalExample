@@ -9,8 +9,10 @@ import java.util.List;
 public interface IProductDAO extends GenericDAO<ProductModel>{
     List<ProductModel> findAll();
     int getTotalItem();
+    int getTotalItemByName(String keyword);
     List<ProductModel> findAll(Pageble pageble);
     List<ProductModel> searchByName(Pageble pageble, String keyword);
+    ProductModel findOne(Long id);
 
 
 

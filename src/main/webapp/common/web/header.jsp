@@ -70,10 +70,10 @@
 
                                 <div class="header-search-wrap">
 
-                                    <form action="<c:url value="/all" />" method="get">
+                                    <form action="<c:url value="/all"/>" method="get">
                                         <input type="text" id="search" name="search" placeholder="Nhập thông tin tìm kiếm"/>
                                         <input type="hidden" value="1" id="page" name="page"/>
-                                        <input type="hidden" value="8" id="maxPageItems" name="maxPageItems"/>
+                                        <input type="hidden" value="9" id="maxPageItems" name="maxPageItems"/>
                                         <input type="hidden" value="name" id="sortName" name="sortName"/>
                                         <input type="hidden" value="desc" id="sortBy" name="sortBy"/>
                                         <input type="hidden" value="search" id="type" name="type"/>
@@ -105,7 +105,7 @@
                                         <ul class="sub-menu">
                                             <c:url  var="listURL" value="/all">
                                                 <c:param name="page" value="1"/>
-                                                <c:param name="maxPageItems" value="8"/>
+                                                <c:param name="maxPageItems" value="9"/>
                                                 <c:param name="sortName" value="name"/>
                                                 <c:param name="sortBy" value="desc"/>
                                                 <c:param name="type" value="list"/>
@@ -113,18 +113,22 @@
                                             <li><a href="${listURL} ">Tất cả sản phẩm</a></li>
                                             <li><a href="shop-left-sidebar.html" class="fa fa-chevron-right"> Danh mục</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="" class="fa fa-bars"> Bé trai</a>
+                                                    <li><a href="" class="fa fa-bars">Bé nam</a>
                                                         <ul>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus"> Áo thun</a></li>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus">Đồng hồ</a></li>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus">Quần dài</a></li>
+                                                            <c:forEach items="${categories}" var="test">
+                                                                <c:if test="${test.gender == 'nam'}" >
+                                                                    <li style="margin-left: 20px"><a href="" class="fa fa-plus">${test.name}</a></li>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </ul>
                                                     </li>
                                                     <li><a href="" class="fa fa-bars"> Bé gái</a>
                                                         <ul>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus"> Áo thun</a></li>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus">Đồng hồ</a></li>
-                                                            <li style="margin-left: 20px"><a href="" class="fa fa-plus">Quần dài</a></li>
+                                                            <c:forEach items="${categories}" var="test">
+                                                                <c:if test="${test.gender == 'nữ'}" >
+                                                                    <li style="margin-left: 20px"><a href="" class="fa fa-plus">${test.name}</a></li>
+                                                                </c:if>
+                                                            </c:forEach>
                                                         </ul>
                                                     </li>
                                                 </ul>

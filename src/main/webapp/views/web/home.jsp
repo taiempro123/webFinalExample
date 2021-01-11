@@ -1,3 +1,4 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <!-- Hero Slider Start -->
     <div class="hero-slider hero-slider-one fix">
         <!-- Hero Item Start -->
-        <div class="hero-item" style="background-image: url(/template/web/assets/images/hero/hero-1.jpg)">
+        <div class="hero-item" style="background-image: url(<C:url value="/template/web/assets/images/hero/hero-1.jpg"/>)">
             <!-- Hero Content -->
             <div class="hero-content">
                 <h1>Giảm giá đến 35% cho<br>sản phẩm mới nhất </h1>
@@ -18,7 +19,7 @@
             </div>
         </div><!-- Hero Item End -->
         <!-- Hero Item Start -->
-        <div class="hero-item" style="background-image: url(/template/web/assets/images/hero/hero-2.jpg)">
+        <div class="hero-item" style="background-image: url(<c:url value="/template/web/assets/images/hero/hero-2.jpg"/>)">
             <!-- Hero Content -->
             <div class="hero-content">
                 <h1>Giảm giá đến 35% cho<br>sản phẩm mới nhất </h1>
@@ -33,7 +34,7 @@
         <div class="row row-10">
             <div class="col-lg-4 col-md-6 col-12 mb-20">
                 <div class="banner banner-1 content-left content-middle">
-                    <a href="#" class="image"><img src="/template/web/assets/images/banner/banner-1.jpg" alt="Banner Image"></a>
+                    <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-1.jpg"/>" alt="Banner Image"></a>
                     <div class="content">
                         <h1>Giày mới về <br>cho bé<br> GIẢM NGAY 30%</h1>
                         <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
@@ -42,7 +43,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 mb-20">
                 <a href="#" class="banner banner-2">
-                    <img src="/template/web/assets/images/banner/banner-2.jpg" alt="Banner Image">
+                    <img src="<c:url value="/template/web/assets/images/banner/banner-2.jpg"/>" alt="Banner Image">
                     <div class="content bg-theme-one">
                         <h1>Đồ chơi mới giành cho con bạn</h1>
                     </div>
@@ -51,7 +52,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-12 mb-20">
                 <div class="banner banner-1 content-left content-top">
-                    <a href="#" class="image"><img src="/template/web/assets/images/banner/banner-3.jpg" alt="Banner Image"></a>
+                    <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-3.jpg"/>" alt="Banner Image"></a>
                     <div class="content">
                         <h1>Bộ sưu tập <br>Thời Trang</h1>
                         <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
@@ -336,7 +337,7 @@
     <div class="row row-5">
         <div class="col-lg-4 col-md-6 col-12 mb-10">
             <div class="banner banner-3">
-                <a href="#" class="image"><img src="/template/web/assets/images/banner/banner-4.jpg" alt="Banner Image"></a>
+                <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-4.jpg"/>" alt="Banner Image"></a>
                 <div class="content" style="background-image: url(/template/web/assets/images/banner/banner-3-shape.png)">
                     <h1>Sản phẩm mới</h1>
                     <h2>Giảm giá đến 25%</h2>
@@ -347,7 +348,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-12 mb-10">
             <div class="banner banner-4">
-                <a href="#" class="image"><img src="/template/web/assets/images/banner/banner-5.jpg" alt="Banner Image"></a>
+                <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-5.jpg"/>" alt="Banner Image"></a>
                 <div class="content">
                     <div class="content-inner">
                         <h1>Mua sắm trực tuyến</h1>
@@ -359,7 +360,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-12 mb-10">
             <div class="banner banner-5">
-                <a href="#" class="image"><img src="/template/web/assets/images/banner/banner-6.jpg" alt="Banner Image"></a>
+                <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-6.jpg"/>" alt="Banner Image"></a>
                 <div class="content" style="background-image: url(/template/web/assets/images/banner/banner-5-shape.png)">
                     <h1>BỘ sưu tập giành cho<br>BÉ GÁI</h1>
                     <h2>Giảm giá 30%</h2>
@@ -578,7 +579,7 @@
         <div class="feature-wrap row justify-content-between">
             <div class="col-md-4 col-12 mt-15 mb-15">
                 <div class="feature-item text-center">
-                    <div class="icon"><img src="/template/web/assets/images/feature/feature-1.png" alt=""></div>
+                    <div class="icon"><img src="<c:url value="/template/web/assets/images/feature/feature-1.png" />" alt=""></div>
                     <div class="content">
                         <h3>Giao hàng miễn phí</h3>
                         <p>Khi đơn hàng có giá trị từ 200.000đ</p>
@@ -587,7 +588,7 @@
             </div>
             <div class="col-md-4 col-12 mt-15 mb-15">
                 <div class="feature-item text-center">
-                    <div class="icon"><img src="/template/web/assets/images/feature/feature-2.png" alt=""></div>
+                    <div class="icon"><img src="<c:url value="/template/web/assets/images/feature/feature-2.png" />" alt=""></div>
                     <div class="content">
                         <h3>Đổi trả hàng</h3>
                         <p>Trong thời gian đến 28 ngày</p>
@@ -596,7 +597,7 @@
             </div>
             <div class="col-md-4 col-12 mt-15 mb-15">
                 <div class="feature-item text-center">
-                    <div class="icon"><img src="/template/web/assets/images/feature/feature-3.png" alt=""></div>
+                    <div class="icon"><img src="<c:url value="/template/web/assets/images/feature/feature-3.png" />" alt=""></div>
                     <div class="content">
                         <h3>An toàn thanh toán</h3>
                         <p>Thanh toán dễ dàng và bảo mật</p>

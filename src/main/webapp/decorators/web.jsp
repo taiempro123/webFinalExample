@@ -5,8 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trang chủ</title>
-
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Jadusona</title>
@@ -51,6 +49,7 @@
     <script src="<c:url value="/template/web/extend/auto-complete.js"/>"></script>
     <script src="<c:url value="/template/web/assets/js/vendor/jquery-1.12.4.min.js"/>"></script>
     <script src="<c:url value="/template/web/js/jquery-3.3.1.min.js"/>"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
 
 
 
@@ -62,6 +61,8 @@
 <!-- header -->
 <%@ include file="/common/web/header.jsp" %>
 <!-- header -->
+<script src="<c:url value="/template/web/js/jquery-3.3.1.min.js"/>"></script>
+<script src="<c:url value="/template/web/assets/js/vendor/jquery-1.12.4.min.js"/>"></script>
 
 
 <dec:body/>

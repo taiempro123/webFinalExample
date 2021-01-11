@@ -20,6 +20,15 @@ public class AbstractModel<T>{
     private String sortName;
     private String sortBy;
     private String type;
+    private String search;
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
 
     public Long[] getId_list() {
         return id_list;

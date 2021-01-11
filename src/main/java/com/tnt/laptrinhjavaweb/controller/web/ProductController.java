@@ -46,25 +46,35 @@ public class ProductController extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
-            view = "/views/web/shop.jsp";
+            request.setAttribute(SystemConstant.MODEL, productModel);
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
+            rd.forward(request, response);
         } else if(productModel.getType().equals(SystemConstant.SEARCH)) {
-            String keyword = request.getParameter("search");
-            pageble = new Pager(productModel.getMaxPageItems(), productModel.getPage(),
-                    new Sorter(productModel.getSortName(), productModel.getSortBy()));
-            productModel.setListResult(productService.searchByName(pageble, keyword));
-            productModel.setTotalItems(productModel.getListResult().size());
-            productModel.setTotalPages((int) Math.ceil((double) productModel.getTotalItems() / productModel.getMaxPageItems()));
             String alert = request.getParameter("alert");
             String message = request.getParameter("message");
             if (message != null && alert != null) {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
+                RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
+                rd.forward(request, response);
+            }else {
+                pageble = new Pager(productModel.getMaxPageItems(), productModel.getPage(),
+                        new Sorter(productModel.getSortName(), productModel.getSortBy()));
+                productModel.setListResult(productService.searchByName(pageble, productModel.getSearch()));
+                productModel.setTotalItems(productService.getTotalItemByName(productModel.getSearch()));
+                productModel.setTotalPages((int) Math.ceil((double) productModel.getTotalItems() / productModel.getMaxPageItems()));
+                if(productModel.getListResult().size() == 0){
+                    response.sendRedirect(request.getContextPath() + ("/all?type=search&message=not_found&alert=info"));
+
+                }else {
+                    request.setAttribute(SystemConstant.MODEL, productModel);
+                    RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
+                    rd.forward(request, response);
+                }
             }
-            view = "/views/web/shop.jsp";
+
         }
-        request.setAttribute(SystemConstant.MODEL, productModel);
-        RequestDispatcher rd = request.getRequestDispatcher(view);
-        rd.forward(request, response);
+
 
     }
 }

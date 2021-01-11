@@ -38,6 +38,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public int getTotalItemByName(String keyword) {
+        return productDAO.getTotalItemByName(keyword);
+    }
+
+    @Override
     public List<ProductModel> findAll(Pageble pageble) {
         return productDAO.findAll(pageble);
     }
@@ -50,6 +55,11 @@ public class ProductService implements IProductService {
     @Override
     public List<ProductModel> findEightByScore() {
         return null;
+    }
+
+    @Override
+    public ProductModel findOne(Long id) {
+        return productDAO.findOne(id);
     }
 
 
