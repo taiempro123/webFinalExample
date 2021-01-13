@@ -92,6 +92,7 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
             rd.forward(request, response);
         } else if (action != null && action.equals("logout")) {
@@ -104,6 +105,7 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
             rd.forward(request, response);
         }else {

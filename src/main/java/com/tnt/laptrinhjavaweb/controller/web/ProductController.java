@@ -5,6 +5,7 @@ import com.tnt.laptrinhjavaweb.model.ProductModel;
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 import com.tnt.laptrinhjavaweb.paging.Pager;
 import com.tnt.laptrinhjavaweb.paging.Sorter;
+import com.tnt.laptrinhjavaweb.service.ICategoryService;
 import com.tnt.laptrinhjavaweb.service.IProductService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 
@@ -24,6 +25,9 @@ public class ProductController extends HttpServlet {
     @Inject
     private IProductService productService;
     private Pageble pageble;
+
+    @Inject
+    private ICategoryService categoryService;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -46,6 +50,7 @@ public class ProductController extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             request.setAttribute(SystemConstant.MODEL, productModel);
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
             rd.forward(request, response);
@@ -53,6 +58,7 @@ public class ProductController extends HttpServlet {
             String alert = request.getParameter("alert");
             String message = request.getParameter("message");
             if (message != null && alert != null) {
+                request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
                 RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
@@ -67,6 +73,7 @@ public class ProductController extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + ("/all?type=search&message=not_found&alert=info"));
 
                 }else {
+                    request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
                     request.setAttribute(SystemConstant.MODEL, productModel);
                     RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
                     rd.forward(request, response);
