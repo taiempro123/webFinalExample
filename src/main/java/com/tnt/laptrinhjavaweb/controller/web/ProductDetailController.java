@@ -37,7 +37,7 @@ public class ProductDetailController extends HttpServlet {
         }
         request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/single-product.jsp");
-        rd.forward(request,response);
+        rd.forward(request,response);   
 
 
     }

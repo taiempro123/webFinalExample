@@ -136,6 +136,14 @@
                                         <c:forEach begin="1" end="${model.score}" step="1">
                                             <i class="fa fa-star"></i>
                                         </c:forEach>
+                                    <c:if test="${model.score == 0}">
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </c:if>
+
 
                                     </div>
 
