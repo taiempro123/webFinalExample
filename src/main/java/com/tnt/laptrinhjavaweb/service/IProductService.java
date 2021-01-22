@@ -15,6 +15,11 @@ public interface IProductService {
     List<ProductModel> searchByName(Pageble pageble, String keyword);
     List<ProductModel> findEightByScore();
     ProductModel findOne(Long id);
+    List<ProductModel> findPopular(int count);
+    List<ProductModel> findSale(int count);
+    ProductModel findOneBestSale();
+
+
 
 
 

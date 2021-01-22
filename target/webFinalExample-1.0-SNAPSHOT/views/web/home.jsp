@@ -28,41 +28,6 @@
         </div><!-- Hero Item End -->
     </div><!-- Hero Slider End -->
 </div><!-- Hero Section End -->
-<!-- Banner Section Start -->
-<div class="banner-section section mt-40 mt-xs-20 mb-60 mb-lg-40 mb-md-40 mb-sm-40 mb-xs-20">
-    <div class="container-fluid">
-        <div class="row row-10">
-            <div class="col-lg-4 col-md-6 col-12 mb-20">
-                <div class="banner banner-1 content-left content-middle">
-                    <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-1.jpg"/>" alt="Banner Image"></a>
-                    <div class="content">
-                        <h1>Giày mới về <br>cho bé<br> GIẢM NGAY 30%</h1>
-                        <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 mb-20">
-                <a href="#" class="banner banner-2">
-                    <img src="<c:url value="/template/web/assets/images/banner/banner-2.jpg"/>" alt="Banner Image">
-                    <div class="content bg-theme-one">
-                        <h1>Đồ chơi mới giành cho con bạn</h1>
-                    </div>
-                    <span class="banner-offer"> giảm 25%</span>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 mb-20">
-                <div class="banner banner-1 content-left content-top">
-                    <a href="#" class="image"><img src="<c:url value="/template/web/assets/images/banner/banner-3.jpg"/>" alt="Banner Image"></a>
-                    <div class="content">
-                        <h1>Bộ sưu tập <br>Thời Trang</h1>
-                        <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- Banner Section End -->
-<!-- Product Section Start -->
 <div class="product-section section mb-40 mb-lg-20 mb-md-20 mb-sm-20 mb-xs-0">
     <div class="container">
         <div class="row">
@@ -73,262 +38,45 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-1.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
+            <c:forEach var="item" items="${popular}">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
+                    <div class="product-item">
+                        <div class="product-inner">
+                            <div class="image">
+                                <img src="<c:url value="${item.thumnail}" />" alt="">
+                                <div class="image-overlay">
+                                    <div class="action-buttons">
+                                        <button>thêm vào giỏ hàng</button>
+                                        <button>thêm vào yêu thích</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Váy trẻ em Tmart</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                            <div class="content">
+                                <div class="content-left">
+                                    <c:url var="detail" value="/detail">
+                                        <c:param name="type" value="detail"/>
+                                        <c:param name="id" value="${item.id}"/>
+                                    </c:url>
+                                    <h4 class="title"><a href="${detail}">${item.name}</a></h4>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                    <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
                                 </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">300K vnđ</span>
+                                <div class="content-right">
+                                    <fmt:parseNumber var="price" integerOnly="true" type="number" value="${item.price/1000}"/>
+                                    <span style="color: #00b7ea; font-weight: bold"  class="price"><c:out value="${price}"/> K</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-2.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Áo liền quần</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">120K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-3.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Áo sơ mi</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">200K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-4.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Giày trẻ em</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">100K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-5.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Đồ liền thân</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">120K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-6.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Áo phong kẻ sọc</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">120K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-7.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Váy 2 dây</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">290K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 mb-40">
-                <div class="product-item">
-                    <div class="product-inner">
-                        <div class="image">
-                            <img src="/template/web/assets/images/product/product-8.jpg" alt="">
-                            <div class="image-overlay">
-                                <div class="action-buttons">
-                                    <button>thêm vào giỏ hàng</button>
-                                    <button>thêm vào yêu thích</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="content-left">
-                                <h4 class="title"><a href="single-product.html">Áo sơ mi lưới</a></h4>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
-                            </div>
-                            <div class="content-right">
-                                <span class="price">80K vnđ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div><!-- Product Section End -->
@@ -384,10 +132,14 @@
                 <div class="best-deal-slider row">
                     <div class="slide-item col">
                         <div class="best-deal-product">
-                            <div class="image"><img src="/template/web/assets/images/product/best-deal-1.jpg" alt=""></div>
+                            <c:url var="detailBestSale" value="/detail">
+                                <c:param name="type" value="detail"/>
+                                <c:param name="id" value="${bestSale.id}"/>
+                            </c:url>
+                            <div class="image"><img src="<c:url value="${bestSale.thumnail}"/> " alt=""></div>
                             <div class="content-top">
                                 <div class="content-top-left">
-                                    <h4 class="title"><a href="#">Trọn set đồ Piece Shirt </a></h4>
+                                    <h4 class="title"><a href="${detailBestSale}">${bestSale.name}</a></h4>
                                     <div class="ratting">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -397,36 +149,14 @@
                                     </div>
                                 </div>
                                 <div class="content-top-right">
-                                    <span class="price">150.000đ <span class="old"><strike>200.000đ</strike></span></span>
+                                    <fmt:parseNumber var="price2" integerOnly="true" type="number" value="${bestSale.price/1000}"/>
+                                    <fmt:parseNumber var="pricesale2" integerOnly="true" type="number" value="${bestSale.pricesale/1000}"/>
+                                    <span class="price">${price2}K<span class="old"><strike>${pricesale2}K</strike></span></span>
                                 </div>
                             </div>
                             <div class="content-bottom">
                                 <div class="countdown" data-countdown="2019/06/20"></div>
-                                <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide-item col">
-                        <div class="best-deal-product">
-                            <div class="image"><img src="/template/web/assets/images/product/best-deal-2.jpg" alt=""></div>
-                            <div class="content-top">
-                                <div class="content-top-left">
-                                    <h4 class="title"><a href="#"> Bộ Kelly Shirt </a></h4>
-                                    <div class="ratting">
-                                        <i class="fa fa-star">01</i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                                <div class="content-top-right">
-                                    <span class="price">169.000đ <span class="old"><strike>260.000đ</strike></span></span>
-                                </div>
-                            </div>
-                            <div class="content-bottom">
-                                <div class="countdown" data-countdown="2019/06/20"></div>
-                                <a href="#" data-hover="XEM NGAY">XEM NGAY</a>
+                                <a href="${detailBestSale}" data-hover="XEM NGAY">XEM NGAY</a>
                             </div>
                         </div>
                     </div>
@@ -439,135 +169,33 @@
                         <p>Tất cả các sản phẩm tìm thấy ở đây</p>
                     </div>
                 </div>
+
                 <div class="small-product-slider row row-7">
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-1.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html"> Váy Skily Girld </a></h4>
-                                <span class="price">150.000đ <span class="old">200.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                    <c:forEach var="item" items="${sale}">
+                        <div class="col mb-40">
+                            <div class="on-sale-product">
+                                <c:url var="detailSale" value="/detail">
+                                    <c:param name="type" value="detail"/>
+                                    <c:param name="id" value="${item.id}"/>
+                                </c:url>
+                                <a href="${detailSale}" class="image"><img src="<c:url value="${item.thumnail}" />" alt=""></a>
+                                <div class="content text-center">
+                                    <h4 class="title"><a href="${detailSale}">${item.name}</a></h4>
+                                    <fmt:parseNumber var="price1" integerOnly="true" type="number" value="${item.price/1000}"/>
+                                    <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${item.pricesale/1000}"/>
+                                    <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-2.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html"> Bộ Kelly Shirt </a></h4>
-                                <span class="price">120.000đ <span class="old">150.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-3.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html">Áo không tay</a></h4>
-                                <span class="price">105.000đ <span class="old">120.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-4.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html"> 5 bộ đồ trẻ em Bundle</a></h4>
-                                <span class="price"> 400.000đ<span class="old">450.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-5.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html">Váy chị ong vàng </a></h4>
-                                <span class="price">100.000đ <span class="old">140.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-6.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html">Mũ thời trang dành cho bé</a></h4>
-                                <span class="price">50.000đ <span class="old">60.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-7.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html">Aolvo Kids Munch</a></h4>
-                                <span class="price">105.000đ <span class="old">140.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-40">
-                        <div class="on-sale-product">
-                            <a href="single-product.html" class="image"><img src="/template/web/assets/images/product/on-sale-8.jpg" alt=""></a>
-                            <div class="content text-center">
-                                <h4 class="title"><a href="single-product.html"> Váy siêu cute Tmart</a></h4>
-                                <span class="price">130.000đ <span class="old">170.000đ</span></span>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    </c:forEach>
                 </div>
             </div>
         </div>

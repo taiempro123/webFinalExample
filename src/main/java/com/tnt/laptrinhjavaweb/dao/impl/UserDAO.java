@@ -36,7 +36,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public UserModel findOne(Long id) {
-        String sql = "select * from user where id = ?";
+        String sql = "select * from user inner join role on user.roleid = role.id where user.id = ?";
         List<UserModel> users = query(sql, new UserMapper(), id);
         return users.isEmpty() ? null : users.get(0);
     }
@@ -61,21 +61,21 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public UserModel findOneByUserName(String username) {
-        String sql = "select * from user where username = ?";
+        String sql = "select * from user inner join role on user.roleid = role.id where user.username = ?";
         List<UserModel> users = query(sql, new UserMapper(), username);
         return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
     public UserModel findOneByEmail(String email) {
-        String sql = "select * from user where email = ?";
+        String sql = "select * from user inner join role on user.roleid = role.id where user.email = ?";
         List<UserModel> users = query(sql, new UserMapper(), email);
         return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
     public UserModel findByFacebookbId(Long fb) {
-        String sql = "select * from user where facebookid = ?";
+        String sql = "select * from user inner join role on user.roleid = role.id where user.facebookid = ?";
 		List<UserModel> users = query(sql, new UserMapper(), fb);
 		return users.isEmpty() ? null : users.get(0);
     }

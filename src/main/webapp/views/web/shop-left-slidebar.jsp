@@ -88,10 +88,10 @@
                                                 </h4>
 
                                                 <div class="ratting">
-                                                    <c:forEach begin="1" end="${item.score}" step="1">
+                                                    <c:forEach begin="0" end="${item.score}" step="1">
                                                         <i class="fa fa-star"></i>
                                                     </c:forEach>
-                                                    <c:if test="${model.score == 0}">
+                                                    <c:if test="${model.score <= 0}">
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -110,10 +110,12 @@
 
                                             </div>
 
-                                            <div class="content-right">
-                                                <span class="price">${item.price}VNĐ
+                                            <div class="d-flex justify-content-between w-100">
+                                                <fmt:parseNumber var="price" integerOnly="true" type="number" value="${item.price/1000}"/>
+                                                <fmt:parseNumber var="pricesale" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
+                                                <span style="color: #00b7ea; font-weight: bold"  class="price"><c:out value="${price}"/> K</span>
                                                     <c:if test="${item.pricesale} > 0">
-                                                        <span class="old">${item.pricesale}VNĐ</span>
+                                                        <span class="old" style="color: red"><c:out value="${pricesale}"/> K</span>
                                                     </c:if>
                                                 </span>
                                             </div>
@@ -173,54 +175,31 @@
                     <div class="sidebar">
                         <h4 class="sidebar-title">Sản Phẩm Phổ Biến</h4>
                         <div class="sidebar-product-wrap">
-                            <div class="sidebar-product">
-                                <a href="single-product.html" class="image"><img
-                                        src="assets/images/product/product-1.jpg"
-                                        alt=""></a>
-                                <div class="content">
-                                    <a href="single-product.html" class="title">Váy trẻ em Tmart</a>
-                                    <span class="price">125.000đ <span class="old">150.000đ</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
+                            <c:forEach var="item" items="${popular}">
+                                <div class="sidebar-product">
+                                    <c:url var="detailPopular" value="/detail">
+                                        <c:param name="type" value="detail"/>
+                                        <c:param name="id" value="${item.id}"/>
+                                    </c:url>
+                                    <a href="${detailPopular}" class="image"><img
+                                            src="<c:url value="${item.thumnail}"/> "
+                                            alt=""></a>
+                                    <div class="content">
+                                        <a href="${detailPopular}" class="title">${item.name}</a>
+                                        <fmt:parseNumber var="price1" integerOnly="true" type="number" value="${item.price/1000}"/>
+                                        <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
+                                        <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="sidebar-product">
-                                <a href="single-product.html" class="image"><img
-                                        src="assets/images/product/product-2.jpg"
-                                        alt=""></a>
-                                <div class="content">
-                                    <a href="single-product.html" class="title">Áo liền quần</a>
-                                    <span class="price">100.000đ <span class="old">120.000đ</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar-product">
-                                <a href="single-product.html" class="image"><img
-                                        src="assets/images/product/product-3.jpg"
-                                        alt=""></a>
-                                <div class="content">
-                                    <a href="single-product.html" class="title">Áo sơ mi</a>
-                                    <span class="price">150.000đ <span class="old">180.000đ</span></span>
-                                    <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
+
                         </div>
                     </div>
 

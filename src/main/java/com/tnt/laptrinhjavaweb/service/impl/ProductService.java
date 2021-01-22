@@ -62,5 +62,20 @@ public class ProductService implements IProductService {
         return productDAO.findOne(id);
     }
 
+    @Override
+    public List<ProductModel> findPopular(int count) {
+        return productDAO.findPopular(count);
+    }
+
+    @Override
+    public List<ProductModel> findSale(int count) {
+        return productDAO.findSale(count);
+    }
+
+    @Override
+    public ProductModel findOneBestSale() {
+        return productDAO.findOneBestSale();
+    }
+
 
 }

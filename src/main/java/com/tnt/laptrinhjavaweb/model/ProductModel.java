@@ -14,6 +14,15 @@ public class ProductModel extends AbstractModel<ProductModel>{
     private int quantity;
     private long manfacturerid;
     private long categoryid;
+    private ImageModel imageModel;
+
+    public ImageModel getImageModel() {
+        return imageModel;
+    }
+
+    public void setImageModel(ImageModel imageModel) {
+        this.imageModel = imageModel;
+    }
 
     public int getPricesale() {
         return pricesale;

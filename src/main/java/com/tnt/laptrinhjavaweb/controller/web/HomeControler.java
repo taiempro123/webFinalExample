@@ -3,6 +3,7 @@ package com.tnt.laptrinhjavaweb.controller.web;
 import com.tnt.laptrinhjavaweb.Constant.SystemConstant;
 import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.service.ICategoryService;
+import com.tnt.laptrinhjavaweb.service.IProductService;
 import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 import com.tnt.laptrinhjavaweb.utils.SendMail;
@@ -28,6 +29,10 @@ public class HomeControler extends HttpServlet {
 
     @Inject
     private ICategoryService categoryService;
+
+
+    @Inject
+    private IProductService productService;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -109,6 +114,9 @@ public class HomeControler extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
             rd.forward(request, response);
         }else {
+            request.setAttribute(SystemConstant.BESTSALE, productService.findOneBestSale());
+            request.setAttribute(SystemConstant.SALE, productService.findSale(8));
+            request.setAttribute(SystemConstant.POPULAR, productService.findPopular(8));
             request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
             rd.forward(request, response);

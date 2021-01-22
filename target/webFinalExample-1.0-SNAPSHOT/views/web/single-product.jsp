@@ -98,30 +98,34 @@
                 <div class="row row-20 mb-20 mb-xs-0">
 
                     <div class="col-lg-6 col-12 mb-40">
+                        <div id="demo" class="carousel slide" data-ride="carousel">
 
-                        <div class="pro-large-img mb-10 fix easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                            <a href="assets/images/product/product-zoom-1.jpg">
-                                <img src="<c:url value="${model.thumnail}"/> " alt=""/>
+                            <!-- Indicators -->
+                            <ul class="carousel-indicators">
+                                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                <li data-target="#demo" data-slide-to="1"></li>
+                            </ul>
+
+                            <!-- The slideshow -->
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="<c:url value="${model.imageModel.image1}"/> " alt="Los Angeles"
+                                         width="550" height="550">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="<c:url value="${model.imageModel.image2}"/> " alt="Chicago" width="550"
+                                         height="550">
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#demo" data-slide="next">
+                                <span class="carousel-control-next-icon"></span>
                             </a>
                         </div>
-                        <!-- Single Product Thumbnail Slider -->
-                        <ul id="pro-thumb-img" class="pro-thumb-img">
-                            <li><a href="assets/images/product/product-zoom-1.jpg"
-                                   data-standard="assets/images/product/product-big-1.jpg"><img
-                                    src="assets/images/product/product-1.jpg" alt=""/></a></li>
-                            <li><a href="assets/images/product/product-zoom-2.jpg"
-                                   data-standard="assets/images/product/product-big-2.jpg"><img
-                                    src="assets/images/product/product-2.jpg" alt=""/></a></li>
-                            <li><a href="assets/images/product/product-zoom-3.jpg"
-                                   data-standard="assets/images/product/product-big-3.jpg"><img
-                                    src="assets/images/product/product-3.jpg" alt=""/></a></li>
-                            <li><a href="assets/images/product/product-zoom-4.jpg"
-                                   data-standard="assets/images/product/product-big-4.jpg"><img
-                                    src="assets/images/product/product-4.jpg" alt=""/></a></li>
-                            <li><a href="assets/images/product/product-zoom-5.jpg"
-                                   data-standard="assets/images/product/product-big-5.jpg"><img
-                                    src="assets/images/product/product-5.jpg" alt=""/></a></li>
-                        </ul>
                     </div>
 
                     <div class="col-lg-6 col-12 mb-40">
@@ -132,10 +136,10 @@
 
                                     <h3 class="title">${model.name}</h3>
 
-                                    <div class="ratting"Đánh giá
-                                        <c:forEach begin="1" end="${model.score}" step="1">
-                                            <i class="fa fa-star"></i>
-                                        </c:forEach>
+                                    <div class="ratting" Đánh giá
+                                    <c:forEach begin="0" end="${model.score}" step="1">
+                                        <i class="fa fa-star"></i>
+                                    </c:forEach>
                                     <c:if test="${model.score == 0}">
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                         <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -145,214 +149,228 @@
                                     </c:if>
 
 
-                                    </div>
-
                                 </div>
 
-                                <div class="head-right">
-                                    <span class="price">${model.price} đ</span>
-                                </div>
                             </div>
 
-                            <div class="description">
-                                <p>${model.description}</p>
+                            <div class="head-right">
+                                <fmt:parseNumber var="i" integerOnly="true" type="number" value="${model.price/1000}"/>
+                                <span class="price"><c:out value="${i}"/> K</span>
                             </div>
+                        </div>
 
-                            <span class="availability">Trạng thái:
+                        <div class="description">
+                            <p>${model.description}</p>
+                        </div>
+
+                        <span class="availability">Trạng thái:
 
                                 <c:choose>
 
                                     <c:when test="${model.quantity > 0}">
                                         <span>Còn hàng</span></span>
-                            </c:when>
+                        </c:when>
 
-                            <c:otherwise>
-                                <span>Tạm hết hàng</span></span>
-                            </c:otherwise>
-                            </c:choose>
-                            <div class="quantity-colors">
+                        <c:otherwise>
+                            <span>Tạm hết hàng</span></span>
+                        </c:otherwise>
+                        </c:choose>
+                        <div class="quantity-colors">
 
-                                <div class="quantity">
-                                    <h5>Số lượng:</h5>
-                                    <div class="pro-qty"><input type="text" value="${model.quantity}"></div>
-                                </div>
+                            <div class="quantity">
+                                <h5>Số lượng:</h5>
+                                <c:choose>
 
-                                <div class="colors">
-                                    <h5>Màu sắc:</h5>
-                                    <div class="color-options">
-                                        <button style="background-color: #ff502e"></button>
-                                        <button style="background-color: #fff600"></button>
-                                        <button style="background-color: #1b2436"></button>
-                                    </div>
-                                </div>
+                                    <c:when test="${model.quantity > 0}">
+                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                    </c:when>
 
-                            </div>
-
-                            <div class="actions">
-
-                                <button><i class="ti-shopping-cart"></i><span>THÊM VÀO GIỎ</span></button>
-                                <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+                                    <c:otherwise>
+                                        <div class="pro-qty"><input disabled type="text" value="1"></div>
+                                    </c:otherwise>
+                                </c:choose>
 
                             </div>
 
-                            <div class="share">
-
-                                <h5>Chia sẻ: </h5>
-                                <div id="fb-root"></div>
-                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=879876382771755" nonce="FKQkbefs"></script>
-                                <div class="fb-share-button" data-href="http://bc04c9d460db.ngrok.io/webFinalExample/detail?type=detail&id=${model.id}"
-                                     data-layout="button_count" data-size="small">
-                                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                       class="fb-xfbml-parse-ignore">Chia sẻ
-                                    </a>
-                                </div>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-
+                            <div class="colors">
+                                <h5>Màu sắc:</h5>
+                                <select name="cars" class="custom-select">
+                                    <option selected>Custom Select Menu</option>
+                                    <option value="volvo">Volvo</option>
+                                    <option value="fiat">Fiat</option>
+                                    <option value="audi">Audi</option>
+                                </select>
                             </div>
 
                         </div>
-                    </div>
 
+                        <div class="actions">
+
+                            <button><i class="ti-shopping-cart"></i><span>THÊM VÀO GIỎ</span></button>
+                            <button class="box" data-tooltip="Wishlist"><i class="ti-heart"></i></button>
+
+                        </div>
+
+                        <div class="share">
+
+                            <h5>Chia sẻ: </h5>
+                            <div id="fb-root"></div>
+                            <script async defer crossorigin="anonymous"
+                                    src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=879876382771755"
+                                    nonce="FKQkbefs"></script>
+                            <div class="fb-share-button"
+                                 data-href="http://d4d2c85eb358.ngrok.io/webFinalExample/detail?type=detail&id=${model.id}"
+                                 data-layout="button_count" data-size="small">
+                                <a target="_blank"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore">Chia sẻ
+                                </a>
+                            </div>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="row mb-60 mb-xs-40">
-                    <!-- Nav tabs -->
-                    <div class="col-12">
-                        <ul class="pro-info-tab-list section nav">
-                            <li><a class="active" href="#more-info" data-toggle="tab">Thêm thông tin</a></li>
-                            <li><a href="#data-sheet" data-toggle="tab">Miêu tả</a></li>
-                            <li><a href="#reviews" data-toggle="tab">Đánh giá</a>
+            </div>
+
+            <div class="row mb-60 mb-xs-40">
+                <!-- Nav tabs -->
+                <div class="col-12">
+                    <ul class="pro-info-tab-list section nav">
+                        <li><a class="active" href="#more-info" data-toggle="tab">Thêm thông tin</a></li>
+                        <li><a href="#data-sheet" data-toggle="tab">Miêu tả</a></li>
+                        <li><a href="#reviews" data-toggle="tab">Đánh giá</a>
 
 
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Tab panes -->
+                <div class="tab-content col-12">
+                    <div class="pro-info-tab tab-pane active" id="more-info">
+                        <p>${model.description}</p></div>
+                    <div class="pro-info-tab tab-pane" id="data-sheet">
+                        <table class="table-data-sheet">
+                            <tbody>
+                            <tr class="odd">
+                                <td>Thành phần</td>
+                                <td>Cotton</td>
+                            </tr>
+                            <tr class="even">
+                                <td>Phong cách</td>
+                                <td>Casual</td>
+                            </tr>
+                            <tr class="odd">
+                                <td>Properties</td>
+                                <td>Short Sleeve</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Tab panes -->
-                    <div class="tab-content col-12">
-                        <div class="pro-info-tab tab-pane active" id="more-info">
-                            <p>${model.description}</p></div>
-                        <div class="pro-info-tab tab-pane" id="data-sheet">
-                            <table class="table-data-sheet">
-                                <tbody>
-                                <tr class="odd">
-                                    <td>Thành phần</td>
-                                    <td>Cotton</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>Phong cách</td>
-                                    <td>Casual</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>Properties</td>
-                                    <td>Short Sleeve</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="pro-info-tab tab-pane" id="reviews">
+                    <div class="pro-info-tab tab-pane" id="reviews">
 
-                            <div class="contact-form-wrap col-md-6 col-12 mb-40">
+                        <div class="contact-form-wrap col-md-6 col-12 mb-40">
 
 
-                                <div class="comment-form" style="display: block;">
-                                    <form action="" name="comment-form-client">
-                                        <div class="product-rating">
-                                            <p>Bạn đánh giả sản phẩm này bao nhiêu sao? </p>
-                                            <input type="hidden" id="rating" value="3" name="rating">
-                                            <div class="rating-star"><i class="fa start fa-star" data-value="1"
-                                                                        aria-hidden="true"></i><i
-                                                    class="fa start fa-star" data-value="2"
-                                                    aria-hidden="true"></i><i class="fa start fa-star"
-                                                                              data-value="3" aria-hidden="true"></i><i
-                                                    class="fa start fa-star-o" data-value="4"
-                                                    aria-hidden="true"></i><i class="fa start fa-star-o"
-                                                                              data-value="5" aria-hidden="true"></i>
-                                            </div>
+                            <div class="comment-form" style="display: block;">
+                                <form action="" name="comment-form-client">
+                                    <div class="product-rating">
+                                        <p>Bạn đánh giả sản phẩm này bao nhiêu sao? </p>
+                                        <input type="hidden" id="rating" value="3" name="rating">
+                                        <div class="rating-star"><i class="fa start fa-star" data-value="1"
+                                                                    aria-hidden="true"></i><i
+                                                class="fa start fa-star" data-value="2"
+                                                aria-hidden="true"></i><i class="fa start fa-star"
+                                                                          data-value="3" aria-hidden="true"></i><i
+                                                class="fa start fa-star-o" data-value="4"
+                                                aria-hidden="true"></i><i class="fa start fa-star-o"
+                                                                          data-value="5" aria-hidden="true"></i>
                                         </div>
-                                        <div class="comment-content-text">
+                                    </div>
+                                    <div class="comment-content-text">
                                                 <textarea name="content" id="content"
                                                           placeholder="Mời bạn để lại đánh giá,bình luận (Vui lòng nhập tiếng việt có dấu)"></textarea>
-                                        </div>
-                                        <div class="comment-name-and-email">
-                                            <input type="text" name="name" id="name" placeholder="Họ và Tên...">
-                                            <input type="email" name="email" id="email" placeholder="Email">
-                                        </div>
-                                        <div class="comment-btn">
+                                    </div>
+                                    <div class="comment-name-and-email">
+                                        <input type="text" name="name" id="name" placeholder="Họ và Tên...">
+                                        <input type="email" name="email" id="email" placeholder="Email">
+                                    </div>
+                                    <div class="comment-btn">
 
-                                            <div class="col-12"><input type="submit" value="Gửi"></div>
+                                        <div class="col-12"><input type="submit" value="Gửi"></div>
 
-                                            </a>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <p class="form-messege"></p>
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
+
+                            <p class="form-messege"></p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
 
-                    <div class="section-title text-left col col mb-60 mb-sm-40 mb-xs-30">
-                        <h1>Sản Phẩm Liên Quan</h1>
-                    </div>
+                <div class="section-title text-left col col mb-60 mb-sm-40 mb-xs-30">
+                    <h1>Sản Phẩm Liên Quan</h1>
+                </div>
 
-                    <div class="related-product-slider related-product-slider-1 col-12 p-0">
+                <div class="related-product-slider related-product-slider-1 col-12 p-0">
 
-                        <div class="col">
+                    <div class="col">
 
-                            <div class="product-item">
-                                <div class="product-inner">
+                        <div class="product-item">
+                            <div class="product-inner">
 
-                                    <div class="image">
-                                        <img src="assets/images/product/product-1.jpg" alt="">
+                                <div class="image">
+                                    <img src="assets/images/product/product-1.jpg" alt="">
 
-                                        <div class="image-overlay">
-                                            <div class="action-buttons">
-                                                <button>THÊM VÀO GIỎ</button>
-                                                <button>THÊM VÀO DS YT</button>
-                                            </div>
+                                    <div class="image-overlay">
+                                        <div class="action-buttons">
+                                            <button>THÊM VÀO GIỎ</button>
+                                            <button>THÊM VÀO DS YT</button>
                                         </div>
-
-                                    </div>
-
-                                    <div class="content">
-
-                                        <div class="content-left">
-
-                                            <h4 class="title"><a href="single-product.html">Váy trẻ em Tmart</a>
-                                            </h4>
-
-                                            <div class="ratting">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-
-                                            <h5 class="size">Kich thước:
-                                                <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                            <h5 class="color">Màu sắc: <span
-                                                    style="background-color: #ffb2b0"></span><span
-                                                    style="background-color: #0271bc"></span><span
-                                                    style="background-color: #efc87c"></span><span
-                                                    style="background-color: #00c183"></span></h5>
-
-                                        </div>
-
-                                        <div class="content-right">
-                                            <span class="price">120K</span>
-                                        </div>
-
                                     </div>
 
                                 </div>
-                            </div>
 
+                                <div class="content">
+
+                                    <div class="content-left">
+
+                                        <h4 class="title"><a href="single-product.html">Váy trẻ em Tmart</a>
+                                        </h4>
+
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+
+                                        <h5 class="size">Kich thước:
+                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                        <h5 class="color">Màu sắc: <span
+                                                style="background-color: #ffb2b0"></span><span
+                                                style="background-color: #0271bc"></span><span
+                                                style="background-color: #efc87c"></span><span
+                                                style="background-color: #00c183"></span></h5>
+
+                                    </div>
+
+                                    <div class="content-right">
+                                        <span class="price">120K</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
@@ -362,7 +380,9 @@
             </div>
 
         </div>
+
     </div>
+</div>
 </div><!-- Page Section End -->
 
 </body>

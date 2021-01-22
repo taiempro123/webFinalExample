@@ -111,22 +111,54 @@
                                                 <c:param name="type" value="list"/>
                                             </c:url>
                                             <li><a href="${listURL} ">Tất cả sản phẩm</a></li>
-                                            <li><a href="shop-left-sidebar.html" class="fa fa-chevron-right"> Danh mục</a>
+                                            <li><a href="#" class="fa fa-chevron-right"> Danh mục</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="" class="fa fa-bars">Bé nam</a>
+                                                    <c:url  var="listByGenderURL1" value="/all">
+                                                        <c:param name="search" value="trai"/>
+                                                        <c:param name="page" value="1"/>
+                                                        <c:param name="maxPageItems" value="9"/>
+                                                        <c:param name="sortName" value="name"/>
+                                                        <c:param name="sortBy" value="desc"/>
+                                                        <c:param name="type" value="search"/>
+                                                    </c:url>
+                                                    <li><a href="${listByGenderURL1}" class="fa fa-bars">Bé nam</a>
                                                         <ul>
                                                             <c:forEach items="${categories}" var="test">
-                                                                <c:if test="${test.gender == 'nam'}" >
-                                                                    <li style="margin-left: 20px"><a href="" class="fa fa-plus">${test.name}</a></li>
+                                                                <c:if test="${test.gender == 1}" >
+                                                                    <c:url  var="listByCategoryURL1" value="/all">
+                                                                        <c:param name="search" value="${test.name}"/>
+                                                                        <c:param name="page" value="1"/>
+                                                                        <c:param name="maxPageItems" value="9"/>
+                                                                        <c:param name="sortName" value="name"/>
+                                                                        <c:param name="sortBy" value="desc"/>
+                                                                        <c:param name="type" value="search"/>
+                                                                    </c:url>
+                                                                    <li style="margin-left: 20px"><a href="${listByCategoryURL1}" class="fa fa-plus">${test.name}</a></li>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="" class="fa fa-bars"> Bé gái</a>
+                                                    <c:url  var="listByGenderURL2" value="/all">
+                                                        <c:param name="search" value="gái"/>
+                                                        <c:param name="page" value="1"/>
+                                                        <c:param name="maxPageItems" value="9"/>
+                                                        <c:param name="sortName" value="name"/>
+                                                        <c:param name="sortBy" value="desc"/>
+                                                        <c:param name="type" value="search"/>
+                                                    </c:url>
+                                                    <li><a href="${listByGenderURL2}" class="fa fa-bars"> Bé gái</a>
                                                         <ul>
                                                             <c:forEach items="${categories}" var="test">
-                                                                <c:if test="${test.gender == 'nữ'}" >
-                                                                    <li style="margin-left: 20px"><a href="" class="fa fa-plus">${test.name}</a></li>
+                                                                <c:if test="${test.gender == 2}" >
+                                                                    <c:url  var="listByCategoryURL2" value="/all">
+                                                                        <c:param name="search" value="${test.name}"/>
+                                                                        <c:param name="page" value="1"/>
+                                                                        <c:param name="maxPageItems" value="9"/>
+                                                                        <c:param name="sortName" value="name"/>
+                                                                        <c:param name="sortBy" value="desc"/>
+                                                                        <c:param name="type" value="search"/>
+                                                                    </c:url>
+                                                                    <li style="margin-left: 20px"><a href="${listByCategoryURL2}" class="fa fa-plus">${test.name}</a></li>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </ul>

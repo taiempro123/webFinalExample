@@ -50,6 +50,7 @@ public class ProductController extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.POPULAR, productService.findPopular(3) );
             request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             request.setAttribute(SystemConstant.MODEL, productModel);
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
@@ -74,6 +75,7 @@ public class ProductController extends HttpServlet {
 
                 }else {
                     request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
+                    request.setAttribute(SystemConstant.POPULAR, productService.findPopular(3) );
                     request.setAttribute(SystemConstant.MODEL, productModel);
                     RequestDispatcher rd = request.getRequestDispatcher("/views/web/shop-left-slidebar.jsp");
                     rd.forward(request, response);
