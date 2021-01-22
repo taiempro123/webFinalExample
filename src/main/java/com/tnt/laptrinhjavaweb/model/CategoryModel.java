@@ -7,6 +7,7 @@ public class CategoryModel extends AbstractModel<CategoryModel> {
 
 	private String gender;
 
+
 	public String getGender() {
 		return gender;
 	}
