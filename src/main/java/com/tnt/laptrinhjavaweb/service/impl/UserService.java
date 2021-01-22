@@ -62,6 +62,8 @@ public class UserService implements IUserService {
         return userDAO.findAll(pageble);
     }
 
+
+
     @Override
     public int getTotalItem() {
         return userDAO.getTotalItem();
@@ -93,6 +95,50 @@ public class UserService implements IUserService {
         userModel.setModifiedBy("USER");
         userModel.setPassword(MD5Hashing.hash(userModel.getPassword()));
         return userDAO.changePass(userModel);
+    }
+
+
+
+    @Override
+    public List<UserModel> findAllUser() {
+        return userDAO.findAllUser();
+    }
+
+
+
+    @Override
+    public UserModel updateByAdmin(UserModel updateUser) {
+        UserModel olUser = userDAO.findOne(updateUser.getId());
+        updateUser.setCreatedBy("ADMIN");
+        updateUser.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+//        RoleModel roleModel= roleDAO.findOneByCode(updateUser.getRoleId().);
+//        updateUser.setRoleId(roleModel.getId());
+        userDAO.update(updateUser);
+        return userDAO.findOne(updateUser.getId());
+    }
+
+    @Override
+    public UserModel saveUserByAdmin(UserModel userModel) {
+        UserModel model = null;
+        Long userId = 0L;
+        userModel.setPassword(MD5Hashing.hash(userModel.getPassword()));
+        userModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        userModel.setCreatedBy("ADMIN");
+        userModel.setStatus(1);
+        if(userDAO.findOneByUserName(userModel.getUserName()) == null && userDAO.findOneByEmail(userModel.getEmail()) == null){
+            userId = userDAO.saveUserByAdmin(userModel);
+            model = userDAO.findOne(userId);
+        }else{
+            model = null;
+        }
+        return model;
+    }
+
+    @Override
+    public void delete(Long[] ids) {
+        for (Long id : ids) {
+            userDAO.delete(id);
+        }
     }
 
 }

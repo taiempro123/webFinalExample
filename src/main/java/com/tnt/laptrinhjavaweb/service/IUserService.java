@@ -10,10 +10,18 @@ public interface IUserService {
     UserModel save(UserModel userModel);
     UserModel saveFB(UserModel userModel);
     List<UserModel> findAll(Pageble pageble);
+
     int getTotalItem();
     UserModel findOne(Long id);
     UserModel findOneByUserName(String username);
     UserModel findOneByUserEmail(String email);
     UserModel findByFacebookbId(Long fb);
     UserModel changePassword(UserModel userModel);
+
+    List<UserModel> findAllUser();
+
+    UserModel updateByAdmin(UserModel updateUser);
+
+    UserModel saveUserByAdmin(UserModel userModel);
+    void delete(Long[] ids);
 }

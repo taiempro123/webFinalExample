@@ -1,3 +1,4 @@
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="navbar" class="navbar navbar-default          ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -7,7 +8,7 @@
             <span class="icon-bar"></span>
         </button>
         <div class="navbar-header pull-left">
-            <a href="index.html" class="navbar-brand">
+            <a href="<c:url value="/admin-home"/>" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
                     TNT Admin
@@ -23,7 +24,7 @@
                     </a>
                     <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
-                            <i class="ace-icon fa fa-exclamation-triangle"></i> 8 Notifications
+                            <i class="ace-icon fa fa-exclamation-triangle"></i> 8 Thông báo mới
                         </li>
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar navbar-pink">
@@ -32,7 +33,7 @@
                                         <div class="clearfix">
                                                 <span class="pull-left">
                                                     <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                    New Comments
+                                                   Bình luận mới
                                                 </span>
                                             <span class="pull-right badge badge-info">+12</span>
                                         </div>
@@ -40,7 +41,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="btn btn-xs btn-primary fa fa-user"></i> Bob just signed up as an editor ...
+                                        <i class="btn btn-xs btn-primary fa fa-user"></i> Sản phẩm chất lượng ...
                                     </a>
                                 </li>
                                 <li>
@@ -48,28 +49,18 @@
                                         <div class="clearfix">
                                                 <span class="pull-left">
                                                     <i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-                                                    New Orders
+                                                  Đơn hàng mới
                                                 </span>
                                             <span class="pull-right badge badge-success">+8</span>
                                         </div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="clearfix">
-                                                <span class="pull-left">
-                                                    <i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-                                                    Followers
-                                                </span>
-                                            <span class="pull-right badge badge-info">+11</span>
-                                        </div>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="dropdown-footer">
                             <a href="#">
-                                See all notifications
+                                Xem thêm
                                 <i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
@@ -82,44 +73,44 @@
                     </a>
                     <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                         <li class="dropdown-header">
-                            <i class="ace-icon fa fa-envelope-o"></i> 5 Messages
+                            <i class="ace-icon fa fa-envelope-o"></i> 5 Tin nhắn mới
                         </li>
                         <li class="dropdown-content">
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                        <img src="<c:url value="/template/admin/assets/images/avatars/avatar.png"/>" class="msg-photo" alt="Alex's Avatar" />
                                         <span class="msg-body">
                                                 <span class="msg-title">
-                                                    <span class="blue">Alex:</span> Ciao sociis natoque penatibus et auctor ...
+                                                    <span class="blue">Alex:</span> Sản phẩm thật phù hợp với...
                                                 </span>
                                                 <span class="msg-time">
                                                     <i class="ace-icon fa fa-clock-o"></i>
-                                                    <span>a moment ago</span>
+                                                    <span>vừa xong</span>
                                                 </span>
                                             </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                                        <img src="<c:url value="/template/admin/assets/images/avatars/avatar.png"/>" class="msg-photo" alt="Susan's Avatar" />
                                         <span class="msg-body">
                                                 <span class="msg-title">
-                                                    <span class="blue">Susan:</span> Vestibulum id ligula porta felis euismod ...
+                                                    <span class="blue">Susan:</span> Rất thích sản phẩm của shop. Tôi...
                                                 </span>
                                                 <span class="msg-time">
                                                     <i class="ace-icon fa fa-clock-o"></i>
-                                                    <span>20 minutes ago</span>
+                                                    <span>20 phút trước</span>
                                                 </span>
                                             </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                                        <img src="<c:url value="/template/admin/assets/images/avatars/avatar.png"/>" class="msg-photo" alt="Bob's Avatar" />
                                         <span class="msg-body">
                                                 <span class="msg-title">
-                                                    <span class="blue">Bob:</span> Nullam quis risus eget urna mollis ornare ...
+                                                    <span class="blue">Bob:</span> Shop giao hàng rất nhanh ...
                                                 </span>
                                                 <span class="msg-time">
                                                     <i class="ace-icon fa fa-clock-o"></i>
@@ -128,39 +119,13 @@
                                             </span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
-                                        <span class="msg-body">
-                                                <span class="msg-title">
-                                                    <span class="blue">Kate:</span> Ciao sociis natoque eget urna mollis ornare ...
-                                                </span>
-                                                <span class="msg-time">
-                                                    <i class="ace-icon fa fa-clock-o"></i>
-                                                    <span>1:33 pm</span>
-                                                </span>
-                                            </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
-                                        <span class="msg-body">
-                                                <span class="msg-title">
-                                                    <span class="blue">Fred:</span> Vestibulum id penatibus et auctor ...
-                                                </span>
-                                                <span class="msg-time">
-                                                    <i class="ace-icon fa fa-clock-o"></i>
-                                                    <span>10:09 am</span>
-                                                </span>
-                                            </span>
-                                    </a>
-                                </li>
+
+
                             </ul>
                         </li>
                         <li class="dropdown-footer">
-                            <a href="inbox.html">
-                                See all messages
+                            <a href="/views/admin/inbox.jsp">
+                               Xem thêm tin nhắn
                                 <i class="ace-icon fa fa-arrow-right"></i>
                             </a>
                         </li>
@@ -168,28 +133,24 @@
                 </li>
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="<c:url value="${USERMODEL.image}"/>" alt="Anhr của ${USERMODEL.fullName} " />
                         <span class="user-info">
-                                <small>Welcome,</small>
-                                Jason
+                                <small>Chào mừng,</small>
+                                ${USERMODEL.fullName}
                             </span>
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+
                         <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-cog"></i> Settings
-                            </a>
-                        </li>
-                        <li>
-                            <a href="profile.html">
-                                <i class="ace-icon fa fa-user"></i> Profile
+                            <a href="<c:url value="/trang-chu"/>">
+                                <i class="ace-icon fa fa-user"></i> Quay lại trang web bán hàng
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-power-off"></i> Logout
+                            <a href="<c:url value="/thoat?action=logout"/>">
+                                <i class="ace-icon fa fa-power-off"></i> Đăng xuất
                             </a>
                         </li>
                     </ul>

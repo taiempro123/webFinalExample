@@ -60,63 +60,61 @@
                             </div>
                         </c:if>
                         <c:forEach var="item" items="${model.listResult}">
-                            <div class="col-xl-4 col-md-6 col-12 mb-40">
+                        <div class="col-xl-4 col-md-6 col-12 mb-40">
 
-                                <div class="product-item">
-                                    <div class="product-inner">
+                            <div class="product-item">
+                                <div class="product-inner">
 
-                                        <div class="image">
-                                            <img src="<c:url value="${item.thumnail}"/>" alt="">
+                                    <div class="image">
+                                        <img src="<c:url value="${item.thumnail}"/>" alt="">
 
-                                            <div class="image-overlay">
-                                                <div class="action-buttons">
-                                                    <button>THÊM VÀO GIỎ</button>
-                                                    <button>THÊM VÀO DS YT</button>
-                                                </div>
+                                        <div class="image-overlay">
+                                            <div class="action-buttons">
+                                                <button>THÊM VÀO GIỎ</button>
+                                                <button>THÊM VÀO DS YT</button>
                                             </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="content">
+
+                                        <div class="content-left">
+                                            <c:url var="detailURL" value="/detail">
+                                                <c:param name="type" value="detail"/>
+                                                <c:param name="id" value="${item.id}"/>
+                                            </c:url>
+                                            <h4 class="title"><a id="detail" href="${detailURL}">${item.name}</a>
+                                            </h4>
+
+                                            <div class="ratting">
+                                                <c:forEach begin="1" end="${item.score}" step="1">
+                                                    <i class="fa fa-star"></i>
+                                                </c:forEach>
+                                                <c:forEach begin="1" end="${5-item.score}" step="1">
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                </c:forEach>
+
+                                            </div>
+
+                                            <h5 class="size">Kích thước:
+                                                <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                            <h5 class="color">Màu sắc: <span
+                                                    style="background-color: #ffb2b0"></span><span
+                                                    style="background-color: #0271bc"></span><span
+                                                    style="background-color: #efc87c"></span><span
+                                                    style="background-color: #00c183"></span></h5>
 
                                         </div>
 
-                                        <div class="content">
 
-                                            <div class="content-left">
-                                                <c:url var="detailURL" value="/detail">
-                                                    <c:param name="type" value="detail"/>
-                                                    <c:param name="id" value="${item.id}"/>
-                                                </c:url>
-                                                <h4 class="title"><a id="detail" href="${detailURL}">${item.name}</a>
-                                                </h4>
-
-                                                <div class="ratting">
-                                                    <c:forEach begin="0" end="${item.score}" step="1">
-                                                        <i class="fa fa-star"></i>
-                                                    </c:forEach>
-                                                    <c:if test="${model.score <= 0}">
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </c:if>
-                                                </div>
-
-                                                <h5 class="size">Kích thước:
-                                                    <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                                <h5 class="color">Màu sắc: <span
-                                                        style="background-color: #ffb2b0"></span><span
-                                                        style="background-color: #0271bc"></span><span
-                                                        style="background-color: #efc87c"></span><span
-                                                        style="background-color: #00c183"></span></h5>
-
-                                            </div>
-
+                                        <div class="content-right">
                                             <div class="d-flex justify-content-between w-100">
                                                 <fmt:parseNumber var="price" integerOnly="true" type="number" value="${item.price/1000}"/>
                                                 <fmt:parseNumber var="pricesale" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
-                                                <span style="color: #00b7ea; font-weight: bold"  class="price"><c:out value="${price}"/> K</span>
-                                                    <c:if test="${item.pricesale} > 0">
-                                                        <span class="old" style="color: red"><c:out value="${pricesale}"/> K</span>
-                                                    </c:if>
+                                                <span style="color: #00b7ea; font-weight: bold" class="price"><c:out value="${price}"/> K</span>
+                                                <c:if test="${item.pricesale} > 0"><span class="old" style="color: red"><c:out value="${pricesale}"/> K</span>
+                                                </c:if>
                                                 </span>
                                             </div>
 
@@ -126,94 +124,100 @@
                                 </div>
 
                             </div>
-                        </c:forEach>
-                        <div class="col-12" style="margin-left: 235px">
-                            <ul class="pagination" id="pagination"></ul>
-                            <input type="hidden" value="" id="page" class="page" name="page"/>
-                            <input type="hidden" value="" id="maxPageItems" class="maxPageItems" name="maxPageItems"/>
-                            <input type="hidden" value="" id="sortName" class="sortName" name="sortName"/>
-                            <input type="hidden" value="" id="sortBy" class="sortBy" name="sortBy"/>
-                            <input type="hidden" value="${model.type}" id="type" name="type"/>
-                            <c:if test="${model.type == 'search'}">
-                                <input type="hidden" value="${model.search}" id="search" name="search"/>
-                            </c:if>
+                            </c:forEach>
+                            <div class="col-12" style="margin-left: 235px">
+                                <ul class="pagination" id="pagination"></ul>
+                                <input type="hidden" value="" id="page" class="page" name="page"/>
+                                <input type="hidden" value="" id="maxPageItems" class="maxPageItems"
+                                       name="maxPageItems"/>
+                                <input type="hidden" value="" id="sortName" class="sortName" name="sortName"/>
+                                <input type="hidden" value="" id="sortBy" class="sortBy" name="sortBy"/>
+                                <input type="hidden" value="${model.type}" id="type" name="type"/>
+                                <c:if test="${model.type == 'search'}">
+                                    <input type="hidden" value="${model.search}" id="search" name="search"/>
+                                </c:if>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
+
+                        <div class="sidebar">
+                            <h4 class="sidebar-title">Thể loại</h4>
+                            <ul class="sidebar-list">
+                                <li><a href="#">Áo choàng <span class="num">18</span></a></li>
+                                <li><a href="#">Quần dài <span class="num">09</span></a></li>
+                                <li><a href="#">Áo thun <span class="num">05</span></a></li>
+                                <li><a href="#">Váy <span class="num">03</span></a></li>
+                                <li><a href="#">Quần áo trẻ em <span class="num">15</span></a></li>
+                                <li><a href="#">Giày <span class="num">07</span></a></li>
+                                <li><a href="#">Phụ kiện <span class="num">02</span></a></li>
+                            </ul>
                         </div>
 
-                    </div>
-                </div>
+                        <div class="sidebar">
+                            <h4 class="sidebar-title">màu sắc</h4>
+                            <ul class="sidebar-list">
+                                <li><a href="#"><span class="color" style="background-color: #000000"></span> Đen</a>
+                                </li>
+                                <li><a href="#"><span class="color" style="background-color: #FF0000"></span> Đỏ</a>
+                                </li>
+                                <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da
+                                    trời</a>
+                                </li>
+                                <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá
+                                    cây</a>
+                                </li>
+                                <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Cam</a>
+                                </li>
+                            </ul>
+                        </div>
 
-                <div class="col-xl-3 col-lg-4 col-12 order-2 order-lg-1 mb-40">
-
-                    <div class="sidebar">
-                        <h4 class="sidebar-title">Thể loại</h4>
-                        <ul class="sidebar-list">
-                            <li><a href="#">Áo choàng <span class="num">18</span></a></li>
-                            <li><a href="#">Quần dài <span class="num">09</span></a></li>
-                            <li><a href="#">Áo thun <span class="num">05</span></a></li>
-                            <li><a href="#">Váy <span class="num">03</span></a></li>
-                            <li><a href="#">Quần áo trẻ em <span class="num">15</span></a></li>
-                            <li><a href="#">Giày <span class="num">07</span></a></li>
-                            <li><a href="#">Phụ kiện <span class="num">02</span></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar">
-                        <h4 class="sidebar-title">màu sắc</h4>
-                        <ul class="sidebar-list">
-                            <li><a href="#"><span class="color" style="background-color: #000000"></span> Đen</a></li>
-                            <li><a href="#"><span class="color" style="background-color: #FF0000"></span> Đỏ</a></li>
-                            <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da
-                                trời</a>
-                            </li>
-                            <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá
-                                cây</a>
-                            </li>
-                            <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Cam</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar">
-                        <h4 class="sidebar-title">Sản Phẩm Phổ Biến</h4>
-                        <div class="sidebar-product-wrap">
-                            <c:forEach var="item" items="${popular}">
-                                <div class="sidebar-product">
-                                    <c:url var="detailPopular" value="/detail">
-                                        <c:param name="type" value="detail"/>
-                                        <c:param name="id" value="${item.id}"/>
-                                    </c:url>
-                                    <a href="${detailPopular}" class="image"><img
-                                            src="<c:url value="${item.thumnail}"/> "
-                                            alt=""></a>
-                                    <div class="content">
-                                        <a href="${detailPopular}" class="title">${item.name}</a>
-                                        <fmt:parseNumber var="price1" integerOnly="true" type="number" value="${item.price/1000}"/>
-                                        <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
-                                        <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
+                        <div class="sidebar">
+                            <h4 class="sidebar-title">Sản Phẩm Phổ Biến</h4>
+                            <div class="sidebar-product-wrap">
+                                <c:forEach var="item" items="${popular}">
+                                    <div class="sidebar-product">
+                                        <c:url var="detailPopular" value="/detail">
+                                            <c:param name="type" value="detail"/>
+                                            <c:param name="id" value="${item.id}"/>
+                                        </c:url>
+                                        <a href="${detailPopular}" class="image"><img
+                                                src="<c:url value="${item.thumnail}"/> "
+                                                alt=""></a>
+                                        <div class="content">
+                                            <a href="${detailPopular}" class="title">${item.name}</a>
+                                            <fmt:parseNumber var="price1" integerOnly="true" type="number"
+                                                             value="${item.price/1000}"/>
+                                            <fmt:parseNumber var="pricesale1" integerOnly="true" type="number"
+                                                             value="${model.pricesale/1000}"/>
+                                            <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
 
+                            </div>
+                        </div>
+
+                        <div class="sidebar">
+                            <h3 class="sidebar-title">Giá</h3>
+
+                            <div class="sidebar-price">
+                                <div id="price-range"></div>
+                                <input type="text" id="price-amount" readonly>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="sidebar">
-                        <h3 class="sidebar-title">Giá</h3>
-
-                        <div class="sidebar-price">
-                            <div id="price-range"></div>
-                            <input type="text" id="price-amount" readonly>
-                        </div>
-                    </div>
                 </div>
-
-            </div>
 
         </form>
 

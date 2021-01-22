@@ -1,6 +1,7 @@
 package com.tnt.laptrinhjavaweb.dao.impl;
 
 
+
 import com.tnt.laptrinhjavaweb.RowMapper.ProductMapper;
 import com.tnt.laptrinhjavaweb.dao.IProductDAO;
 import com.tnt.laptrinhjavaweb.model.ProductModel;
@@ -8,7 +9,7 @@ import com.tnt.laptrinhjavaweb.paging.Pageble;
 
 import java.util.List;
 
-;
+
 
 public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO {
 
@@ -58,11 +59,20 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
+
     public ProductModel findOne(Long id) {
         String sql = "select * from product as p inner join image as i on p.id = i.product_id where p.id = ?";
         List<ProductModel> products = query(sql, new ProductMapper(), id);
         return products.isEmpty() ? null : products.get(0);
     }
+    @Override
+    public List<ProductModel> findOneByAdmin(Long id) {
+        String sql = "select * from product where id = ?";
+        List<ProductModel> products = query(sql, new ProductMapper(), id);
+        return products.isEmpty() ? null : (List<ProductModel>) products.get(0);
+
+    }
+
 
     @Override
     public List<ProductModel> findPopular(int count) {

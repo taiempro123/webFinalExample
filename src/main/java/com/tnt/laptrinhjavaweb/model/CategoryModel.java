@@ -4,6 +4,7 @@ public class CategoryModel extends AbstractModel<CategoryModel> {
 	
 	private String code;
 	private String name;
+
 	private String gender;
 
 
@@ -12,7 +13,15 @@ public class CategoryModel extends AbstractModel<CategoryModel> {
 	}
 
 	public void setGender(String gender) {
-		this.gender = gender;
+	}
+	private  long genderId;
+
+	public long getGenderId() {
+		return genderId;
+	}
+
+	public void setGenderId(long genderId) {
+		this.genderId = genderId;
 	}
 
 	public String getCode() {

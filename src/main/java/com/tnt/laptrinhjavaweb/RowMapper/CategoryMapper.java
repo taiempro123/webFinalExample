@@ -15,6 +15,7 @@ public class CategoryMapper implements IRowMapper<CategoryModel> {
             category.setId(resultSet.getLong("id"));
             category.setCode(resultSet.getString("code"));
             category.setName(resultSet.getString("name"));
+
             category.setGender(resultSet.getString("gender"));
 //            category.setCreatedDate(resultSet.getTimestamp("createddate"));
 //            category.setCreatedBy(resultSet.getString("createdby"));
@@ -24,6 +25,18 @@ public class CategoryMapper implements IRowMapper<CategoryModel> {
 //            if (resultSet.getString("modifiedby") != null) {
 //                category.setModifiedBy(resultSet.getString("modifiedby"));
 //            }
+
+            category.setGenderId(resultSet.getLong("gender"));
+            category.setCreatedDate(resultSet.getTimestamp("createddate"));
+            category.setCreatedBy(resultSet.getString("createdby"));
+
+            if (resultSet.getTimestamp("modifieddate") != null) {
+                category.setModifiedDate(resultSet.getTimestamp("modifieddate"));
+            }
+            if (resultSet.getString("modifiedby") != null) {
+                category.setModifiedBy(resultSet.getString("modifiedby"));
+            }
+
             return category;
         } catch (SQLException e) {
             return null;

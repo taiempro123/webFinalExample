@@ -30,6 +30,16 @@ public class AbstractModel<T>{
         this.search = search;
     }
 
+    public Long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(Long[] ids) {
+        this.ids = ids;
+    }
+
+    private Long[] ids;
+
     public Long[] getId_list() {
         return id_list;
     }

@@ -12,6 +12,8 @@ public class ProductMapper implements IRowMapper<ProductModel> {
     public ProductModel mapRow(ResultSet resultSet) {
         try {
 
+
+
             ProductModel productModel = new ProductModel();
             productModel.setId(resultSet.getLong("id"));
             productModel.setCode(resultSet.getString("code"));

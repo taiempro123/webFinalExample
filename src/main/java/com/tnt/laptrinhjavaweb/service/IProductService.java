@@ -18,11 +18,6 @@ public interface IProductService {
     List<ProductModel> findPopular(int count);
     List<ProductModel> findSale(int count);
     ProductModel findOneBestSale();
-
-
-
-
-
-
-
+    List<ProductModel>findOneByAdmin(Long id);
+    
 }
