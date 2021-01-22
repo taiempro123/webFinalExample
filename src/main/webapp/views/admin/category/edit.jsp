@@ -40,13 +40,13 @@
                             <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
                             <div class="col-sm-9">
                                 <select class="form-control" id="gender" name="gender">
-                                    <c:if test="${empty CATEGORY.genderId}">
+                                    <c:if test="${empty CATEGORY.gender}">
                                         <option value="">Chọn loại bài viết</option>
                                         <c:forEach var="item" items="${GENDER}">
                                             <option value="${item.code}">${item.name}</option>
                                         </c:forEach>
                                     </c:if>
-                                    <c:if test="${not empty CATEGORY.genderId}">
+                                    <c:if test="${not empty CATEGORY.gender}">
                                         <option value="">Chọn loại bài viết</option>
                                         <c:forEach var="item" items="${GENDER}">
                                             <option value="${item.code}" <c:if test="${item.code == model.categoryCode}">selected="selected"</c:if>>

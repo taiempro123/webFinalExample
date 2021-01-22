@@ -38,6 +38,7 @@ public class ProductMapper implements IRowMapper<ProductModel> {
                 productModel.setImageModel(imageModel);
             } catch (SQLException e) {
                 System.out.println(e);
+
             }
             return productModel;
 

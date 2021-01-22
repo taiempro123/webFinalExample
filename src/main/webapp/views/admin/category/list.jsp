@@ -91,8 +91,8 @@
 
                                 <td>
                                     <c:choose>
-                                        <c:when test="${item.genderId == 1}">Bé trai</c:when>
-                                        <c:when test="${item.genderId== 2}"> Bé gái</c:when>
+                                        <c:when test="${item.gender== 1}">Bé trai</c:when>
+                                        <c:when test="${item.gender== 2}"> Bé gái</c:when>
 
 
                                     </c:choose>
