@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
 <div class="sidebar-shortcuts" id="sidebar-shortcuts">
     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
         <button class="btn btn-success">
@@ -22,7 +24,7 @@
 </div><!-- /.sidebar-shortcuts -->
 <ul class="nav nav-list">
     <li class="active">
-        <a href="index.html">
+        <a href="<c:url value="/admin-home"/>">
             <i class="menu-icon fa fa-tachometer"></i>
             <span class="menu-text"> Dashboard </span>
         </a>
@@ -31,71 +33,71 @@
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-list"></i>
-            <span class="menu-text"> Tables </span>
+            <span class="menu-text"> Quản lý </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
             <li class="">
-                <a href="tables.html">
+                <a href="<c:url value="/admin-user?type=list"/> ">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    User Management
+                    Tài khoản
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="product-management.html">
+                <a href="<c:url value="/admin-product?type=list"/> ">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Product Management
+                   Sản phẩm
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="order-management.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Oder Management
+                    Đơn hàng
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="revenue-statistic.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Revenue Statistic
+                    Doanh thu
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="payment-management.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Payment Management
+                   Thanh toán
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="banner-managerment.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Banner Management
+                    Banner khuyến mãi
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="voucher-management.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Coupon Management
+                    Mã giảm giá
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="category-management.html">
+                <a href="<c:url value="/admin-category?type=list"/>">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Category
+                   Thể loại
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
                 <a href="reviews-management.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Reviews and Rating
+                    Đánh giá
                 </a>
                 <b class="arrow"></b>
             </li>
@@ -104,7 +106,7 @@
     <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-tag"></i>
-            <span class="menu-text"> More Pages </span>
+            <span class="menu-text"> More page </span>
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <b class="arrow"></b>
@@ -112,14 +114,14 @@
             <li class="">
                 <a href="inbox.html">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Inbox
+                    Tin nhắn
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="infomation-web.html">
+                <a href="<c:url value="/admin-information?type=list"/> ">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Website Infomation
+                    Thông tin trang bán hàng
                 </a>
                 <b class="arrow"></b>
             </li>

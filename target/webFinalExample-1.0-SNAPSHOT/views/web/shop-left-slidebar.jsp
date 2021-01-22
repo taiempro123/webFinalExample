@@ -91,13 +91,10 @@
                                                     <c:forEach begin="1" end="${item.score}" step="1">
                                                         <i class="fa fa-star"></i>
                                                     </c:forEach>
-                                                    <c:if test="${model.score == 0}">
+                                                    <c:forEach begin="1" end="${5-item.score}" step="1">
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </c:if>
+                                                    </c:forEach>
+
                                                 </div>
 
                                                 <h5 class="size">Kích thước:
@@ -111,7 +108,7 @@
                                             </div>
 
                                             <div class="content-right">
-                                                <span class="price">${item.price}VNĐ
+                                                <span class="price">${(item.price/1000)}K
                                                     <c:if test="${item.pricesale} > 0">
                                                         <span class="old">${item.pricesale}VNĐ</span>
                                                     </c:if>

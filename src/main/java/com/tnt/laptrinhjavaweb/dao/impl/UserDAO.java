@@ -28,7 +28,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public Long save(UserModel userModel) {
-        StringBuilder sql = new StringBuilder("insert into user(username,password,fullname,status, roleid, email, address, phone)");
+        StringBuilder sql = new StringBuilder("insert into user(username, password, fullname, status, roleid, email, address, phone)");
         sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getUserName(), userModel.getPassword(), userModel.getFullName(),
                 userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(),userModel.getAddress(), userModel.getPhone());
@@ -88,4 +88,34 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         return user == null ? null : user ;
     }
 
+    @Override
+    public List<UserModel> findAllUser() {
+        String sql = "select * from user";
+        return query(sql,new UserMapper());
+
+    }
+
+    @Override
+    public void update(UserModel updateUser) {
+        StringBuilder sql = new StringBuilder("update user set fullname = ?, username = ?, email = ?, roleid = ?, address = ?, status = ?,");
+        sql.append(" createdby = ?, createddate = ?, modifieddate = ? where user.id = ?");
+
+        update(sql.toString(), updateUser.getFullName(), updateUser.getUserName(), updateUser.getEmail(), updateUser.getRoleId(), updateUser.getAddress(), updateUser.getStatus(),
+                 updateUser.getCreatedBy(), updateUser.getCreatedDate(), updateUser.getModifiedDate(), updateUser.getId());
+
+
+    }
+
+    @Override
+    public Long saveUserByAdmin(UserModel userModel) {
+        StringBuilder sql = new StringBuilder("insert into user(fullname, username, password, email, roleid, address, image, status, createddate, createdby)");
+        sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        return insert(sql.toString(), userModel.getFullName(), userModel.getUserName(), userModel.getPassword(), userModel.getEmail(), userModel.getRoleId()
+                ,userModel.getAddress(), userModel.getImage(), userModel.getStatus(), userModel.getCreatedDate(), userModel.getCreatedBy());
+    }
+    @Override
+    public void delete(long id) {
+        String sql = "DELETE FROM user WHERE id= ?";
+        update(sql, id);
+    }
 }

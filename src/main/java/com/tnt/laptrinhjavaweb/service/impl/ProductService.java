@@ -58,9 +58,14 @@ public class ProductService implements IProductService {
     }
 
     @Override
+
     public ProductModel findOne(Long id) {
-        return productDAO.findOne(id);
-    }
+        return productDAO.findOne(id);}
+@Override
+    public List<ProductModel> findOneByAdmin(Long id){
+            return productDAO.findOneByAdmin(id);
+
+        }
 
 
 }

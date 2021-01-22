@@ -15,7 +15,8 @@ public class ProductMapper implements IRowMapper<ProductModel> {
                 productModel.setCode(resultSet.getString("code"));
                 productModel.setName(resultSet.getString("name"));
                 productModel.setThumnail(resultSet.getString("thumnail"));
-                productModel.setImage(resultSet.getString("size"));
+                productModel.setSize(resultSet.getString("size"));
+                productModel.setColor(resultSet.getString("color_id"));
                 productModel.setPrice(resultSet.getInt("price"));
                 productModel.setPricesale(resultSet.getInt("pricesale"));
                 productModel.setDescription(resultSet.getString("description"));
@@ -23,6 +24,7 @@ public class ProductMapper implements IRowMapper<ProductModel> {
                 productModel.setQuantity(resultSet.getInt("quantity"));
                 productModel.setManfacturerid(resultSet.getLong("manfacturerid"));
                 productModel.setCategoryid(resultSet.getLong("categoryid"));
+                productModel.setCreatedDate(resultSet.getTimestamp("createddate"));
 
                 return productModel;
             }catch (SQLException e) {
