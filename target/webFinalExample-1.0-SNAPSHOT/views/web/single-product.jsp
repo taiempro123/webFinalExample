@@ -137,7 +137,7 @@
                                     <h3 class="title">${model.name}</h3>
 
 
-                                    <div class="ratting"Đánh giá
+                                    <div class="ratting">
                                     <c:forEach begin="1" end="${model.score}" step="1">
                                         <i class="fa fa-star"></i>
                                     </c:forEach>
@@ -312,70 +312,84 @@
                 </div>
             </div>
 
-            <div class="row">
+                <div class="row">
 
-                <div class="section-title text-left col col mb-60 mb-sm-40 mb-xs-30">
-                    <h1>Sản Phẩm Liên Quan</h1>
-                </div>
+                    <div class="section-title text-left col col mb-60 mb-sm-40 mb-xs-30">
+                        <h1>Sản Phẩm Liên Quan</h1>
+                    </div>
 
-                <div class="related-product-slider related-product-slider-1 col-12 p-0">
+                    <div class="related-product-slider related-product-slider-1 col-12 p-0">
+                        <c:forEach var="item" items="${popular}">
+                            <div class="col">
 
-                    <div class="col">
+                                <div class="product-item">
+                                    <div class="product-inner">
 
-                        <div class="product-item">
-                            <div class="product-inner">
+                                        <div class="image">
+                                            <img src="<c:url value="${item.thumnail}"/>" alt="">
 
-                                <div class="image">
-                                    <img src="assets/images/product/product-1.jpg" alt="">
+                                            <div class="image-overlay">
+                                                <div class="action-buttons">
+                                                    <button>THÊM VÀO GIỎ</button>
+                                                    <button>THÊM VÀO DS YT</button>
+                                                </div>
+                                            </div>
 
-                                    <div class="image-overlay">
-                                        <div class="action-buttons">
-                                            <button>THÊM VÀO GIỎ</button>
-                                            <button>THÊM VÀO DS YT</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="content">
-
-                                    <div class="content-left">
-
-                                        <h4 class="title"><a href="single-product.html">Váy trẻ em Tmart</a>
-                                        </h4>
-
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-o"></i>
                                         </div>
 
-                                        <h5 class="size">Kich thước:
-                                            <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
-                                        <h5 class="color">Màu sắc: <span
-                                                style="background-color: #ffb2b0"></span><span
-                                                style="background-color: #0271bc"></span><span
-                                                style="background-color: #efc87c"></span><span
-                                                style="background-color: #00c183"></span></h5>
+                                        <div class="content">
+
+                                            <div class="content-left">
+                                                <c:url var="detailURL" value="/detail">
+                                                    <c:param name="type" value="detail"/>
+                                                    <c:param name="id" value="${item.id}"/>
+                                                </c:url>
+                                                <h4 class="title"><a id="detail" href="${detailURL}">${item.name}</a>
+                                                </h4>
+
+                                                <div class="ratting">
+                                                    <c:forEach begin="1" end="${item.score}" step="1">
+                                                        <i class="fa fa-star"></i>
+                                                    </c:forEach>
+                                                    <c:forEach begin="1" end="${5-item.score}" step="1">
+                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                    </c:forEach>
+                                                </div>
+
+                                                <h5 class="size">Kich thước:
+                                                    <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
+                                                <h5 class="color">Màu sắc: <span
+                                                        style="background-color: #ffb2b0"></span><span
+                                                        style="background-color: #0271bc"></span><span
+                                                        style="background-color: #efc87c"></span><span
+                                                        style="background-color: #00c183"></span></h5>
+
+                                            </div>
+
+                                            <div class="content-right">
+                                                <fmt:parseNumber var="price" integerOnly="true" type="number" value="${item.price/1000}"/>
+                                                <fmt:parseNumber var="pricesale" integerOnly="true" type="number" value="${item.pricesale/1000}"/>
+                                                <c:choose>
+                                                    <c:when test="${pricesale > 0}">
+                                                        <span style="color: #00b7ea; font-weight: bold" class="price">${price}K<span class="old">${pricesale}K</span></span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <span style="color: #00b7ea; font-weight: bold" class="price">${price}K</span>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </div>
+
+                                        </div>
 
                                     </div>
-
-                                    <div class="content-right">
-                                        <span class="price">120K</span>
-                                    </div>
-
                                 </div>
 
                             </div>
-                        </div>
+                        </c:forEach>
 
                     </div>
 
                 </div>
-
-            </div>
 
         </div>
 

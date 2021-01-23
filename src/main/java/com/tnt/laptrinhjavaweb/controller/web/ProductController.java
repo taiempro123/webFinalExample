@@ -6,6 +6,8 @@ import com.tnt.laptrinhjavaweb.paging.Pageble;
 import com.tnt.laptrinhjavaweb.paging.Pager;
 import com.tnt.laptrinhjavaweb.paging.Sorter;
 import com.tnt.laptrinhjavaweb.service.ICategoryService;
+import com.tnt.laptrinhjavaweb.service.IInformationService;
+import com.tnt.laptrinhjavaweb.service.IManfacturerService;
 import com.tnt.laptrinhjavaweb.service.IProductService;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 
@@ -29,6 +31,12 @@ public class ProductController extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
 
+    @Inject
+    private IManfacturerService manfacturerService;
+
+    @Inject
+     private IInformationService informationService;
+
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,6 +58,8 @@ public class ProductController extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.INFO, informationService.find());
+            request.setAttribute(SystemConstant.MANUFACTURER, manfacturerService.findAll());
             request.setAttribute(SystemConstant.POPULAR, productService.findPopular(3) );
             request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             request.setAttribute(SystemConstant.MODEL, productModel);
@@ -67,13 +77,22 @@ public class ProductController extends HttpServlet {
             }else {
                 pageble = new Pager(productModel.getMaxPageItems(), productModel.getPage(),
                         new Sorter(productModel.getSortName(), productModel.getSortBy()));
-                productModel.setListResult(productService.searchByName(pageble, productModel.getSearch()));
-                productModel.setTotalItems(productService.getTotalItemByName(productModel.getSearch()));
+                if(productModel.getSortName().equalsIgnoreCase("manfacturerid")){
+                    productModel.setListResult(productService.searchByManfacturer(pageble,productModel.getSearch()));
+                    productModel.setTotalItems(productService.getTotalItemByManfacturer(productModel.getSearch()));
+
+                }else{
+                    productModel.setListResult(productService.searchByName(pageble, productModel.getSearch()));
+                    productModel.setTotalItems(productService.getTotalItemByName(productModel.getSearch()));
+                }
                 productModel.setTotalPages((int) Math.ceil((double) productModel.getTotalItems() / productModel.getMaxPageItems()));
                 if(productModel.getListResult().size() == 0){
                     response.sendRedirect(request.getContextPath() + ("/all?type=search&message=not_found&alert=info"));
 
                 }else {
+
+                    request.setAttribute(SystemConstant.MANUFACTURER, manfacturerService.findAll());
+                    request.setAttribute(SystemConstant.INFO, informationService.find());
                     request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
                     request.setAttribute(SystemConstant.POPULAR, productService.findPopular(3) );
                     request.setAttribute(SystemConstant.MODEL, productModel);

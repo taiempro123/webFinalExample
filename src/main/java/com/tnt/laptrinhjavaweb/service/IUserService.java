@@ -17,8 +17,12 @@ public interface IUserService {
     UserModel findOneByUserEmail(String email);
     UserModel findByFacebookbId(Long fb);
     UserModel changePassword(UserModel userModel);
+    UserModel changePassById(UserModel userModel);
 
     List<UserModel> findAllUser();
+    List<UserModel> findAllByRole();
+    UserModel updateByUser(UserModel updateUser);
+
 
     UserModel updateByAdmin(UserModel updateUser);
 

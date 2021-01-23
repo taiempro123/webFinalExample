@@ -6,7 +6,7 @@ public class ProductModel extends AbstractModel<ProductModel>{
     private String thumnail;
     private String image;
     private String size;
-    private String color;
+    private Long color;
     private int price;
     private int pricesale;
     private String description;
@@ -50,9 +50,9 @@ public class ProductModel extends AbstractModel<ProductModel>{
 
     public String getSize() { return size; }
 
-    public String getColor() { return color; }
+    public Long getColor() { return color; }
 
-    public void setColor(String color) { this.color = color; }
+    public void setColor(Long color) { this.color = color; }
 
     public void setSize(String size) { this.size = size; }
 

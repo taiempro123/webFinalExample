@@ -16,7 +16,6 @@
                     <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="checkout.html">Thanh toán đơn hàng</a></li>
                 </ul>
-
             </div>
         </div>
     </div>

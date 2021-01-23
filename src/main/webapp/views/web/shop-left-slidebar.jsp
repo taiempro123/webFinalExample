@@ -51,10 +51,10 @@
                                         <option id="asc|name" value="asc|name">Tăng dần theo tên</option>
                                         <option id="desc|name" value="desc|name">Giảm dần theo tên</option>
                                         <option id="asc|createdDate" value="asc|createdDate">Tăng dần theo ngày</option>
-                                        <option id="desc|createdDate" value="desc|createdDate">Giảm dần theo ngày
-                                        </option>
+                                        <option id="desc|createdDate" value="desc|createdDate">Giảm dần theo ngày</option>
                                         <option id="asc|price" value="asc|price">Tăng dần theo giá</option>
                                         <option id="desc|price" value="desc|price">Giảm dần theo giá</option>
+                                        <option id="desc|manfacturerid" value="desc|manfacturerid">NSX</option>
                                     </select>
                                 </div>
                             </div>
@@ -88,16 +88,12 @@
                                                 </h4>
 
                                                 <div class="ratting">
-                                                    <c:forEach begin="0" end="${item.score}" step="1">
+                                                    <c:forEach begin="1" end="${item.score}" step="1">
                                                         <i class="fa fa-star"></i>
                                                     </c:forEach>
-                                                    <c:if test="${model.score <= 0}">
+                                                    <c:forEach begin="1" end="${5-item.score}" step="1">
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </c:if>
+                                                    </c:forEach>
                                                 </div>
 
                                                 <h5 class="size">Kích thước:
@@ -112,11 +108,17 @@
 
                                             <div class="d-flex justify-content-between w-100">
                                                 <fmt:parseNumber var="price" integerOnly="true" type="number" value="${item.price/1000}"/>
-                                                <fmt:parseNumber var="pricesale" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
-                                                <span style="color: #00b7ea; font-weight: bold"  class="price"><c:out value="${price}"/> K</span>
-                                                <c:if test="${item.pricesale} > 0">
-                                                    <span class="old" style="color: red"><c:out value="${pricesale}"/> K</span>
-                                                </c:if>
+                                                <fmt:parseNumber var="pricesale" integerOnly="true" type="number" value="${item.pricesale/1000}"/>
+                                                <c:choose>
+                                                    <c:when test="${pricesale > 0}">
+                                                        <span style="color: #00b7ea; font-weight: bold" class="price"><strike>${price}K</strike><br>
+                                                            <span style="color: red; font-weight: bold" class="old">${pricesale}K</span></span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <span style="color: #00b7ea; font-weight: bold" class="price">${price}K</span>
+                                                    </c:otherwise>
+                                                </c:choose>
+
                                                 </span>
                                             </div>
 
@@ -147,30 +149,39 @@
                     <div class="sidebar">
                         <h4 class="sidebar-title">Thể loại</h4>
                         <ul class="sidebar-list">
-                            <li><a href="#">Áo choàng <span class="num">18</span></a></li>
-                            <li><a href="#">Quần dài <span class="num">09</span></a></li>
-                            <li><a href="#">Áo thun <span class="num">05</span></a></li>
-                            <li><a href="#">Váy <span class="num">03</span></a></li>
-                            <li><a href="#">Quần áo trẻ em <span class="num">15</span></a></li>
-                            <li><a href="#">Giày <span class="num">07</span></a></li>
-                            <li><a href="#">Phụ kiện <span class="num">02</span></a></li>
+                            <c:forEach var="item" items="${categories}">
+                                <c:if test="${item.gender == 1}" >
+                                    <c:url  var="listByCategory" value="/all">
+                                        <c:param name="search" value="${item.name}"/>
+                                        <c:param name="page" value="1"/>
+                                        <c:param name="maxPageItems" value="9"/>
+                                        <c:param name="sortName" value="name"/>
+                                        <c:param name="sortBy" value="desc"/>
+                                        <c:param name="type" value="search"/>
+                                    </c:url>
+                                    <li><a href="${listByCategory}">${item.name}</a></li>
+
+                                </c:if>
+
+                            </c:forEach>
+
                         </ul>
                     </div>
 
-                    <div class="sidebar">
-                        <h4 class="sidebar-title">màu sắc</h4>
-                        <ul class="sidebar-list">
-                            <li><a href="#"><span class="color" style="background-color: #000000"></span> Đen</a></li>
-                            <li><a href="#"><span class="color" style="background-color: #FF0000"></span> Đỏ</a></li>
-                            <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da
-                                trời</a>
-                            </li>
-                            <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá
-                                cây</a>
-                            </li>
-                            <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Cam</a></li>
-                        </ul>
-                    </div>
+<%--                    <div class="sidebar">--%>
+<%--                        <h4 class="sidebar-title">màu sắc</h4>--%>
+<%--                        <ul class="sidebar-list">--%>
+<%--                            <li><a href="#"><span class="color" style="background-color: #000000"></span> Đen</a></li>--%>
+<%--                            <li><a href="#"><span class="color" style="background-color: #FF0000"></span> Đỏ</a></li>--%>
+<%--                            <li><a href="#"><span class="color" style="background-color: #0000FF"></span> Xanh da--%>
+<%--                                trời</a>--%>
+<%--                            </li>--%>
+<%--                            <li><a href="#"><span class="color" style="background-color: #28901D"></span> Xanh lá--%>
+<%--                                cây</a>--%>
+<%--                            </li>--%>
+<%--                            <li><a href="#"><span class="color" style="background-color: #FF6801"></span> Cam</a></li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
 
                     <div class="sidebar">
                         <h4 class="sidebar-title">Sản Phẩm Phổ Biến</h4>
@@ -187,14 +198,22 @@
                                     <div class="content">
                                         <a href="${detailPopular}" class="title">${item.name}</a>
                                         <fmt:parseNumber var="price1" integerOnly="true" type="number" value="${item.price/1000}"/>
-                                        <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${model.pricesale/1000}"/>
-                                        <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
+                                        <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${item.pricesale/1000}"/>
+                                        <c:choose>
+                                            <c:when test="${pricesale1 > 0}">
+                                                <span class="price">${pricesale1}K<span class="old">${price1}K</span></span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="price">${price1}K</span>
+                                            </c:otherwise>
+                                        </c:choose>
                                         <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
+                                            <c:forEach begin="1" end="${item.score}" step="1">
+                                                <i class="fa fa-star"></i>
+                                            </c:forEach>
+                                            <c:forEach begin="1" end="${5-item.score}" step="1">
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>

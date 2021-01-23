@@ -59,11 +59,12 @@
                                     </c:url>
                                     <h4 class="title"><a href="${detail}">${item.name}</a></h4>
                                     <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
+                                        <c:forEach begin="1" end="${item.score}" step="1">
+                                            <i class="fa fa-star"></i>
+                                        </c:forEach>
+                                        <c:forEach begin="1" end="${5-item.score}" step="1">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </c:forEach>
                                     </div>
                                     <h5 class="size">Size: <span>S</span><span>M</span><span>L</span><span>XL</span></h5>
                                     <h5 class="color">Color: <span style="background-color: #ffb2b0"></span><span style="background-color: #0271bc"></span><span style="background-color: #efc87c"></span><span style="background-color: #00c183"></span></h5>
@@ -141,17 +142,18 @@
                                 <div class="content-top-left">
                                     <h4 class="title"><a href="${detailBestSale}">${bestSale.name}</a></h4>
                                     <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
+                                        <c:forEach begin="1" end="${bestSale.score}" step="1">
+                                            <i class="fa fa-star"></i>
+                                        </c:forEach>
+                                        <c:forEach begin="1" end="${5-bestSale.score}" step="1">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </c:forEach>
                                     </div>
                                 </div>
                                 <div class="content-top-right">
                                     <fmt:parseNumber var="price2" integerOnly="true" type="number" value="${bestSale.price/1000}"/>
                                     <fmt:parseNumber var="pricesale2" integerOnly="true" type="number" value="${bestSale.pricesale/1000}"/>
-                                    <span class="price">${price2}K<span class="old"><strike>${pricesale2}K</strike></span></span>
+                                    <span class="price">${pricesale2}K<span class="old"><strike>${price2}K</strike></span></span>
                                 </div>
                             </div>
                             <div class="content-bottom">
@@ -183,13 +185,14 @@
                                     <h4 class="title"><a href="${detailSale}">${item.name}</a></h4>
                                     <fmt:parseNumber var="price1" integerOnly="true" type="number" value="${item.price/1000}"/>
                                     <fmt:parseNumber var="pricesale1" integerOnly="true" type="number" value="${item.pricesale/1000}"/>
-                                    <span class="price">${price1}K<span class="old">${pricesale1}K</span></span>
+                                    <span class="price">${pricesale1}K<span class="old">${price1}K</span></span>
                                     <div class="ratting">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-half-o"></i>
-                                        <i class="fa fa-star-o"></i>
+                                        <c:forEach begin="1" end="${item.score}" step="1">
+                                            <i class="fa fa-star"></i>
+                                        </c:forEach>
+                                        <c:forEach begin="1" end="${5-item.score}" step="1">
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>

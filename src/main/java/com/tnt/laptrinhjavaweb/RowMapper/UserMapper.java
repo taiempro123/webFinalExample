@@ -22,7 +22,7 @@ public class    UserMapper implements IRowMapper<UserModel>{
             userModel.setRoleId(resultSet.getLong("roleid"));
             userModel.setCreatedDate(resultSet.getTimestamp("createddate"));
             userModel.setImage(resultSet.getString("image"));
-            userModel.setBirthday(resultSet.getTimestamp("birthday"));
+            userModel.setBirthday(resultSet.getDate("birthday"));
 
             if(resultSet.getString("facebookid") != null ){
                 userModel.setFacebookId(Long.parseLong(resultSet.getString("facebookid")));

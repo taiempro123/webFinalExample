@@ -6,6 +6,8 @@ public class SystemConstant {
 	public static final String ADMIN = "ADMIN";
 	public static final String POPULAR = "popular";
 	public static final String SALE = "sale";
+	public static final String MANUFACTURER = "manufacturer";
+	public static final String INFO = "info";
 	public static final String BESTSALE = "bestSale";
 	public static final String USER = "USER";
 	public static final String LIST = "list";

@@ -31,7 +31,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         StringBuilder sql = new StringBuilder("insert into user(username, password, fullname, status, roleid, email, address, phone)");
         sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getUserName(), userModel.getPassword(), userModel.getFullName(),
-                userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(),userModel.getAddress(), userModel.getPhone());
+                userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(), userModel.getAddress(), userModel.getPhone());
     }
 
     @Override
@@ -55,7 +55,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public int getTotalItem() {
-        String sql = "select count(*) from user";
+        String sql = "select * from user";
         return count(sql);
     }
 
@@ -76,23 +76,48 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public UserModel findByFacebookbId(Long fb) {
         String sql = "select * from user inner join role on user.roleid = role.id where user.facebookid = ?";
-		List<UserModel> users = query(sql, new UserMapper(), fb);
-		return users.isEmpty() ? null : users.get(0);
+        List<UserModel> users = query(sql, new UserMapper(), fb);
+        return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
     public UserModel changePass(UserModel userModel) {
         String sql = "UPDATE user SET password = ?, modifieddate = ?, modifiedby = ? WHERE email = ?";
-        update(sql, userModel.getPassword(), userModel.getModifiedDate(), userModel.getModifiedBy(),userModel.getEmail());
+        update(sql, userModel.getPassword(), userModel.getModifiedDate(), userModel.getModifiedBy(), userModel.getEmail());
         UserModel user = findOneByEmail(userModel.getEmail());
-        return user == null ? null : user ;
+        return user == null ? null : user;
+    }
+
+    @Override
+    public UserModel changePassById(UserModel userModel) {
+        String sql = "UPDATE user SET password = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
+        update(sql, userModel.getPassword(), userModel.getModifiedDate(), userModel.getModifiedBy(), userModel.getId());
+        UserModel user = findOne(userModel.getId());
+        return user == null ? null : user;
+    }
+
+
+    @Override
+    public UserModel updateByUser(UserModel updateUser) {
+        StringBuilder sql = new StringBuilder("update user set fullname = ?, username = ?, email = ?, address = ?, phone = ?, gender = ?, birthday = ?,");
+        sql.append(" modifieddate = ? where user.id = ?");
+        update(sql.toString(), updateUser.getFullName(), updateUser.getUserName(), updateUser.getEmail(), updateUser.getAddress(),
+                updateUser.getPhone(), updateUser.getGender(), updateUser.getBirthday(),
+                updateUser.getModifiedDate(), updateUser.getId());
+        return findOne(updateUser.getId());
     }
 
     @Override
     public List<UserModel> findAllUser() {
         String sql = "select * from user";
-        return query(sql,new UserMapper());
+        return query(sql, new UserMapper());
 
+    }
+
+    @Override
+    public List<UserModel> findAllByRole() {
+        String sql = "select * from user inner join role on user.roleid = role.id where user.roleid  = 1";
+        return query(sql, new UserMapper());
     }
 
     @Override
@@ -101,7 +126,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         sql.append(" createdby = ?, modifieddate = ? where user.id = ?");
 
         update(sql.toString(), updateUser.getFullName(), updateUser.getUserName(), updateUser.getEmail(), updateUser.getRoleId(), updateUser.getAddress(), updateUser.getStatus(),
-                 updateUser.getCreatedBy(), updateUser.getModifiedDate(), updateUser.getId());
+                updateUser.getCreatedBy(), updateUser.getModifiedDate(), updateUser.getId());
 
 
     }
@@ -111,8 +136,9 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         StringBuilder sql = new StringBuilder("insert into user(fullname, username, password, email, roleid, address, image, status, createddate, createdby)");
         sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getFullName(), userModel.getUserName(), userModel.getPassword(), userModel.getEmail(), userModel.getRoleId()
-                ,userModel.getAddress(), userModel.getImage(), userModel.getStatus(), userModel.getCreatedDate(), userModel.getCreatedBy());
+                , userModel.getAddress(), userModel.getImage(), userModel.getStatus(), userModel.getCreatedDate(), userModel.getCreatedBy());
     }
+
     @Override
     public void delete(long id) {
         String sql = "DELETE FROM user WHERE id= ?";

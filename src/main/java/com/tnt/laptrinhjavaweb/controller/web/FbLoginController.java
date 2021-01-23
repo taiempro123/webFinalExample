@@ -40,8 +40,9 @@ public class FbLoginController extends HttpServlet {
 
         }else {
             SessionUtil.getInstance().putValue(request, "USERMODEL", check);
+            response.sendRedirect(request.getContextPath()+"/trang-chu");
+
         }
-        response.sendRedirect(request.getContextPath()+"/trang-chu");
 
 
     }

@@ -10,24 +10,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="brand-slider">
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-1.png"/> " alt="">
-                </div>
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-2.png"/> " alt="">
-                </div>
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-3.png"/> " alt="">
-                </div>
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-4.png"/> " alt="">
-                </div>
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-5.png"/> " alt="">
-                </div>
-                <div class="brand-item col">
-                    <img src="<c:url value="/template/web/assets/images/brands/brand-6.png"/> " alt="">
-                </div>
+                <c:forEach var="item" items="${manufacturer}">
+                    <c:url  var="listByManufactuere" value="/all">
+                        <c:param name="search" value="${item.id}"/>
+                        <c:param name="page" value="1"/>
+                        <c:param name="maxPageItems" value="9"/>
+                        <c:param name="sortName" value="manfacturerid"/>
+                        <c:param name="sortBy" value="desc"/>
+                        <c:param name="type" value="search"/>
+                    </c:url>
+                    <div class="brand-item col">
+                        <a href="${listByManufactuere}"><img style="border-radius: 50%" height="150" width="150" src="<c:url value="${item.image}"/> " alt=""></a>
+                    </div>
+                </c:forEach>
+
+
             </div>
         </div>
     </div>
@@ -38,24 +35,16 @@
 <div class="footer-top-section section bg-theme-two-light pt-80 pt-lg-60 pt-md-60 pt-sm-60 pt-xs-40 pb-40 pb-lg-20 pb-md-20 pb-sm-20 pb-xs-0">
     <div class="container">
         <div class="row">
-            <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
                 <h4 class="title">LIÊN HỆ VỚI CHÚNG TÔI</h4>
-                <p>Kí túc xá khu B ĐHQG<br/> Văn Phòng 714-F2 <br> Văn phòng chính 913-B5</p>
-                <p><a href="tel:0395 165 083">0395 165 083</a><a href="tel:01234567891">01234 567 891</a></p>
-                <p><a href="#">Jadusona@gmail.com</a><a href="#">www.jadusona.com</a></p>
+                <c:forEach var="item" items="${info}">
+                    <p>${item.address}</p>
+                    <p>Hotline: <a href="tel:${item.phone}">${item.phone}</a></p>
+                    <p><a href="https://mail.google.com/"></a>${item.email}</p>
+                </c:forEach>
+
             </div>
-            <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
-                <h4 class="title">SẢN PHẨM</h4>
-                <ul>
-                    <li><a href="#">Mới nhập</a></li>
-                    <li><a href="#">Bán chạy nhất</a></li>
-                    <li><a href="#">Thời trang xu hướng</a></li>
-                    <li><a href="#">Mua nhiều nhất</a></li>
-                    <li><a href="#">Đang khuyến mãi</a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </div>
-            <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
                 <h4 class="title">THÔNG TIN</h4>
                 <ul>
                     <li><a href="#">Cửa hàng</a></li>
@@ -66,7 +55,7 @@
                     <li><a href="#">Bảo mật thanh toán</a></li>
                 </ul>
             </div>
-            <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
+            <div class="footer-widget col-lg-4 col-md-6 col-12 mb-40">
                 <h4 class="title">BẢN TIN</h4>
                 <p>Đăng kí bản tin và nhận tất cả cập nhật về sản phẩm của chúng tôi</p>
                 <form id="mc-form" class="mc-form footer-subscribe-form" novalidate="true">
@@ -87,7 +76,7 @@
         </div>
     </div>
 </div>
-<%--http://cc9068e8bc91.ngrok.io/webFinalExample/trang-chu--%>
+<%--http://aecb3557ea4f.ngrok.io/webFinalExample/trang-chu--%>
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function() {

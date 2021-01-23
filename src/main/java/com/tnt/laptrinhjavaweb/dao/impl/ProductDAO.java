@@ -22,7 +22,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public int getTotalItem() {
-        String sql = "SELECT COUNT(*) FROM product";
+        String sql = "SELECT * FROM product";
         return count(sql);
     }
 
@@ -30,6 +30,13 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     public int getTotalItemByName(String keyword) {
         StringBuilder sql = new StringBuilder("select * from product where name like");
         sql.append(" '%" + keyword.toLowerCase() + "%'");
+        return count(sql.toString());
+    }
+
+    @Override
+    public int getTotalItemByManfacturer(String keyword) {
+        StringBuilder sql = new StringBuilder("select * from product where manfacturerid  =");
+        sql.append(" " + Long.parseLong(keyword));
         return count(sql.toString());
     }
 
@@ -49,6 +56,19 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     public List<ProductModel> searchByName(Pageble pageble, String keyword) {
         StringBuilder sql = new StringBuilder("select * from product as p inner join image as i on p.id = i.product_id where p.name like");
         sql.append(" '%" + keyword.toLowerCase() + "%'");
+        if (pageble.getSorter() != null) {
+            sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy() + "");
+        }
+        if (pageble.getOffset() != null && pageble.getLimit() != null) {
+            sql.append(" limit " + pageble.getOffset() + ", " + pageble.getLimit() + "");
+        }
+        return query(sql.toString(), new ProductMapper());
+    }
+
+    @Override
+    public List<ProductModel> searchByManfacturer(Pageble pageble, String keyword) {
+        StringBuilder sql = new StringBuilder("select * from product as p inner join image as i on p.id = i.product_id where p.manfacturerid  =");
+        sql.append(" " + Long.parseLong(keyword));
         if (pageble.getSorter() != null) {
             sql.append(" order by " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy() + "");
         }

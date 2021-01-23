@@ -97,6 +97,13 @@ public class UserService implements IUserService {
         return userDAO.changePass(userModel);
     }
 
+    @Override
+    public UserModel changePassById(UserModel userModel) {
+        userModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        userModel.setModifiedBy("USER");
+        userModel.setPassword(MD5Hashing.hash(userModel.getPassword()));
+        return userDAO.changePassById(userModel);
+    }
 
 
     @Override
@@ -104,6 +111,16 @@ public class UserService implements IUserService {
         return userDAO.findAllUser();
     }
 
+    @Override
+    public List<UserModel> findAllByRole() {
+        return userDAO.findAllByRole();
+    }
+
+    @Override
+    public UserModel updateByUser(UserModel updateUser) {
+        updateUser.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        return userDAO.updateByUser(updateUser);
+    }
 
 
     @Override

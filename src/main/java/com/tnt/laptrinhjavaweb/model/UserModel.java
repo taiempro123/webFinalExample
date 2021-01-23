@@ -1,5 +1,6 @@
 package com.tnt.laptrinhjavaweb.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class UserModel extends AbstractModel<UserModel> {
@@ -7,10 +8,11 @@ public class UserModel extends AbstractModel<UserModel> {
     private String fullName;
     private String userName;
     private String password;
+    private String currentPassword;
     private Long facebookId;
     private String code;
     private String gender;
-    private Timestamp birthday;
+    private Date birthday;
     private String email;
     private String phone;
     private Long roleId;
@@ -20,6 +22,23 @@ public class UserModel extends AbstractModel<UserModel> {
     private Long paymentId;
     private Long orderId;
     private int status;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+    }
+
     private RoleModel roleModel = new RoleModel();
 
     public String getCode() {
@@ -76,14 +95,6 @@ public class UserModel extends AbstractModel<UserModel> {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Timestamp getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Timestamp birthday) {
-        this.birthday = birthday;
     }
 
     public String getEmail() {

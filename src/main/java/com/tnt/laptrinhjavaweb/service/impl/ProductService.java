@@ -68,6 +68,16 @@ public class ProductService implements IProductService {
         }
 
     @Override
+    public List<ProductModel> searchByManfacturer(Pageble pageble, String keyword) {
+        return productDAO.searchByManfacturer(pageble,keyword);
+    }
+
+    @Override
+    public int getTotalItemByManfacturer(String keyword) {
+        return productDAO.getTotalItemByManfacturer(keyword);
+    }
+
+    @Override
     public List<ProductModel> findPopular(int count) {
         return productDAO.findPopular(count);
     }

@@ -2,9 +2,7 @@ package com.tnt.laptrinhjavaweb.controller.web;
 
 import com.tnt.laptrinhjavaweb.Constant.SystemConstant;
 import com.tnt.laptrinhjavaweb.model.UserModel;
-import com.tnt.laptrinhjavaweb.service.ICategoryService;
-import com.tnt.laptrinhjavaweb.service.IProductService;
-import com.tnt.laptrinhjavaweb.service.IUserService;
+import com.tnt.laptrinhjavaweb.service.*;
 import com.tnt.laptrinhjavaweb.utils.FormUtil;
 import com.tnt.laptrinhjavaweb.utils.SendMail;
 import com.tnt.laptrinhjavaweb.utils.SessionUtil;
@@ -33,6 +31,12 @@ public class HomeControler extends HttpServlet {
 
     @Inject
     private IProductService productService;
+
+    @Inject
+    private IManfacturerService manfacturerService;
+
+    @Inject
+    private IInformationService informationService;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
@@ -97,6 +101,7 @@ public class HomeControler extends HttpServlet {
                 request.setAttribute("message", resourceBundle.getString(message));
                 request.setAttribute("alert", alert);
             }
+            request.setAttribute(SystemConstant.INFO, informationService.find());
             request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
             rd.forward(request, response);
@@ -114,7 +119,9 @@ public class HomeControler extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/web/register.jsp");
             rd.forward(request, response);
         }else {
+            request.setAttribute(SystemConstant.INFO, informationService.find());
             request.setAttribute(SystemConstant.BESTSALE, productService.findOneBestSale());
+            request.setAttribute(SystemConstant.MANUFACTURER, manfacturerService.findAll());
             request.setAttribute(SystemConstant.SALE, productService.findSale(8));
             request.setAttribute(SystemConstant.POPULAR, productService.findPopular(8));
             request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );

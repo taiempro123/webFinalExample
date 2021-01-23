@@ -31,7 +31,6 @@
 
             <div class="col-md-6" style="margin: 10px auto ">
 
-
                 <div id="register-form" class="login-register-form-wrap">
                     <c:if test="${not empty message}">
                         <div class="alert alert-${alert}">${message}</div>
@@ -81,7 +80,7 @@
                             <input type="text" placeholder="Địa chỉ" id="address" class="form-control" name="address"
                                    required>
                         </div>
-                        <div class="md-5 col-md-12" style="text-align: center;margin-top: 10px;padding-bottom: 20px">
+                        <div class="md-5 col-md-12" style="text-align: center;margin-top: 10px;padding-bottom: 20px; margin-left: 200px">
                             <div class="g-recaptcha"
                                  data-sitekey="6LdvNyMaAAAAAM8ZX1JFyfze3VZoqwT112ycN1po"></div>
                         </div>

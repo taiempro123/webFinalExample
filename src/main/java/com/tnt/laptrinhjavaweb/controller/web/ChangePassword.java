@@ -3,6 +3,7 @@ package com.tnt.laptrinhjavaweb.controller.web;
 import com.tnt.laptrinhjavaweb.Constant.SystemConstant;
 import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.service.ICategoryService;
+import com.tnt.laptrinhjavaweb.service.IInformationService;
 import com.tnt.laptrinhjavaweb.service.IUserService;
 import com.tnt.laptrinhjavaweb.utils.SessionUtil;
 
@@ -24,6 +25,9 @@ public class ChangePassword extends HttpServlet {
 
     @Inject
     private ICategoryService categoryService;
+
+    @Inject
+    private IInformationService informationService;
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
 
@@ -58,6 +62,7 @@ public class ChangePassword extends HttpServlet {
             request.setAttribute("message", resourceBundle.getString(message));
             request.setAttribute("alert", alert);
         }
+        request.setAttribute(SystemConstant.INFO, informationService.find());
         request.setAttribute(SystemConstant.CATEGORIES, categoryService.findAll() );
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/forgot-pass1.jsp");
         rd.forward(request,response);

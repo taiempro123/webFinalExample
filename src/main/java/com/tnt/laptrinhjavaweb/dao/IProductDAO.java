@@ -13,9 +13,13 @@ public interface IProductDAO extends GenericDAO<ProductModel> {
 
     int getTotalItemByName(String keyword);
 
+    int getTotalItemByManfacturer(String keyword);
+
     List<ProductModel> findAll(Pageble pageble);
 
     List<ProductModel> searchByName(Pageble pageble, String keyword);
+
+    List<ProductModel> searchByManfacturer (Pageble pageble, String keyword);
 
     ProductModel findOne(Long id);
 

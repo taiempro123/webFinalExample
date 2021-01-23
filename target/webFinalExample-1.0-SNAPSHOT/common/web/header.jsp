@@ -12,8 +12,11 @@
                     <div class="col mt-10 mb-10 d-none d-md-flex">
                         <!-- Header Top Left Start -->
                         <div class="header-top-left">
-                            <a href="<c:url value="/trang-chu"/> "><p>Welcome to Jadusona</p></a>
-                            <p>Hotline: <a href="tel:0123456789">0123 456 789</a></p>
+                            <a href="<c:url value="/trang-chu"/> "><p style="margin-left: 10px">Welcome to Jadusona</p></a>
+                            <c:forEach items="${info}" var="item">
+                                <p>Hotline: <a href="tel:${item.phone}">${item.phone}</a></p>
+                            </c:forEach>
+
                         </div><!-- Header Top Left End -->
                     </div>
                     <div class="col mt-10 mb-10">
@@ -23,10 +26,12 @@
                         <!-- Header Shop Links Start -->
                         <c:if test="${not empty USERMODEL}">
                             <div class="header-top-right">
-                                <p><a href="#">${USERMODEL.fullName}</a></p>
+                                <c:url var="account" value="/my-account">
+                                    <c:param name="action" value="detail"/>
+                                    <c:param name="id" value="${USERMODEL.id}"/>
+                                </c:url>
+                                <p><a href="${account}">${USERMODEL.fullName}</a></p>
                                 <p>
-                                    <a href="notification.html"><i class="fa fa-bell-o" aria-hidden="true"></i> </a>
-<%--                                    <a href="register.html">Đăng ký</a>--%>
                                     <a href="<c:url value="/thoat?action=logout"/> ">Thoát</a>
                                 </p>
                             </div><!-- Header Shop Links End -->
@@ -36,7 +41,6 @@
                         <div class="header-top-right">
                             <p><a href=""></a></p>
                             <p>
-<%--                                <a href="notification.html"><i class="fa fa-bell-o" aria-hidden="true"></i> </a>--%>
                                 <a href="<c:url value="/dang-ky?action=register"/> ">Đăng ký</a>
                                 <a href="<c:url value="/dang-nhap?action=login"/> ">Đăng nhập</a>
                             </p>
@@ -83,11 +87,11 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="header-wishlist">
-                                <a href="wishlist.html">
-                                    <img src="<c:url value="/template/web/assets/images/icons/wishlist.png"/> " alt="Wishlist"><span>02</span>
-                                </a>
-                            </div>
+<%--                            <div class="header-wishlist">--%>
+<%--                                <a href="wishlist.html">--%>
+<%--                                    <img src="<c:url value="/template/web/assets/images/icons/wishlist.png"/> " alt="Wishlist"><span>02</span>--%>
+<%--                                </a>--%>
+<%--                            </div>--%>
                             <div class="header-mini-cart">
                                 <a href="cart.html">
                                     <img src="<c:url value="/template/web/assets/images/icons/cart.png"/> " alt="Cart">
