@@ -22,20 +22,49 @@
                     <div class="col mt-10 mb-10">
                         <!-- Header Language Currency Start -->
                     </div>
-                    <div class="col mt-10 mb-10">
-                        <!-- Header Shop Links Start -->
+
+                    <div class="header-top-right">
                         <c:if test="${not empty USERMODEL}">
-                            <div class="header-top-right">
-                                <c:url var="account" value="/my-account">
-                                    <c:param name="action" value="detail"/>
-                                    <c:param name="id" value="${USERMODEL.id}"/>
-                                </c:url>
-                                <p><a href="${account}">${USERMODEL.fullName}</a></p>
-                                <p>
-                                    <a href="<c:url value="/thoat?action=logout"/> ">Thoát</a>
-                                </p>
-                            </div><!-- Header Shop Links End -->
+                        <c:url var="account" value="/my-account">
+                            <c:param name="action" value="detail"/>
+                            <c:param name="id" value="${USERMODEL.id}"/>
+                        </c:url>
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" role="button" id="dropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img height="40" width="40" style="border-radius: 50%"
+                                   src="<c:url value="${USERMODEL.image}"/>"
+                                      />
+                                <span><a href="${account}">${USERMODEL.fullName}</a>  </span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <c:if test="${USERMODEL.roleId==1}"><a class="dropdown-item"
+                                                                       href="<c:url value="/admin-home"/>">
+                                    <i class=" fa fa-user"></i> Đến trang quản trị
+                                </a></c:if>
+
+
+                                <a class="dropdown-item " href="<c:url value="/thoat?action=logout"/>">
+                                    <i class=" fa fa-power-off"></i> Đăng xuất
+                                </a>
+
+                            </div>
+                        </div>
+
                         </c:if>
+
+<%--                    <div class="col mt-10 mb-10">--%>
+<%--                        <!-- Header Shop Links Start -->--%>
+<%--                        <c:if test="${not empty USERMODEL}">--%>
+<%--                            <div class="header-top-right">--%>
+
+<%--                                <p><a href="${account}">${USERMODEL.fullName}</a></p>--%>
+<%--                                <p>--%>
+<%--                                    <a href="<c:url value="/thoat?action=logout"/> ">Thoát</a>--%>
+<%--                                </p>--%>
+<%--                            </div><!-- Header Shop Links End -->--%>
+<%--                        </c:if>--%>
 
                         <c:if test="${empty USERMODEL}">
                         <div class="header-top-right">

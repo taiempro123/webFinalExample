@@ -10,7 +10,7 @@ import java.util.List;
 
 public class InformationService implements IInformationService {
     @Inject
-    IInformationDAO iInformationDAO;
+   private IInformationDAO iInformationDAO;
     @Override
     public List<InfomationModel> find() {
         return iInformationDAO.find();
