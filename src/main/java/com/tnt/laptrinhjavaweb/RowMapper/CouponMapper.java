@@ -12,12 +12,12 @@ public class CouponMapper implements IRowMapper<CouponModel> {
         couponModel.setId(resultSet.getLong("id"));
         couponModel.setProductId(resultSet.getLong("product_id"));
         couponModel.setName(resultSet.getString("name"));
-
+couponModel.setCode(resultSet.getString("code"));
         couponModel.setFromDate(resultSet.getTimestamp("fromdate"));
         couponModel.setToDate(resultSet.getTimestamp("todate"));
         couponModel.setQuantity(resultSet.getInt("quantity"));
         couponModel.setRemain(resultSet.getInt("remain"));
-        couponModel.setPromotion(resultSet.getString("promotion"));
+        couponModel.setPromotion(resultSet.getInt("promotion"));
 
         return couponModel;
     }

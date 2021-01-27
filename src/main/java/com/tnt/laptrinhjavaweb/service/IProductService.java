@@ -18,9 +18,15 @@ public interface IProductService {
     List<ProductModel> findPopular(int count);
     List<ProductModel> findSale(int count);
     ProductModel findOneBestSale();
-    List<ProductModel>findOneByAdmin(Long id);
+    ProductModel findOneByAdmin(Long id);
     List<ProductModel> searchByManfacturer (Pageble pageble, String keyword);
     int getTotalItemByManfacturer(String keyword);
 
+
+List<ProductModel>findAllByAdmin();
+    ProductModel updateByAdmin(ProductModel productModel);
+
+    ProductModel addByAdmin(ProductModel productModel);
+    void deleteByAdmin(Long[] ids);
 
 }

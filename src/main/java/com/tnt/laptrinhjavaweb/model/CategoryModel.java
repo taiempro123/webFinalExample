@@ -6,6 +6,15 @@ public class CategoryModel extends AbstractModel<CategoryModel> {
 	private String name;
 	private String gender;
 
+	public long getGenderid() {
+		return genderid;
+	}
+
+	public void setGenderid(long genderid) {
+		this.genderid = genderid;
+	}
+
+	private long genderid;
 
 	public String getGender() {
 		return gender;

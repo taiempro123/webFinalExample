@@ -20,4 +20,29 @@ public class ManfacturerService implements IManfacturerService {
     public ManfacturerModel findOne(long id) {
         return iManfacturerDAO.findOne(id);
     }
+
+    @Override
+    public List<ManfacturerModel> findAllByAdmin() {
+        return iManfacturerDAO.findAllByAdmin();
+    }
+
+    @Override
+    public ManfacturerModel findOneByAdmin(long id) {
+        return null;
+    }
+
+    @Override
+    public ManfacturerModel updateByAdmin(ManfacturerModel model) {
+        return null;
+    }
+
+    @Override
+    public ManfacturerModel addByAdmin(ManfacturerModel model) {
+        return null;
+    }
+
+    @Override
+    public void deleteByAdmin(Long[] ids) {
+
+    }
 }

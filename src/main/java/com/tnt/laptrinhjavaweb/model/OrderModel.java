@@ -1,11 +1,29 @@
 package com.tnt.laptrinhjavaweb.model;
 
 public class OrderModel  extends AbstractModel<OrderModel>{
-    long productId;
-    int count;
-    int totalPrice;
-    String address;
-    int status;
+   private long productId;
+    private int count;
+    private int totalPrice;
+    private String address;
+    private int status;
+    private String code;
+    private UserModel userModel;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public UserModel getUserModel() {
+        return userModel;
+    }
+
+    public void setUserModel(UserModel userModel) {
+        this.userModel = userModel;
+    }
 
     public long getProductId() {
         return productId;

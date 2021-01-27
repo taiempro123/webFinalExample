@@ -86,11 +86,44 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
         return products.isEmpty() ? null : products.get(0);
     }
     @Override
-    public List<ProductModel> findOneByAdmin(Long id) {
+    public ProductModel findOneByAdmin(Long id) {
         String sql = "select * from product where id = ?";
         List<ProductModel> products = query(sql, new ProductMapper(), id);
-        return products.isEmpty() ? null : (List<ProductModel>) products.get(0);
+        return products.isEmpty() ? null :  products.get(0);
 
+    }
+
+    @Override
+    public List<ProductModel> findAllByAdmin() {
+        String sql ="SELECT * FROM product ";
+        return query(sql, new ProductMapper()) ;
+    }
+
+    @Override
+    public void updateByAdmin(ProductModel model) {
+        StringBuilder sql = new StringBuilder("update product set code = ?, name = ?, thumnail = ?, size = ?,  color_id = ?, price = ?, pricesale = ?, description  = ?,");
+        sql.append(" quantity = ?, manfacturerid = ?, categoryid = ?, modifieddate = ?, modifiedby = ? where product.id = ?");
+        update(sql.toString(), model.getCode(), model.getName(), model.getThumnail(), model.getSize(), model.getColor(), model.getPrice(), model.getPricesale(),  model.getDescription(), model.getQuantity(),
+                model.getManfacturerid(),  model.getCategoryid(), model.getModifiedDate(), model.getModifiedBy(),
+                  model.getId());
+
+    }
+
+    @Override
+    public Long addByAdmin(ProductModel model) {
+
+        StringBuilder sql = new StringBuilder("insert into product (code, name, thumnail, size, color_id, price, pricesale, description, quantity, manfacturerid, categoryid, createddate, createdby)");
+        sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        return insert(sql.toString(),model.getCode(), model.getName(), model.getThumnail(),
+                 model.getSize(), model.getColor(), model.getPrice(), model.getPricesale(), model.getDescription(), model.getQuantity(),
+                model.getManfacturerid(), model.getCategoryid(), model.getCreatedDate(),    model.getCreatedBy());
+
+    }
+
+    @Override
+    public void deleteByAdmin(long id) {
+        String sql = "DELETE FROM product WHERE id= ?";
+        update(sql, id);
     }
 
 

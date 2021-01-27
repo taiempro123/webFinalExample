@@ -2,6 +2,7 @@ package com.tnt.laptrinhjavaweb.dao;
 
 
 import com.tnt.laptrinhjavaweb.model.ProductModel;
+import com.tnt.laptrinhjavaweb.model.UserModel;
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 
 import java.util.List;
@@ -29,7 +30,10 @@ public interface IProductDAO extends GenericDAO<ProductModel> {
 
     ProductModel findOneBestSale();
 
-    List<ProductModel> findOneByAdmin(Long id);
-
+    ProductModel findOneByAdmin(Long id);
+List<ProductModel>findAllByAdmin();
+  void  updateByAdmin(ProductModel model);
+    Long addByAdmin(ProductModel model);
+    void deleteByAdmin(long id);
 
 }

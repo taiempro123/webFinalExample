@@ -28,10 +28,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public Long save(UserModel userModel) {
-        StringBuilder sql = new StringBuilder("insert into user(username, password, fullname, status, roleid, email, address, phone)");
+        StringBuilder sql = new StringBuilder("insert into user(username, password, fullname, status, roleid, email, address, image, createddate, createdBy)");
         sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getUserName(), userModel.getPassword(), userModel.getFullName(),
-                userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(), userModel.getAddress(), userModel.getPhone());
+                userModel.getStatus(), userModel.getRoleId(), userModel.getEmail(), userModel.getAddress(), userModel.getImage(), userModel.getCreatedDate(), userModel.getCreatedBy());
     }
 
     @Override
@@ -123,10 +123,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public void update(UserModel updateUser) {
         StringBuilder sql = new StringBuilder("update user set fullname = ?, username = ?, email = ?, roleid = ?, address = ?, status = ?,");
-        sql.append(" createdby = ?, modifieddate = ? where user.id = ?");
+        sql.append(" modifiedby = ?, modifieddate = ? where user.id = ?");
 
         update(sql.toString(), updateUser.getFullName(), updateUser.getUserName(), updateUser.getEmail(), updateUser.getRoleId(), updateUser.getAddress(), updateUser.getStatus(),
-                updateUser.getCreatedBy(), updateUser.getModifiedDate(), updateUser.getId());
+                updateUser.getModifiedBy(), updateUser.getModifiedDate(), updateUser.getId());
 
 
     }

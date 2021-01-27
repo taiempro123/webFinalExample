@@ -11,6 +11,7 @@ public class GenderMapper implements IRowMapper<GenderModel> {
 
         try {
             GenderModel genderModel = new GenderModel();
+            genderModel.setId(resultSet.getLong("id"));
             genderModel.setCode(resultSet.getString("code"));
 
             genderModel.setName(resultSet.getString("name"));

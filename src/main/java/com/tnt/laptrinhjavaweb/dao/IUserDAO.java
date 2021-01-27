@@ -21,9 +21,11 @@ public interface IUserDAO extends GenericDAO<UserModel>{
 	UserModel changePassById(UserModel userModel);
 
 	UserModel updateByUser(UserModel updateUser);
-	List<UserModel> findAllUser();
-	List<UserModel> findAllByRole();
 	void update(UserModel updateUser);
 	Long saveUserByAdmin(UserModel userModel);
 	void delete(long id);
+	List<UserModel> findAllUser();
+	List<UserModel> findAllByRole();
+
+
 }

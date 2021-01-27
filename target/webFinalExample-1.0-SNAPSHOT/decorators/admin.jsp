@@ -2,12 +2,16 @@
 <%@include file="/common/taglib.jsp" %>
 <c:url var="apiUser" value="/api-admin-user"/>
 <c:url var="URLUser" value="/admin-user"/>
-<%--<c:url var="apiProduct" value="/api-admin-product"/>--%>
+<c:url var="apiProduct" value="/api-admin-product"/>
 <c:url var="URLProduct" value="/admin-product"/>
-
-
-<c:url var="apiInfo" value="/api-admin-infomation"/>
+<c:url var="apiCategory" value="/api-admin-category"/>
+<c:url var="URLCategory" value="/admin-category"/>
+<c:url var="apiCoupon" value="/api-admin-coupon"/>
+<c:url var="URLCoupon" value="/admin-coupon"/>
+<c:url var="apiInfo" value="/api-admin-information"/>
 <c:url var="URLinfo" value="/admin-information"/>
+<c:url var="apiBanner" value="/api-admin-banner"/>
+<c:url var="URLBanner" value="/admin-banner"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +31,7 @@
     <script src="<c:url value="/template/admin/assets/js/respond.min.js"/>"></script>
     <script src="<c:url value="/template/admin/assets/js/ace-extra.min.js"/>"></script>
     <script src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
+<%--    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>--%>
 </head>
 <body class="no-skin">
 <!-- header -->
@@ -123,6 +128,23 @@
                 }
             });
 
+
+        $('#dynamic-table-coupon')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .DataTable({
+                bAutoWidth: false,
+                "aoColumns": [
+                    {"bSortable": false},
+                    null, null, null, null, null, null, null,
+                    {"bSortable": false}
+                ],
+                "aaSorting": [],
+
+
+                select: {
+                    style: 'multi'
+                }
+            });
         $('#dynamic-table-category')
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
             .DataTable({
@@ -139,7 +161,38 @@
                     style: 'multi'
                 }
             });
+        $('#dynamic-table-order')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .DataTable({
+                bAutoWidth: false,
+                "aoColumns": [
+                    {"bSortable": false},
+                    null, null, null, null, null, null, null, null,
+                    {"bSortable": false}
+                ],
+                "aaSorting": [],
 
+
+                select: {
+                    style: 'multi'
+                }
+            });
+        $('#dynamic-table-banner')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .DataTable({
+                bAutoWidth: false,
+                "aoColumns": [
+                    {"bSortable": false},
+                    null, null, null, null, null,
+                    {"bSortable": false}
+                ],
+                "aaSorting": [],
+
+
+                select: {
+                    style: 'multi'
+                }
+            });
 
         $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
@@ -293,7 +346,12 @@
 
 </script>
 
-
+<%--<script>--%>
+<%--    var editor = '';--%>
+<%--    $( document ).ready(function() {--%>
+<%--editor =CKEDITOR.replace('description');--%>
+<%--    });--%>
+<%--</script>--%>
 <%--Nguoi dung--%>
 <script>
 
@@ -313,9 +371,11 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
+                alert(" xóa thành công");
                 window.location.href = "${URLUser}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
             },
             error: function (error) {
+                alert("Xóa thất bại");
                 window.location.href = "${URLUser}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
             }
         });
@@ -346,11 +406,11 @@
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("thêm thành công");
-                window.location.href = "${URLUser}?type=edit&id=" + result.id + "&message=insert_success";
+                alert("Thêm tài khoản thành công");
+                window.location.href = "${URLUser}?type=list&message=insert_success";
             },
             error: function (error) {
-                alert("thêm thất bai");
+                alert("Thêm tài khoản thất bai");
                 window.location.href = "${URLUser}?type=list&maxPageItem=2&page=1&message=error_system";
                 console.log(error);
             }
@@ -366,14 +426,14 @@
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("sửa thành công");
+                alert("Sửa tài khoản thành công");
                 window.location.href = "${URLUser}?type=list&message=update_success";
                 console.log(result);
             },
             error: function (error) {
                 console.log(error);
-                alert("sửa thất bai");
-                window.location.href = "${URLUser}?type=list&maxPageItem=2&page=1&message=error_system";
+                alert("Sửa tài khoản thất bai");
+                window.location.href = "${URLUser}?type=list&message=error_system";
             }
         });
     }
@@ -384,13 +444,13 @@
 <%--San pham--%>
 <script>
 
-    $("#btnDelete").click(function () {
+    $("#btnDeleteProduct").click(function () {
         var data = {};
         var ids = $('tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
         data['ids'] = ids;
-        deleteUser(data);
+        deleteProduct(data);
     });
 
     function deleteProduct(data) {
@@ -400,10 +460,12 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
-                window.location.href = "${NewURL}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
+                alert("Xóa sản phẩm thành công");
+                window.location.href = "${URLProduct}?type=list&message=delete_success";
             },
             error: function (error) {
-                window.location.href = "${NewURL}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
+                alert("Xóa sản phẩm thất bại");
+                window.location.href = "${URLProduct}?type=list&message=error_system";
             }
         });
     }
@@ -433,12 +495,12 @@
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("thêm thành công");
-                window.location.href = "${URL}?type=edit&id=" + result.id + "&message=insert_success";
+                alert("Thêm sản phẩm thành công");
+                window.location.href = "${URLProduct}?type=list&message=insert_success";
             },
             error: function (error) {
-                alert("thêm thất bai");
-                window.location.href = "${URL}?type=list&maxPageItem=2&page=1&message=error_system";
+                alert("Thêm sản phẩm thất bại");
+                window.location.href = "${URLProduct}?type=edit&id="+result.id+"&message=error_system";
                 console.log(error);
             }
         });
@@ -453,14 +515,14 @@
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("sửa thành công");
-                window.location.href = "${URL}?type=edit&id=" + result.id + "&message=update_success";
+                alert("Sửa sản phẩm thành công");
+                window.location.href = "${URLProduct}?type=edit&id="+result.id+"&message=update_success";
                 console.log(result);
             },
             error: function (error) {
                 console.log(error);
-                alert("sửa thất bai");
-                window.location.href = "${URL}?type=list&maxPageItem=2&page=1&message=error_system";
+                alert("Sửa sản phẩm thất bại");
+                window.location.href = "${URLProduct}?type=edit&id="+error.id+"&message=error_system";
             }
         });
     }
@@ -469,33 +531,36 @@
 <%--sanpham--%>
 
 <%--The loại--%>
+
 <script>
 
-    $("#btnDelete").click(function () {
+    $("#btnDeleteCate").click(function () {
         var data = {};
         var ids = $('tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
         data['ids'] = ids;
-        deleteUser(data);
+        deleteCate(data);
     });
 
-    function deleteProduct(data) {
+    function deleteCate(data) {
         $.ajax({
-            url: '${apiProduct}',
+            url: '${apiCategory}',
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
-                window.location.href = "${NewURL}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
+                alert(" xóa thành công");
+                window.location.href = "${URLCategory}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
             },
             error: function (error) {
-                window.location.href = "${NewURL}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
+                alert("Xóa thất bại");
+                window.location.href = "${URLCategory}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
             }
         });
     }
 
-    $('#btnAddOrUpdateProduct').click(function (e) {
+    $('#btnAddOrUpdateCate').click(function (e) {
         e.preventDefault();
         var data = {};
         var formData = $('#formSubmit').serializeArray();
@@ -505,54 +570,53 @@
         // data["content"] = editor.getData();
         var id = $('#id').val();
         if (id == "") {
-            addProduct(data);
+            addCategory(data);
         } else {
-            updateProduct(data);
+            updateCategory(data);
         }
     });
 
-    function addProduct(data) {
+    function addCategory(data) {
         $.ajax({
-            url: '${apiProduct}',
+            url: '${apiCategory}',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("thêm thành công");
-                window.location.href = "${URL}?type=edit&id=" + result.id + "&message=insert_success";
+                alert("Thêm sản phẩm thành công");
+                window.location.href = "${URLCategory}?type=list&message=insert_success";
             },
             error: function (error) {
-                alert("thêm thất bai");
-                window.location.href = "${URL}?type=list&maxPageItem=2&page=1&message=error_system";
+                alert("Thêm thể loại thất bại");
+                window.location.href = "${URLCategory}?type=edit&id="+error.id+"&message=error_system";
                 console.log(error);
             }
         });
     }
 
-    function updateProduct(data) {
+    function updateCategory(data) {
         $.ajax({
-            url: '${apiProducrt}',
+            url: '${apiCategory}',
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                alert("sửa thành công");
-                window.location.href = "${URL}?type=edit&id=" + result.id + "&message=update_success";
+                alert("Sửa thể loại thành công");
+                window.location.href = "${URLCategory}?type=edit&id="+result.id+"&message=update_success";
                 console.log(result);
             },
             error: function (error) {
                 console.log(error);
-                alert("sửa thất bai");
-                window.location.href = "${URL}?type=list&maxPageItem=2&page=1&message=error_system";
+                alert("Sửa thể loại thất bại");
+                window.location.href = "${URLCategory}?type=edit&id="+error.id+"&message=error_system";
             }
         });
     }
 </script>
-
 <%--the loai--%>
 
 <%--Thong tin trang ban hang--%>
@@ -595,6 +659,186 @@
     }
 </script>
 <%--Thong tin trang ban hang--%>
+
+
+<%--Ma giam gia--%>
+<script>
+
+    $("#btnDeleteCoupon").click(function () {
+        var data = {};
+        var ids = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        data['ids'] = ids;
+        deleteCoupon(data);
+    });
+
+    function deleteCoupon(data) {
+        $.ajax({
+            url: '${apiCoupon}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (result) {
+                alert(" xóa thành công");
+                window.location.href = "${URLCoupon}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
+            },
+            error: function (error) {
+                alert("Xóa thất bại");
+                window.location.href = "${URLCoupon}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
+            }
+        });
+    }
+
+    $('#btnAddOrUpdateCoupon').click(function (e) {
+        e.preventDefault();
+        var data = {};
+        var formData = $('#formSubmit').serializeArray();
+        $.each(formData, function (i, v) {
+            data["" + v.name + ""] = v.value;
+        });
+        // data["content"] = editor.getData();
+        var id = $('#id').val();
+        if (id == "") {
+            addCoupon(data);
+        } else {
+            updateCoupon(data);
+        }
+    });
+
+    function addCoupon(data) {
+        $.ajax({
+            url: '${apiCoupon}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                alert("Thêm mã thành công");
+                window.location.href = "${URLCoupon}?type=list&message=insert_success";
+            },
+            error: function (error) {
+                alert("Thêm mã thất bai");
+                window.location.href = "${URLCoupon}?type=list&maxPageItem=2&page=1&message=error_system";
+                console.log(error);
+            }
+        });
+    }
+
+    function updateCoupon(data) {
+        $.ajax({
+            url: '${apiCoupon}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                alert("Sửa mã thành công");
+                window.location.href = "${URLCoupon}?type=list&message=update_success";
+                console.log(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert("Sửa mã thất bai");
+                window.location.href = "${URLCoupon}?type=list&message=error_system";
+            }
+        });
+    }
+</script>
+<script>
+    var editor ='';
+    $( document ).ready(function() {
+        editor=CKEDITOR.replace('description');
+    });
+</script>
+<script>
+
+    $("#btnDeleteBanner").click(function () {
+        var data = {};
+        var ids = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        data['ids'] = ids;
+        deleteBanner(data);
+    });
+
+    function deleteBanner(data) {
+        $.ajax({
+            url: '${apiBanner}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (result) {
+                alert(" xóa thành công");
+                window.location.href = "${URLBanner}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=delete_success";
+            },
+            error: function (error) {
+                alert("Xóa thất bại");
+                window.location.href = "${URLBanner}?type=list&page=1&maxPageItem=2&sortName=title&sortBy=desc&message=error_system";
+            }
+        });
+    }
+
+    $('#btnAddOrUpdateBanner').click(function (e) {
+        e.preventDefault();
+        var data = {};
+        var formData = $('#formSubmit').serializeArray();
+        $.each(formData, function (i, v) {
+            data["" + v.name + ""] = v.value;
+        });
+        // data["content"] = editor.getData();
+        var id = $('#id').val();
+        if (id == "") {
+            addBanner(data);
+        } else {
+            updateBanner(data);
+        }
+    });
+
+    function addBanner(data) {
+        $.ajax({
+            url: '${apiBanner}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                alert("Thêm  thành công");
+                window.location.href = "${URLBanner}?type=list&message=insert_success";
+            },
+            error: function (error) {
+                alert("Thêm  thất bai");
+                window.location.href = "${URLBanner}?type=list&maxPageItem=2&page=1&message=error_system";
+                console.log(error);
+            }
+        });
+    }
+
+    function updateBanner(data) {
+        $.ajax({
+            url: '${apiBanner}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                alert("Sửa  thành công");
+                window.location.href = "${URLBanner}?type=list&message=update_success";
+                console.log(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert("Sửa  thất bai");
+                window.location.href = "${URLBanner}?type=list&message=error_system";
+            }
+        });
+    }
+</script>
 </body>
+
 </html>
 

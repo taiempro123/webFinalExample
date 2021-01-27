@@ -1,18 +1,13 @@
 package com.tnt.laptrinhjavaweb.model;
 
 public class BannerModel  extends  AbstractModel<BannerModel>{
-    String name;
-    long imageId;
-    String describe;
-ImageModel imageModel;
+    private String name;
+    private String describe;
+    private  int status;
+   private String image;
 
-    public ImageModel getImageModel() {
-        return imageModel;
-    }
 
-    public void setImageModel(ImageModel imageModel) {
-        this.imageModel = imageModel;
-    }
+
 
     public String getName() {
         return name;
@@ -22,13 +17,7 @@ ImageModel imageModel;
         this.name = name;
     }
 
-    public long getImageId() {
-        return imageId;
-    }
 
-    public void setImageId(long imageId) {
-        this.imageId = imageId;
-    }
 
     public String getDescribe() {
         return describe;
@@ -36,5 +25,21 @@ ImageModel imageModel;
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

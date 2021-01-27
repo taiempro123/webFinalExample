@@ -6,7 +6,7 @@ import com.tnt.laptrinhjavaweb.model.GenderModel;
 
 import java.util.List;
 
-public class GenderDAO extends AbstractDAO<GenderDAO> implements IGenderDAO {
+public class GenderDAO extends AbstractDAO<GenderModel> implements IGenderDAO {
     @Override
     public List<GenderModel> findALL() {
         String sql = " select * from gender";

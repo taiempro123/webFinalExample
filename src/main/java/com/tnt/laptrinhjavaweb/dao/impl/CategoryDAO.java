@@ -51,23 +51,58 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 	}
 
 	@Override
-	public Long save(CategoryModel categoryModel) {
-		StringBuilder sql = new StringBuilder("insert into category(code,name,createddate,createdby) values(?, ?, ?, ?)");
-		return insert(sql.toString(), categoryModel.getCode(), categoryModel.getName(),
-				categoryModel.getCreatedDate(), categoryModel.getCreatedBy());
+	public CategoryModel findOneByAdmin(Long id) {
+		String sql="SELECT * FROM category where id = ?";
+		List<CategoryModel> category = query(sql, new CategoryMapper(), id);
+		return category.isEmpty() ? null : category.get(0);
 	}
 
 	@Override
-	public void update(CategoryModel updateCategory) {
-		String sql = "update category set name = ?, code = ?, createddate = ?, modifieddate = ?, createdby = ?, modifiedby = ? where id = ?";
-		update(sql, updateCategory.getName(), updateCategory.getCode(),updateCategory.getCreatedDate(), updateCategory.getModifiedDate(),
-				updateCategory.getCreatedBy(), updateCategory.getModifiedBy(), updateCategory.getId());
+	public List<CategoryModel> findAllByAdmin() {
+		String sql = "select * from category";
+		return query(sql, new CategoryMapper());
 	}
 
 	@Override
-	public void delete(long id) {
-		String sql = "delete from category where id= ?";
+	public void updateByAdmin(CategoryModel model) {
+		StringBuilder sql = new StringBuilder("update category set code = ?, name = ?, gender = ?, modifieddate = ?, modifiedby = ?");
+		sql.append(" where category.id = ?");
+
+		update(sql.toString(), model.getCode(), model.getName(), model.getGenderid(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
+
+	}
+
+	@Override
+	public Long addByAdmin(CategoryModel model) {
+		StringBuilder sql = new StringBuilder("insert into category ( name, code, gender, createddate, createdby)");
+		sql.append(" values(?, ?, ?, ?, ?)");
+		return insert(sql.toString(), model.getName(),model.getCode(), model.getGenderid(), model.getCreatedDate(), model.getCreatedBy());
+	}
+
+	@Override
+	public void deleteByAdmin(long id) {
+		String sql = "DELETE FROM category WHERE id = ?";
 		update(sql, id);
-		
 	}
+
+//	@Override
+//	public Long save(CategoryModel categoryModel) {
+//		StringBuilder sql = new StringBuilder("insert into category(code,name,createddate,createdby) values(?, ?, ?, ?)");
+//		return insert(sql.toString(), categoryModel.getCode(), categoryModel.getName(),
+//				categoryModel.getCreatedDate(), categoryModel.getCreatedBy());
+//	}
+//
+//	@Override
+//	public void update(CategoryModel updateCategory) {
+//		String sql = "update category set name = ?, code = ?, createddate = ?, modifieddate = ?, createdby = ?, modifiedby = ? where id = ?";
+//		update(sql, updateCategory.getName(), updateCategory.getCode(),updateCategory.getCreatedDate(), updateCategory.getModifiedDate(),
+//				updateCategory.getCreatedBy(), updateCategory.getModifiedBy(), updateCategory.getId());
+//	}
+//
+//	@Override
+//	public void delete(long id) {
+//		String sql = "delete from category where id= ?";
+//		update(sql, id);
+//
+//	}
 }

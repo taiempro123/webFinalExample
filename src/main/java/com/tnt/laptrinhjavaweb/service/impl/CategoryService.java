@@ -3,6 +3,7 @@ package com.tnt.laptrinhjavaweb.service.impl;
 
 import com.tnt.laptrinhjavaweb.dao.ICategoryDAO;
 import com.tnt.laptrinhjavaweb.model.CategoryModel;
+import com.tnt.laptrinhjavaweb.model.ProductModel;
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 import com.tnt.laptrinhjavaweb.service.ICategoryService;
 
@@ -40,30 +41,63 @@ public class CategoryService implements ICategoryService {
 		return CategoryDao.findOneByCode(code);
 	}
 
+
+
+
 	@Override
-	public CategoryModel save(CategoryModel categoryModel) {
-		categoryModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-		Long newId = CategoryDao.save(categoryModel);
-		return CategoryDao.findOne(newId);
+	public List<CategoryModel> findAllByAdmin() {
+		return CategoryDao.findAllByAdmin();
 	}
 
 	@Override
-	public CategoryModel update(CategoryModel updateCategory) {
-		CategoryModel olNew = CategoryDao.findOne(updateCategory.getId());
-		updateCategory.setCreatedDate(olNew.getCreatedDate());
-		updateCategory.setCreatedBy(olNew.getCreatedBy());
-		updateCategory.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-		CategoryDao.update(updateCategory);
-		return CategoryDao.findOne(updateCategory.getId());
+	public CategoryModel findOneByAdmin(long id) {
+		return CategoryDao.findOneByAdmin(id);
 	}
 
 	@Override
-	public void delete(Long[] ids) {
-		for(Long id: ids) {
-			//xoa bai viet truoc roi moi xoa duoc the loai(category_id)
-			CategoryDao.delete(id);
+	public CategoryModel updateByAdmin(CategoryModel model){
+		CategoryModel olP = CategoryDao.findOneByAdmin(model.getId());
+		model.setModifiedBy("ADMIN");
+		model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+		CategoryDao.updateByAdmin(model);
+        return CategoryDao.findOneByAdmin(model.getId());
+	}
+
+	@Override
+	public CategoryModel addByAdmin(CategoryModel model) {
+		CategoryModel model1 = null;
+		Long cateId = 0L;
+		model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+		model.setCreatedBy("ADMIN");
+		cateId = CategoryDao.addByAdmin(model);
+		model1 = CategoryDao.findOneByAdmin(cateId);
+		return model1;
+	}
+
+	@Override
+	public void deleteByAdmin(Long[] ids) {
+		for (Long id : ids) {
+			//xoa san pham truoc roi moi xoa duoc the loai(category_id)
+			CategoryDao.deleteByAdmin(id);
 		}
-		
 	}
-	
+
+//	@Override
+//	public CategoryModel save(CategoryModel categoryModel) {
+//		categoryModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+//		Long newId = CategoryDao.save(categoryModel);
+//		return CategoryDao.findOne(newId);
+//	}
+//
+//	@Override
+//	public CategoryModel update(CategoryModel updateCategory) {
+//		CategoryModel olNew = CategoryDao.findOne(updateCategory.getId());
+//		updateCategory.setCreatedDate(olNew.getCreatedDate());
+//		updateCategory.setCreatedBy(olNew.getCreatedBy());
+//		updateCategory.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+//		CategoryDao.update(updateCategory);
+//		return CategoryDao.findOne(updateCategory.getId());
+//	}
+
+
 }

@@ -154,6 +154,7 @@ public class UserService implements IUserService {
     @Override
     public void delete(Long[] ids) {
         for (Long id : ids) {
+
             userDAO.delete(id);
         }
     }

@@ -15,7 +15,7 @@ public class CategoryMapper implements IRowMapper<CategoryModel> {
             category.setId(resultSet.getLong("id"));
             category.setCode(resultSet.getString("code"));
             category.setName(resultSet.getString("name"));
-
+category.setGenderid(resultSet.getLong("gender"));
             category.setGender(resultSet.getString("gender"));
 //            category.setCreatedDate(resultSet.getTimestamp("createddate"));
 //            category.setCreatedBy(resultSet.getString("createdby"));

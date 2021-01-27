@@ -41,6 +41,7 @@
             </div>
             <div class="col-md-9">
                 <div class="tab-content">
+
                     <form class="form-edit" id="form-edit" method="post" action="<c:url value="/my-account"/> ">
                         <div class="tab-pane fade active show" id="account-general">
                             <div class="card-body media align-items-center">
@@ -106,6 +107,7 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                     <div class="tab-pane fade" id="account-change-password">
                         <form class="form-change" id="form-change" method="post" action="<c:url value="/my-account"/> ">
                             <div class="card-body pb-2">
@@ -115,11 +117,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Mật khẩu mới</label>
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Nhập lại mật khẩu mới</label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" required>
                                 </div>
                                 <div class="text-right mt-3">
                                     <input type="hidden" name="action" value="change">
@@ -140,6 +142,8 @@ function deleteFunction(){
     if(confirm("Bạn có chắc chắn muốn xóa tài khoản này")){
         window.location.href = "${deleteURL}";
     }
+
+
 }
 </script>
 </body>

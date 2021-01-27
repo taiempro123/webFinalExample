@@ -4,6 +4,6 @@ import com.tnt.laptrinhjavaweb.model.GenderModel;
 
 import java.util.List;
 
-public interface IGenderDAO {
+public interface IGenderDAO extends GenericDAO<GenderModel>{
     List<GenderModel>findALL();
 }

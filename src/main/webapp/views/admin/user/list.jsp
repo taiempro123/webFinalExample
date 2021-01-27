@@ -83,16 +83,23 @@
                                                 <td>${item.phone}</td>
                                                 <td>${item.birthday}</td>
                                                 <td>${item.address}</td>
-                                                <td>${item.roleId}</td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${item.roleId==1}">ADMIN</c:when>
+                                                        <c:when test="${item.roleId==2}">USER</c:when>
+                                                    </c:choose>
+                                                </td>
                                                 <td>${item.createdDate}</td>
                                                 <td>
                                                     <c:url var="editURL" value="/admin-user">
                                                         <c:param name="type" value="edit"/>
                                                         <c:param name="id" value="${item.id}"/>
                                                     </c:url>
+                                                    <c:if test="${item.roleId==1}">
                                                     <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                                       title="Cập nhật bài viết" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                       title="Cập nhật tài khoản" href='${editURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </a>
+                                                    </c:if>
                                                 </td>
                                             </tr>
                                         </c:forEach>

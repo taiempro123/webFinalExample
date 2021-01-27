@@ -53,7 +53,7 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="order-management.html">
+                <a href="<c:url value="/admin-order?type=list"/>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Đơn hàng
                 </a>
@@ -74,14 +74,14 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="banner-managerment.html">
+                <a href="<c:url value="/admin-banner?type=list"/>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Banner khuyến mãi
                 </a>
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="voucher-management.html">
+                <a href="<c:url value="/admin-coupon?type=list"/> ">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Mã giảm giá
                 </a>

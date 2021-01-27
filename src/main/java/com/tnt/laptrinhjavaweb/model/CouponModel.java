@@ -3,14 +3,14 @@ package com.tnt.laptrinhjavaweb.model;
 import java.sql.Timestamp;
 
 public class CouponModel extends AbstractModel<CouponModel>{
-long productId;
-String name;
-String code;
-Timestamp fromDate;
-Timestamp toDate;
-int quantity;
-int remain;
-String promotion;
+private long productId;
+    private String name;
+    private String code;
+    private Timestamp fromDate;
+    private Timestamp toDate;
+    private int quantity;
+    private int remain;
+    private int promotion;
 
     public long getProductId() {
         return productId;
@@ -68,11 +68,11 @@ String promotion;
         this.remain = remain;
     }
 
-    public String getPromotion() {
+    public int getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(String promotion) {
+    public void setPromotion(int promotion) {
         this.promotion = promotion;
     }
 }

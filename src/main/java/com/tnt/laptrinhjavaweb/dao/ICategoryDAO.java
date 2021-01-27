@@ -3,6 +3,7 @@ package com.tnt.laptrinhjavaweb.dao;
 
 
 import com.tnt.laptrinhjavaweb.model.CategoryModel;
+
 import com.tnt.laptrinhjavaweb.paging.Pageble;
 
 import java.util.List;
@@ -14,7 +15,11 @@ public interface ICategoryDAO extends GenericDAO<CategoryModel> {
 	CategoryModel findOneByCode(String code);
 	List<CategoryModel>findAllAndSort(Pageble pageble);
 	int getTotalItem();
-	Long save(CategoryModel categoryModel);
-	void update(CategoryModel updateCategory);
-	void delete(long id);
+
+
+	CategoryModel findOneByAdmin(Long id);
+	List<CategoryModel>findAllByAdmin();
+	void updateByAdmin(CategoryModel model);
+	Long addByAdmin(CategoryModel model);
+	void deleteByAdmin(long id);
 }

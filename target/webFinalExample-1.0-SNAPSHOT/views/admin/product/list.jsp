@@ -124,6 +124,8 @@
                             <th>Mã sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
+
+
                             <th>Kích cỡ</th>
                             <th>Màu sắc</th>
                             <th>Giá</th>
@@ -152,24 +154,19 @@
                                         ${item.name}
                                 </td>
                                 <td><img height="30px" width="30px" src="<c:url value="${item.thumnail}"></c:url> "></td>
-                                <td class="hidden-480">${item.size}</td>
+                             <td class="hidden-480">${item.size}</td>
 
                                 <td>
+                                    <c:forEach var="colorI" items="${COLOR}">
                                     <c:choose>
-                                        <c:when test="${item.color == 1}">TRẮNG</c:when>
-                                        <c:when test="${item.color== 2}"> ĐEN</c:when>
-                                        <c:when test="${item.color == 3}">ĐỎ</c:when>
-                                        <c:when test="${item.color == 4}"> CAM</c:when>
-                                        <c:when test="${item.color == 6}"> XANH LÁ</c:when>
-                                        <c:when test="${item.color == 7}">XANH DƯƠNG</c:when>
-                                        <c:when test="${item.color == 8}"> NÂU</c:when>
-                                        <c:when test="${item.color == 9}"> XÁM</c:when>
-                                        <c:when test="${item.color == 10}"> HỒNG</c:when>
+
+                                        <c:when test="${item.color==colorI.id}">${colorI.colors}</c:when>
 
                                     </c:choose>
+                                    </c:forEach>
                                 </td>
                                 <td>${item.price}</td>
-                                <td>${item.price*0.9}</td>
+                                <td>${item.pricesale}</td>
                                 <td>${item.description}</td>
 
 
@@ -195,13 +192,13 @@
                                     <div class="dt-buttons btn-overlap btn-group">
                                         <a flag="info"
                                            class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
-                                           title='Thêm người dùng' href='<c:url value="/admin-user?type=edit"/>'>
+                                           title='Thêm người dùng' href='<c:url value="/admin-product?type=edit"/>'>
 															<span>
 																<i class="fa fa-plus-circle bigger-110 purple"></i>
 															</span>
                                         </a>
-                                        <button id="btnDelete" type="button"
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa ngời dùng'>
+                                        <button id="btnDeleteProduct" type="button"
+                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa sản phẩm'>
 																<span>
 																	<i class="fa fa-trash-o bigger-110 pink"></i>
 																</span>
